@@ -1,0 +1,13 @@
+* @Smirk1308
+/hostelops/auth/ @Shreyanshj55555
+/tests/test_auth.py @Shreyanshj55555
+/hostelops/complaints/ @shashankcell
+/tests/test_complaints.py @shashankcell
+/hostelops/triage/ @shivam19-debug
+/ml/ @shivam19-debug
+/tests/test_triage.py @shivam19-debug
+/Dockerfile @Smirk1308
+/docker-compose.yml @Smirk1308
+/.github/ @Smirk1308
+/pytest.ini @Smirk1308
+/tests/conftest.py @Smirk1308
