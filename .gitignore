@@ -1,0 +1,36 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+hostelops.db
+instance/
+
+# Environment variables
+.env
+.env.local
+
+# ML artifacts
+ml/model.joblib
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
