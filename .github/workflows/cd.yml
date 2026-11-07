@@ -1,0 +1,55 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - staging
+      - main
+
+jobs:
+  deploy-staging:
+    name: Deploy to Render (Staging)
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging'
+
+    steps:
+      - name: Trigger Render Deploy Hook
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "Triggering Render deployment..."
+            curl -f -X POST "$RENDER_DEPLOY_HOOK_URL"
+          else
+            echo "RENDER_DEPLOY_HOOK_URL secret not set. Skipping Render deployment."
+          fi
+
+  publish-ghcr:
+    name: Build & Push Image to GHCR (Main)
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set lowercased image name
+        run: |
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_NAME=ghcr.io/${REPO_LOWER}" >> $GITHUB_ENV
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t "${IMAGE_NAME}:latest" -t "${IMAGE_NAME}:${{ github.sha }}" .
+          docker push "${IMAGE_NAME}:latest"
+          docker push "${IMAGE_NAME}:${{ github.sha }}"
