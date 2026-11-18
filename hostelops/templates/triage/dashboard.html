@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — HostelOps{% endblock %}
+
+{% block content %}
+<style>
+  /* Standalone styles prefixed dash- so they don't clash with Module 1 CSS */
+  .dash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .dash-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .dash-card h2 {
+    margin: 0 0 .25rem;
+    font-size: 2.5rem;
+    color: #d9534f;
+  }
+  .dash-card p {
+    margin: 0;
+    color: #555;
+    font-size: .9rem;
+  }
+  .dash-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .dash-chart-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .dash-chart-box canvas {
+    max-height: 320px;
+  }
+  .dash-chart-box h3 {
+    margin: 0 0 .75rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  .dash-table-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    overflow-x: auto;
+  }
+  .dash-table-box h3 {
+    margin: 0 0 .75rem;
+    font-size: 1rem;
+  }
+  .dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+  }
+  .dash-table th, .dash-table td {
+    text-align: left;
+    padding: .5rem .75rem;
+    border-bottom: 1px solid #eee;
+  }
+  .dash-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+  }
+  .dash-chart-error {
+    color: #d9534f;
+    padding: .5rem 0;
+    font-size: .9rem;
+  }
+  @media (max-width: 640px) {
+    .dash-charts { grid-template-columns: 1fr; }
+  }
+</style>
+
+<h1 style="margin-bottom:1.25rem;">Analytics Dashboard</h1>
+
+<!-- Overdue count card -->
+<div class="dash-grid">
+  <div class="dash-card">
+    <h2>{{ overdue_count }}</h2>
+    <p>Overdue Complaints</p>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="dash-charts">
+  <div class="dash-chart-box">
+    <h3>Complaints by Category</h3>
+    <canvas id="categoryChart"></canvas>
+    <div id="dash-cat-error" class="dash-chart-error" style="display:none;"></div>
+  </div>
+  <div class="dash-chart-box">
+    <h3>Complaints by Status</h3>
+    <canvas id="statusChart"></canvas>
+    <div id="dash-sts-error" class="dash-chart-error" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- Overdue complaints table -->
+<div class="dash-table-box">
+  <h3>Overdue Complaints</h3>
+  {% if overdue_list %}
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Hours Open</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in overdue_list %}
+      <tr>
+        <td>{{ item.id }}</td>
+        <td><a href="/complaints/{{ item.id }}">{{ item.title }}</a></td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.hours_open }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:#555;">No overdue complaints right now.</p>
+  {% endif %}
+</div>
+
+<!-- Chart.js from CDN (inside content block as base.html has no scripts block) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function showError(elId, msg) {
+    var el = document.getElementById(elId);
+    if (el) { el.style.display = ''; el.textContent = msg; }
+  }
+
+  fetch('/api/stats', { credentials: 'same-origin' })
+    .then(function (resp) {
+      if (!resp.ok) throw new Error('Stats API returned ' + resp.status);
+      return resp.json();
+    })
+    .then(function (data) {
+      var catLabels = Object.keys(data.by_category);
+      var catValues = Object.values(data.by_category);
+
+      var stsLabels = Object.keys(data.by_status);
+      var stsValues = Object.values(data.by_status);
+
+      // Bar chart — by category
+      var catCtx = document.getElementById('categoryChart').getContext('2d');
+      new Chart(catCtx, {
+        type: 'bar',
+        data: {
+          labels: catLabels,
+          datasets: [{
+            label: 'Complaints',
+            data: catValues,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+          }],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+        },
+      });
+
+      // Doughnut chart — by status
+      var stsCtx = document.getElementById('statusChart').getContext('2d');
+      new Chart(stsCtx, {
+        type: 'doughnut',
+        data: {
+          labels: stsLabels,
+          datasets: [{
+            data: stsValues,
+            backgroundColor: [
+              'rgba(255, 193, 7, 0.8)',
+              'rgba(13, 110, 253, 0.8)',
+              'rgba(25, 135, 84, 0.8)',
+            ],
+          }],
+        },
+        options: { responsive: true },
+      });
+    })
+    .catch(function (err) {
+      showError('dash-cat-error', 'Could not load chart data: ' + err.message);
+      showError('dash-sts-error', 'Could not load chart data: ' + err.message);
+    });
+}());
+</script>
+{% endblock %}
