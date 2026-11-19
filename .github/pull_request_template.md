@@ -10,8 +10,8 @@ Closes #
 Review Ring Rules:
 - Shubh (@Smirk1308) -> Reviewed by Shivam (@shivam19-debug)
 - Shivam (@shivam19-debug) -> Reviewed by Shashank (@shashankcell)
-- Shashank (@shashankcell) -> Reviewed by Shreyansh (@Shreyanshj55555)
-- Shreyansh (@Shreyanshj55555) -> Reviewed by Shubh (@Smirk1308)
+- Shashank (@shashankcell) -> Reviewed by Shreyansh (@Shreyanshj55555-stack)
+- Shreyansh (@Shreyanshj55555-stack) -> Reviewed by Shubh (@Smirk1308)
 - Shubh gives final approval on staging -> main merges.
 -->
 - **Author**:

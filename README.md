@@ -13,7 +13,7 @@ Residents raise complaints across categories (Water, Electricity, Wi-Fi, Mess, C
 | **Shubh Sharma** | [@Smirk1308](https://github.com/Smirk1308) | **Module 4 (DevOps & Overseer)** | Project lead, test configuration, Docker, CI/CD pipelines, deployment. |
 | **Shivam Choudhary** | [@shivam19-debug](https://github.com/shivam19-debug) | **Module 3 (Triage & Analytics)** | ML triage model, overdue complaint logic, analytics dashboard. |
 | **Shashank Lodhi** | [@shashankcell](https://github.com/shashankcell) | **Module 2 (Complaints)** | Complaint lifecycle: creation, filtering, editing, status & assignment. |
-| **Shreyansh Jain** | [@Shreyanshj55555](https://github.com/Shreyanshj55555) | **Module 1 (Auth & UI Shell)** | Authentication, role authorization, base UI layout and styling. |
+| **Shreyansh Jain** | [@Shreyanshj55555-stack](https://github.com/Shreyanshj55555-stack) | **Module 1 (Auth & UI Shell)** | Authentication, role authorization, base UI layout and styling. |
 
 ---
 
@@ -31,7 +31,7 @@ Residents raise complaints across categories (Water, Electricity, Wi-Fi, Mess, C
 
 To ensure thorough cross-module peer reviews, pull requests follow a circular review ring:
 
-$$\text{Shubh (@Smirk1308)} \rightarrow \text{Shivam (@shivam19-debug)} \rightarrow \text{Shashank (@shashankcell)} \rightarrow \text{Shreyansh (@Shreyanshj55555)} \rightarrow \text{Shubh (@Smirk1308)}$$
+$$\text{Shubh (@Smirk1308)} \rightarrow \text{Shivam (@shivam19-debug)} \rightarrow \text{Shashank (@shashankcell)} \rightarrow \text{Shreyansh (@Shreyanshj55555-stack)} \rightarrow \text{Shubh (@Smirk1308)}$$
 
 1. Shubh's PRs are reviewed by Shivam.
 2. Shivam's PRs are reviewed by Shashank.
@@ -59,26 +59,47 @@ Run `python scripts/seed.py` to populate initial demo accounts in the database:
 - Python 3.12+ installed
 - Git
 
-### 2. Clone and Create Virtual Environment
+### 2. Clone the Repository and Create a Virtual Environment
 ```bash
 git clone https://github.com/Smirk1308/hostelops_Devops_project.git
 cd hostelops_Devops_project
+```
 
-python -m venv .venv
+Create the virtual environment:
 
-# On Linux / macOS:
-source .venv/bin/activate
+**Windows PowerShell:**
+```powershell
+py -m venv .venv
+```
 
-# On Windows (PowerShell):
-.\.venv\Scripts\Activate.ps1
+**Linux / macOS:**
+```bash
+python3 -m venv .venv
 ```
 
 ### 3. Install Dependencies
+
+**Windows PowerShell (works without activating the environment):**
+```powershell
+.\\.venv\\Scripts\\python.exe -m pip install --upgrade pip
+.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt -r requirements-dev.txt
+```
+
+**Linux / macOS:**
 ```bash
-pip install -r requirements.txt -r requirements-dev.txt
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt -r requirements-dev.txt
 ```
 
 ### 4. Configure Environment
+
+**Windows PowerShell:**
+```powershell
+Copy-Item .env.example .env
+```
+
+**Linux / macOS:**
 ```bash
 cp .env.example .env
 ```
@@ -103,17 +124,18 @@ Access the application in your browser at `http://localhost:8000` and health che
 
 ## Test Commands
 
-Run code linting and the automated test suite:
+Run linting and tests from the project root.
 
+**Windows PowerShell:**
+```powershell
+.\\.venv\\Scripts\\python.exe -m flake8 .
+.\\.venv\\Scripts\\python.exe -m pytest
+```
+
+**Linux / macOS (with the virtual environment activated):**
 ```bash
-# Run Flake8 linter
-flake8 .
-
-# Run Pytest suite
-pytest
-
-# Run Pytest with verbose output
-pytest -v
+python -m flake8 .
+python -m pytest
 ```
 
 ---
@@ -126,7 +148,7 @@ pytest -v
 docker build -t hostelops .
 
 # Run the container locally on port 8000
-docker run -d --name hostelops-app -p 8000:8000 -e PORT=8000 hostelops
+docker run -d --name hostelops-app --env-file .env -p 8000:8000 -e PORT=8000 hostelops
 
 # Verify health endpoint
 curl http://localhost:8000/health
@@ -136,6 +158,8 @@ docker stop hostelops-app && docker rm hostelops-app
 ```
 
 ### Using Docker Compose
+Create the environment file first. PowerShell: `Copy-Item .env.example .env` (Linux/macOS: `cp .env.example .env`).
+
 ```bash
 # Build and start services in detached mode with persistent storage
 docker compose up -d --build

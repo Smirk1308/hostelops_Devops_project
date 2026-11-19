@@ -10,7 +10,7 @@ HostelOps is a hostel complaint and maintenance tracking web app built by a team
 - Shubh Sharma (GitHub Smirk1308): repo owner, overseer. Module 4: test configuration, Docker, CI/CD, deployment.
 - Shivam Choudhary (shivam19-debug): Module 3: triage ML, overdue logic, analytics dashboard.
 - Shashank Lodhi (shashankcell): Module 2: complaint management.
-- Shreyansh Jain (Shreyanshj55555): Module 1: auth, roles, UI shell; README polish.
+- Shreyansh Jain (Shreyanshj55555-stack): Module 1: auth, roles, UI shell; README polish.
 Branches: main, staging, feature/devops, feature/triage, feature/complaints, feature/auth.
 Changes reach staging only through pull requests. Review ring: Shubh's PRs are reviewed by Shivam, Shivam's by Shashank, Shashank's by Shreyansh, Shreyansh's by Shubh. Shubh gives final approval on staging to main.
 
@@ -23,11 +23,17 @@ Changes reach staging only through pull requests. Review ring: Shubh's PRs are r
 
 ## Structure
 Flask app factory, one blueprint per module:
-- hostelops/auth/ (Module 1, also templates/base.html and static/css/style.css)
+- hostelops/auth/ (Module 1, also hostelops/templates/base.html and hostelops/static/css/style.css)
 - hostelops/complaints/ (Module 2)
 - hostelops/triage/ and ml/ (Module 3)
 - tests/test_auth.py, test_complaints.py, test_triage.py, test_health.py: each owner writes the tests for their own module
-- Module 4 owns pytest.ini, tests/conftest.py, flake8 config, Dockerfile, docker-compose.yml, .github/
+- Module 4 owns pytest.ini, tests/conftest.py, .flake8, Dockerfile, docker-compose.yml and .github/.
+
+## Shared UI contract
+- Global CSS is owned by Module 1 in `hostelops/static/css/style.css`.
+- All templates are stored inside `hostelops/templates/`; only `base.html` is at its root.
+- Shared UI classes include `page-shell`, `page-header`, `page-title`, `panel`, `stats-grid`, `stat-card`, `filter-panel`, `complaint-card`, `form-layout`, `detail-layout`, `activity-timeline` and `empty-state`, in addition to the base button, form, table, badge and flash classes.
+- Module templates must reuse the shared stylesheet; do not add a second design system or inline CSS to compensate for missing shared classes.
 
 ## DevOps
 ci.yml on push and pull_request: install, flake8, pytest, build the image, run the container, curl /health. cd.yml: push to staging triggers a Render deploy hook (secret RENDER_DEPLOY_HOOK_URL); push to main builds and pushes the image to GitHub Container Registry. Steps with a missing secret must skip, not fail. Pin all dependency versions. Conventional commits (feat:, fix:, test:, ci:, docs:).
