@@ -56,11 +56,22 @@
     if (hintEl) hintEl.textContent = '';
   }
 
-  /** Debounce timer handle. */
+  /** Debounce timer handle and request cancellation tracking. */
   var debounceTimer = null;
+  var currentAbortController = null;
+  var latestRequestId = 0;
 
   descEl.addEventListener('input', function () {
     clearTimeout(debounceTimer);
+
+    // Cancel any in-flight request when input changes
+    if (currentAbortController) {
+      currentAbortController.abort();
+      currentAbortController = null;
+    }
+    latestRequestId++;
+    var thisRequestId = latestRequestId;
+
     var text = descEl.value.trim();
 
     if (text.length < 5) {
@@ -69,9 +80,15 @@
     }
 
     debounceTimer = setTimeout(function () {
+      if (typeof window.AbortController !== 'undefined') {
+        currentAbortController = new AbortController();
+      }
+      var signal = currentAbortController ? currentAbortController.signal : null;
+
       fetch('/api/triage/suggest', {
         method: 'POST',
         credentials: 'same-origin',
+        signal: signal,
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken': getCsrfToken(),
@@ -86,6 +103,10 @@
           return resp.json();
         })
         .then(function (data) {
+          // Discard stale responses if input changed or a newer request was dispatched
+          if (thisRequestId !== latestRequestId) {
+            return;
+          }
           if (!data) return;
 
           var category = data.category;
@@ -97,25 +118,27 @@
             return;
           }
 
-          var setCat = false;
-          var setPri = false;
-
           if (category && !manualCategory) {
-            setCat = setSelectValue(categoryEl, category);
+            setSelectValue(categoryEl, category);
           }
           if (priority && !manualPriority) {
-            setPri = setSelectValue(priorityEl, priority);
+            setSelectValue(priorityEl, priority);
           }
 
           if (hintEl && (category || priority)) {
             var pct = Math.round((confidence || 0) * 100);
-            hintEl.textContent =
-              'Suggested: ' + (category || '?') +
-              ' / ' + (priority || '?') +
-              ' (' + pct + '%)';
+            var label = 'Suggested: ' + (category || '?') + ' / ' + (priority || '?');
+            if (category && typeof confidence === 'number') {
+              hintEl.textContent = label + ' · Category confidence: ' + pct + '%';
+            } else {
+              hintEl.textContent = label;
+            }
           }
         })
-        .catch(function () {
+        .catch(function (err) {
+          if (err && err.name === 'AbortError') {
+            return; // Normal cancellation of superseded request
+          }
           clearHint();
         });
     }, 600);
