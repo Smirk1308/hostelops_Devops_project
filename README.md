@@ -63,22 +63,32 @@ Run `python scripts/seed.py` to populate initial demo accounts in the database:
 ```bash
 git clone https://github.com/Smirk1308/hostelops_Devops_project.git
 cd hostelops_Devops_project
-
 python -m venv .venv
-
-# On Linux / macOS:
-source .venv/bin/activate
-
-# On Windows (PowerShell):
-.\.venv\Scripts\Activate.ps1
 ```
 
 ### 3. Install Dependencies
+
+**Windows PowerShell (works without activating the environment):**
+```powershell
+.\\.venv\\Scripts\\python.exe -m pip install --upgrade pip
+.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt -r requirements-dev.txt
+```
+
+**Linux / macOS:**
 ```bash
-pip install -r requirements.txt -r requirements-dev.txt
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt -r requirements-dev.txt
 ```
 
 ### 4. Configure Environment
+
+**Windows PowerShell:**
+```powershell
+Copy-Item .env.example .env
+```
+
+**Linux / macOS:**
 ```bash
 cp .env.example .env
 ```
@@ -103,26 +113,18 @@ Access the application in your browser at `http://localhost:8000` and health che
 
 ## Test Commands
 
-Use the virtual environment's Python on Windows if PowerShell
-blocks activation or the `pytest` command is not found:
+Run linting and tests from the project root.
 
+**Windows PowerShell:**
 ```powershell
-.\\.venv\\Scripts\\python.exe -m pytest
 .\\.venv\\Scripts\\python.exe -m flake8 .
+.\\.venv\\Scripts\\python.exe -m pytest
 ```
 
-
-Run code linting and the automated test suite:
-
+**Linux / macOS (with the virtual environment activated):**
 ```bash
-# Run Flake8 linter
-flake8 .
-
-# Run Pytest suite
-pytest
-
-# Run Pytest with verbose output
-pytest -v
+python -m flake8 .
+python -m pytest
 ```
 
 ---
