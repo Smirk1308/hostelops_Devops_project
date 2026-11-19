@@ -10,8 +10,13 @@ from hostelops.models import Complaint, User, utcnow
 @pytest.fixture
 def make_user(app):
     """Create and persist a user for a test."""
+    sequence = 0
+
     def create(name='Resident', role='student', room_no='101'):
-        user = User(name=name, email=f'{name.lower().replace(" ", ".")}@test.local',
+        nonlocal sequence
+        sequence += 1
+        email_name = name.lower().replace(' ', '.')
+        user = User(name=name, email=f'{email_name}.{sequence}@test.local',
                     role=role, room_no=room_no)
         user.set_password('test-password')
         db.session.add(user)
@@ -52,7 +57,8 @@ def test_index_redirects_to_complaints(client):
     assert response.headers['Location'].endswith('/complaints')
 
 
-def test_student_list_is_private_and_shows_counts(client, make_user, make_complaint, login_as):
+def test_student_list_is_private_and_shows_counts(
+        client, make_user, make_complaint, login_as):
     student = make_user('Student One')
     other = make_user('Student Two')
     own = make_complaint(student)
@@ -103,13 +109,19 @@ def test_create_complaint_saves_defaults_and_redirects(client, make_user, login_
 
 
 @pytest.mark.parametrize(('payload', 'field'), [
-    ({'title': '', 'description': 'Issue', 'category': 'Water', 'priority': 'Low'}, 'title'),
-    ({'title': 'x' * 151, 'description': 'Issue', 'category': 'Water', 'priority': 'Low'}, 'title'),
-    ({'title': 'Issue', 'description': ' ', 'category': 'Water', 'priority': 'Low'}, 'description'),
-    ({'title': 'Issue', 'description': 'Issue', 'category': 'Fake', 'priority': 'Low'}, 'category'),
-    ({'title': 'Issue', 'description': 'Issue', 'category': 'Water', 'priority': 'Urgent'}, 'priority'),
+    ({'title': '', 'description': 'Issue', 'category': 'Water',
+      'priority': 'Low'}, 'title'),
+    ({'title': 'x' * 151, 'description': 'Issue', 'category': 'Water',
+      'priority': 'Low'}, 'title'),
+    ({'title': 'Issue', 'description': ' ', 'category': 'Water',
+      'priority': 'Low'}, 'description'),
+    ({'title': 'Issue', 'description': 'Issue', 'category': 'Fake',
+      'priority': 'Low'}, 'category'),
+    ({'title': 'Issue', 'description': 'Issue', 'category': 'Water',
+      'priority': 'Urgent'}, 'priority'),
 ])
-def test_create_validation_preserves_values(client, make_user, login_as, payload, field):
+def test_create_validation_preserves_values(
+        client, make_user, login_as, payload, field):
     login_as(make_user())
     response = client.post('/complaints/new', data=payload)
     assert response.status_code == 200
@@ -117,7 +129,8 @@ def test_create_validation_preserves_values(client, make_user, login_as, payload
     assert db.session.scalar(db.select(db.func.count(Complaint.id))) == 0
 
 
-def test_detail_permissions_and_overdue_badge(client, make_user, make_complaint, login_as):
+def test_detail_permissions_and_overdue_badge(
+        client, make_user, make_complaint, login_as):
     owner = make_user('Owner')
     stranger = make_user('Stranger')
     complaint = make_complaint(owner, created_at=utcnow() - timedelta(hours=60))
@@ -134,7 +147,8 @@ def test_missing_detail_returns_404(client, make_user, login_as):
     assert client.get('/complaints/999').status_code == 404
 
 
-def test_owner_can_edit_pending_and_fields_update(client, make_user, make_complaint, login_as):
+def test_owner_can_edit_pending_and_fields_update(
+        client, make_user, make_complaint, login_as):
     owner = make_user()
     complaint = make_complaint(owner)
     login_as(owner)
@@ -149,7 +163,8 @@ def test_owner_can_edit_pending_and_fields_update(client, make_user, make_compla
 
 
 @pytest.mark.parametrize('status', ['In Progress', 'Resolved'])
-def test_owner_cannot_edit_non_pending(client, make_user, make_complaint, login_as, status):
+def test_owner_cannot_edit_non_pending(
+        client, make_user, make_complaint, login_as, status):
     owner = make_user()
     complaint = make_complaint(owner, status=status)
     login_as(owner)
@@ -166,7 +181,8 @@ def test_non_owner_or_non_student_cannot_edit(client, make_user, make_complaint,
     assert client.get(f'/complaints/{complaint.id}/edit').status_code == 403
 
 
-def test_owner_delete_and_delete_permission_rules(client, make_user, make_complaint, login_as):
+def test_owner_delete_and_delete_permission_rules(
+        client, make_user, make_complaint, login_as):
     owner = make_user('Owner')
     other = make_user('Other')
     pending = make_complaint(owner)
@@ -194,7 +210,8 @@ def test_staff_cannot_delete_admin_can_delete_any_and_missing_404(
 
 
 @pytest.mark.parametrize('role', ['staff', 'admin'])
-def test_managers_assign_and_unassign(client, make_user, make_complaint, login_as, role):
+def test_managers_assign_and_unassign(
+        client, make_user, make_complaint, login_as, role):
     manager = make_user(f'Manager {role}', role=role)
     assignee = make_user('Assignee', role='staff')
     complaint = make_complaint()
@@ -257,5 +274,9 @@ def test_student_cannot_update_status_invalid_rejected_missing_404(
     login_as(make_user('Staff', role='staff'))
     assert client.post(f'/complaints/{complaint.id}/status',
                        data={'status': 'Broken'}).status_code == 400
-    assert client.post('/complaints/999/status', data={'status': 'Pending'}).status_code == 404
-    assert client.post('/complaints/999/assign', data={'assigned_to': ''}).status_code == 404
+    response = client.post(
+        '/complaints/999/status', data={'status': 'Pending'})
+    assert response.status_code == 404
+    response = client.post(
+        '/complaints/999/assign', data={'assigned_to': ''})
+    assert response.status_code == 404
