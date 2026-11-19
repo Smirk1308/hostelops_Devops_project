@@ -4,10 +4,14 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test-and-build:
     name: Test and Build
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
@@ -22,41 +26,38 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt -r requirements-dev.txt
+          python -m pip install -r requirements.txt -r requirements-dev.txt
 
       - name: Lint with flake8
         run: flake8 .
 
-      - name: Run unit tests with pytest
-        run: pytest
+      - name: Run tests
+        run: python -m pytest
 
       - name: Build Docker image
         run: docker build -t hostelops:test .
 
-      - name: Run container detached on port 8000
+      - name: Run container
         run: docker run -d --name hostelops-app -p 8000:8000 -e PORT=8000 hostelops:test
 
-      - name: Wait for health check (up to 30 seconds)
+      - name: Wait for health check
         run: |
-          timeout=30
+          timeout=45
           start_time=$(date +%s)
-          while true; do
-            if curl -f http://localhost:8000/health; then
-              echo ""
-              echo "Health check succeeded!"
-              break
-            fi
+          until curl --fail --silent http://localhost:8000/health; do
             current_time=$(date +%s)
             elapsed=$((current_time - start_time))
-            if [ $elapsed -ge $timeout ]; then
-              echo "Health check timed out after ${timeout} seconds"
+            if [ "$elapsed" -ge "$timeout" ]; then
+              echo "Health check timed out after ${timeout} seconds."
               docker logs hostelops-app
               exit 1
             fi
             sleep 1
           done
+          echo ""
+          echo "Health check succeeded."
 
-      - name: Stop and clean up container
+      - name: Stop and remove container
         if: always()
         run: |
           docker stop hostelops-app || true
