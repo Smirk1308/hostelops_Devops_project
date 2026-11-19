@@ -13,7 +13,7 @@ Residents raise complaints across categories (Water, Electricity, Wi-Fi, Mess, C
 | **Shubh Sharma** | [@Smirk1308](https://github.com/Smirk1308) | **Module 4 (DevOps & Overseer)** | Project lead, test configuration, Docker, CI/CD pipelines, deployment. |
 | **Shivam Choudhary** | [@shivam19-debug](https://github.com/shivam19-debug) | **Module 3 (Triage & Analytics)** | ML triage model, overdue complaint logic, analytics dashboard. |
 | **Shashank Lodhi** | [@shashankcell](https://github.com/shashankcell) | **Module 2 (Complaints)** | Complaint lifecycle: creation, filtering, editing, status & assignment. |
-| **Shreyansh Jain** | [@Shreyanshj55555](https://github.com/Shreyanshj55555) | **Module 1 (Auth & UI Shell)** | Authentication, role authorization, base UI layout and styling. |
+| **Shreyansh Jain** | [@Shreyanshj55555-stack](https://github.com/Shreyanshj55555-stack) | **Module 1 (Auth & UI Shell)** | Authentication, role authorization, base UI layout and styling. |
 
 ---
 
@@ -31,7 +31,7 @@ Residents raise complaints across categories (Water, Electricity, Wi-Fi, Mess, C
 
 To ensure thorough cross-module peer reviews, pull requests follow a circular review ring:
 
-$$\text{Shubh (@Smirk1308)} \rightarrow \text{Shivam (@shivam19-debug)} \rightarrow \text{Shashank (@shashankcell)} \rightarrow \text{Shreyansh (@Shreyanshj55555)} \rightarrow \text{Shubh (@Smirk1308)}$$
+$$\text{Shubh (@Smirk1308)} \rightarrow \text{Shivam (@shivam19-debug)} \rightarrow \text{Shashank (@shashankcell)} \rightarrow \text{Shreyansh (@Shreyanshj55555-stack)} \rightarrow \text{Shubh (@Smirk1308)}$$
 
 1. Shubh's PRs are reviewed by Shivam.
 2. Shivam's PRs are reviewed by Shashank.
@@ -103,6 +103,15 @@ Access the application in your browser at `http://localhost:8000` and health che
 
 ## Test Commands
 
+Use the virtual environment's Python on Windows if PowerShell
+blocks activation or the `pytest` command is not found:
+
+```powershell
+.\\.venv\\Scripts\\python.exe -m pytest
+.\\.venv\\Scripts\\python.exe -m flake8 .
+```
+
+
 Run code linting and the automated test suite:
 
 ```bash
@@ -136,6 +145,8 @@ docker stop hostelops-app && docker rm hostelops-app
 ```
 
 ### Using Docker Compose
+Create the environment file first. PowerShell: `Copy-Item .env.example .env` (Linux/macOS: `cp .env.example .env`).
+
 ```bash
 # Build and start services in detached mode with persistent storage
 docker compose up -d --build
