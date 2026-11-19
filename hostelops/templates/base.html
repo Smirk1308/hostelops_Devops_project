@@ -1,35 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{% block title %}HostelOps{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <header class="navbar">
-    <div class="nav-container">
+    <nav class="nav-container" aria-label="Main navigation">
       <a href="/" class="brand">HostelOps</a>
       <div class="nav-links">
         {% if current_user.is_authenticated %}
-          <span class="user-badge">{{ current_user.name }} ({{ current_user.role }})</span>
+          <a href="/complaints">Complaints</a>
+          {% if current_user.role == 'student' %}
+            <a href="/complaints/new">New complaint</a>
+          {% elif current_user.role in ['staff', 'admin'] %}
+            <a href="/dashboard">Dashboard</a>
+          {% endif %}
+          <span class="user-badge">{{ current_user.name }} · {{ current_user.role|title }}</span>
+          <form method="POST" action="/logout" class="nav-logout">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="btn btn-secondary" type="submit">Log out</button>
+          </form>
+        {% else %}
+          <a href="/login">Login</a>
+          <a href="/register" class="btn btn-primary">Register</a>
         {% endif %}
       </div>
-    </div>
+    </nav>
   </header>
 
   <main class="container">
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-        <div class="flash-messages">
+        <div class="flash-messages" role="status" aria-live="polite">
           {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% set flash_category = category if category in ['success', 'danger', 'info'] else 'info' %}
+            <div class="flash flash-{{ flash_category }}">{{ message }}</div>
           {% endfor %}
         </div>
       {% endif %}
     {% endwith %}
-
     {% block content %}{% endblock %}
   </main>
+  {% block scripts %}{% endblock %}
 </body>
 </html>

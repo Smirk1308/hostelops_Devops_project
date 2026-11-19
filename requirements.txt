@@ -6,6 +6,7 @@ Werkzeug==3.1.9
 SQLAlchemy==2.1.8
 scikit-learn==1.9.0
 pandas==3.0.5
-joblib==1.5.3
+joblib==1.6.0
 gunicorn==23.0.0
 python-dotenv==1.2.3
+psycopg2-binary==2.9.10

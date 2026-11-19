@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Create account · HostelOps{% endblock %}
+
+{% block content %}
+<section class="auth-layout">
+  <div class="card auth-card">
+    <p class="eyebrow">HOSTELOPS ACCOUNT</p>
+    <h1>Create your account</h1>
+    <p class="muted">Register to report and track hostel issues.</p>
+    <form method="POST" action="/register" class="auth-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="form-group">
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required value="{{ request.form.get('name', '') }}">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required value="{{ request.form.get('email', '') }}">
+      </div>
+      <div class="form-group">
+        <label for="room_no">Room number <span class="muted">(optional)</span></label>
+        <input id="room_no" name="room_no" type="text" autocomplete="off" value="{{ request.form.get('room_no', '') }}">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm_password">Confirm password</label>
+        <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" required>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Create account</button>
+    </form>
+    <p class="auth-switch">Already registered? <a href="/login">Log in</a></p>
+  </div>
+</section>
+{% endblock %}
