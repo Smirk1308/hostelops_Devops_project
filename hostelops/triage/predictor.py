@@ -24,9 +24,12 @@ def _resolve_path(path=None):
     if path is None:
         try:
             from flask import current_app
-            path = current_app.config.get('MODEL_PATH', 'ml/model.joblib')
+            path = current_app.config.get('MODEL_PATH') or 'ml/model.joblib'
         except RuntimeError:
-            path = os.environ.get('MODEL_PATH', 'ml/model.joblib')
+            path = os.environ.get('MODEL_PATH') or 'ml/model.joblib'
+
+    if not path:
+        path = 'ml/model.joblib'
 
     p = pathlib.Path(path)
     if not p.is_absolute():

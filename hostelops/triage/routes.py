@@ -56,7 +56,13 @@ def _collect_stats():
     overdue_list = []
     for c in complaints:
         if is_overdue(c, now=now):
-            age_hours = int((now - c.created_at).total_seconds() // 3600)
+            c_created = c.created_at
+            if getattr(c_created, 'tzinfo', None) is not None:
+                from datetime import timezone
+                c_created = c_created.astimezone(timezone.utc).replace(
+                    tzinfo=None
+                )
+            age_hours = int((now - c_created).total_seconds() // 3600)
             overdue_list.append({
                 'id': c.id,
                 'title': c.title,
