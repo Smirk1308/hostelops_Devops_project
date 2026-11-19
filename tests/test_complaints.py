@@ -2,6 +2,7 @@
 from datetime import timedelta
 
 import pytest
+from flask import g
 
 from hostelops.extensions import db
 from hostelops.models import Complaint, User, utcnow
@@ -29,7 +30,14 @@ def make_user(app):
 def login_as(client):
     """Set Flask-Login's session directly for route tests."""
     def login(user):
+        # The app fixture keeps one app context alive for the full test, so
+        # Flask-Login's cached current_user must be reset when switching users.
+        g.pop('_login_user', None)
         with client.session_transaction() as session:
+            # Remove the prior identity before switching users in a test.
+            session.pop('_user_id', None)
+            session.pop('_fresh', None)
+            session.pop('_id', None)
             session['_user_id'] = str(user.id)
             session['_fresh'] = True
     return login
@@ -40,11 +48,16 @@ def make_complaint(app, make_user):
     """Create a complaint with overridable model values."""
     def create(owner=None, **kwargs):
         owner = owner or make_user()
-        complaint = Complaint(
-            title='Leaking tap', description='Water is leaking in the washroom.',
-            category='Water', priority='Medium', status='Pending',
-            created_by=owner.id, **kwargs,
-        )
+        data = {
+            'title': 'Leaking tap',
+            'description': 'Water is leaking in the washroom.',
+            'category': 'Water',
+            'priority': 'Medium',
+            'status': 'Pending',
+            'created_by': owner.id,
+        }
+        data.update(kwargs)
+        complaint = Complaint(**data)
         db.session.add(complaint)
         db.session.commit()
         return complaint
@@ -175,7 +188,7 @@ def test_owner_cannot_edit_non_pending(
 def test_non_owner_or_non_student_cannot_edit(client, make_user, make_complaint,
                                                login_as, role):
     owner = make_user('Owner')
-    actor = owner if role == 'student' else make_user('Actor', role=role)
+    actor = make_user('Actor', role=role)
     complaint = make_complaint(owner)
     login_as(actor)
     assert client.get(f'/complaints/{complaint.id}/edit').status_code == 403
