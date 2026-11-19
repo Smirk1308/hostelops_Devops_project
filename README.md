@@ -116,7 +116,21 @@ and include at least three of lowercase letters, uppercase letters, digits,
 and symbols. Keep these values private and never use them as production
 credentials.
 
-### 5. Seed the Database
+### 5. Train the Machine Learning Model
+
+Train the complaint categorization and priority triage model:
+
+**Windows PowerShell:**
+```powershell
+.\.venv\Scripts\python.exe -m ml.train
+```
+
+**Linux / macOS:**
+```bash
+python -m ml.train
+```
+
+### 6. Seed the Database
 
 The script loads `.env` from the repository root and preserves values already
 provided by the shell. Run it only after completing the configuration above.
@@ -137,7 +151,7 @@ rotate only the three demo accounts to the passwords configured in `.env`, set
 change it back to `0`. The seed script rejects environments marked as
 production.
 
-### 6. Run the Application
+### 7. Run the Application
 ```bash
 # Using Flask development server:
 flask --app hostelops run --port 8000
