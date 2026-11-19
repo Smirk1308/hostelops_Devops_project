@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Access denied · HostelOps{% endblock %}
+
+{% block content %}
+<section class="card error-card">
+  <p class="eyebrow">403 · ACCESS DENIED</p>
+  <h1>You don’t have access to this page.</h1>
+  <p class="muted">If you think this is a mistake, contact your hostel administrator.</p>
+  <a class="btn btn-primary" href="/complaints">Back to complaints</a>
+</section>
+{% endblock %}

@@ -43,13 +43,18 @@ $$\text{Shubh (@Smirk1308)} \rightarrow \text{Shivam (@shivam19-debug)} \rightar
 
 ## Demo Credentials
 
-Run `python scripts/seed.py` to populate initial demo accounts in the database:
+The seed script creates these local demonstration accounts when they do not
+already exist:
 
-| Role | Email | Password | Details |
-|---|---|---|---|
-| **Admin** | `admin@hostelops.local` | `admin123` | Full system access, user management |
-| **Staff** | `staff@hostelops.local` | `staff123` | View all complaints, assign, update status |
-| **Student** | `student@hostelops.local` | `student123` | Room A-101; submit and track own complaints |
+| Role | Email |
+|---|---|
+| **Admin** | `admin@hostelops.local` |
+| **Staff** | `staff@hostelops.local` |
+| **Student** | `student@hostelops.local` |
+
+Passwords are configured locally through `.env`. Demo seeding requires an
+explicit opt-in and three strong passwords; never reuse demo passwords in
+production or use demo accounts for production access. Do not commit `.env`.
 
 ---
 
@@ -104,10 +109,33 @@ Copy-Item .env.example .env
 cp .env.example .env
 ```
 
+Edit `.env` and set `HOSTELOPS_ENABLE_DEMO_SEED=1` plus strong values for
+`HOSTELOPS_SEED_ADMIN_PASSWORD`, `HOSTELOPS_SEED_STAFF_PASSWORD`, and
+`HOSTELOPS_SEED_STUDENT_PASSWORD`. Each password must be at least 12 characters
+and include at least three of lowercase letters, uppercase letters, digits,
+and symbols. Keep these values private and never use them as production
+credentials.
+
 ### 5. Seed the Database
+
+The script loads `.env` from the repository root and preserves values already
+provided by the shell. Run it only after completing the configuration above.
+
+**Windows PowerShell:**
+```powershell
+.\.venv\Scripts\python.exe scripts/seed.py
+```
+
+**Linux / macOS:**
 ```bash
 python scripts/seed.py
 ```
+
+Existing demo-account passwords are preserved by default. To intentionally
+rotate only the three demo accounts to the passwords configured in `.env`, set
+`HOSTELOPS_ROTATE_DEMO_PASSWORDS=1` in `.env`, run the seed command again, then
+change it back to `0`. The seed script rejects environments marked as
+production.
 
 ### 6. Run the Application
 ```bash
