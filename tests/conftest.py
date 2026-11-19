@@ -1,7 +1,10 @@
-"""Pytest fixtures for HostelOps test suite."""
+"""Pytest fixtures for the HostelOps test suite."""
 import pytest
+from flask import g
+
 from hostelops import create_app
 from hostelops.extensions import db
+from hostelops.models import User
 
 
 @pytest.fixture
@@ -34,3 +37,46 @@ def client(app):
 def runner(app):
     """Test runner for CLI commands."""
     return app.test_cli_runner()
+
+
+@pytest.fixture
+def make_user(app):
+    """Factory fixture that creates and saves a user."""
+    counter = {'n': 0}
+
+    def _make_user(
+        role='student',
+        email=None,
+        password='password123',
+        name=None,
+        room_no=None,
+    ):
+        counter['n'] += 1
+        number = counter['n']
+        user = User(
+            name=name or f'Test {role} {number}',
+            email=email or f'{role}{number}@test.local',
+            role=role,
+            room_no=room_no,
+        )
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        return user
+
+    return _make_user
+
+
+@pytest.fixture
+def login_as():
+    """Log a test client in without submitting the login form."""
+
+    def _login_as(client, user):
+        with client.session_transaction() as session:
+            session['_user_id'] = str(user.id)
+            session['_fresh'] = True
+
+        # Clear Flask-Login's cached user when switching accounts in a test.
+        g.pop('_login_user', None)
+
+    return _login_as
