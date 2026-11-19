@@ -395,7 +395,7 @@ def test_seed_preserves_existing_passwords_until_explicit_rotation(
         assert account.name.startswith('Preserved ')
         assert account.room_no == 'Keep-This'
     assert ordinary.check_password('Ordinary!Password29')
-    capsys.readouterr()
+    assert '15 complaint(s) created' in capsys.readouterr().out
 
     rotated = _seed_environment(HOSTELOPS_ROTATE_DEMO_PASSWORDS='1')
     seed_script.seed(rotated)
@@ -410,7 +410,7 @@ def test_seed_preserves_existing_passwords_until_explicit_rotation(
         assert account.room_no == 'Keep-This'
     assert ordinary.check_password('Ordinary!Password29')
     assert User.query.count() == 4
-    assert '15 complaint(s) created' in capsys.readouterr().out
+    assert '0 complaint(s) created' in capsys.readouterr().out
 
 
 def test_seed_rejects_missing_configuration_without_fallbacks():
