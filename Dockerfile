@@ -33,4 +33,4 @@ USER appuser
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD python -c "import os, urllib.request; port = os.environ.get('PORT', '8000'); urllib.request.urlopen(f'http://127.0.0.1:{port}/health')" || exit 1
 
-CMD gunicorn -b 0.0.0.0:${PORT:-8000} "hostelops:create_app()"
+CMD ["sh", "-c", "exec gunicorn -b 0.0.0.0:${PORT:-8000} 'hostelops:create_app()'"]
