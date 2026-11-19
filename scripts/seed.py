@@ -7,10 +7,17 @@ and use at least three character groups. Never commit these values.
 """
 import os
 import sys
+from pathlib import Path
 from datetime import timedelta
 
+from dotenv import load_dotenv
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+# Load configuration before importing the app factory and its Config class.
+load_dotenv(dotenv_path=ROOT_DIR / '.env', override=False)
+
 # Ensure repository root is importable
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, str(ROOT_DIR))
 
 from hostelops import create_app  # noqa: E402
 from hostelops.extensions import db  # noqa: E402
@@ -24,15 +31,41 @@ PASSWORD_ENV_VARS = {
     'student': 'HOSTELOPS_SEED_STUDENT_PASSWORD',
 }
 MIN_PASSWORD_LENGTH = 12
+ROTATE_PASSWORDS = 'HOSTELOPS_ROTATE_DEMO_PASSWORDS'
 
 
 class SeedConfigurationError(ValueError):
     """Raised when demo seeding has not been explicitly configured."""
 
 
+def load_seed_environment(environ=None):
+    """Load root .env settings, preserving shell/deployment variables."""
+    if environ is not None:
+        return environ
+    load_dotenv(dotenv_path=ROOT_DIR / '.env', override=False)
+    return os.environ
+
+
+def reject_production_environment(environ):
+    """Prevent demo data operations in explicitly marked production systems."""
+    production_values = ('production', 'prod')
+    marked_production = any(
+        str(environ.get(name, '')).strip().lower() in production_values
+        for name in ('HOSTELOPS_ENV', 'FLASK_ENV', 'ENVIRONMENT', 'APP_ENV')
+    )
+    render_production = str(environ.get('RENDER', '')).strip().lower() in (
+        'true', '1', 'yes',
+    )
+    if marked_production or render_production:
+        raise SeedConfigurationError(
+            'Demo seeding and password rotation are disabled in production.'
+        )
+
+
 def load_demo_passwords(environ=None):
     """Return validated demo passwords without logging their values."""
     environment = os.environ if environ is None else environ
+    reject_production_environment(environment)
     missing = [
         variable for variable in PASSWORD_ENV_VARS.values()
         if not environment.get(variable)
@@ -206,9 +239,11 @@ DEMO_COMPLAINTS = [
 ]
 
 
-def seed():
+def seed(environ=None):
     """Create demo accounts and seed complaints only in an empty table."""
-    passwords = load_demo_passwords()
+    environment = load_seed_environment(environ)
+    passwords = load_demo_passwords(environment)
+    rotate_passwords = environment.get(ROTATE_PASSWORDS) == '1'
     app = create_app()
     with app.app_context():
         db.create_all()
@@ -248,6 +283,9 @@ def seed():
                 db.session.add(user)
                 created += 1
                 print(f"Created {data['role']}: {data['email']}")
+            elif rotate_passwords:
+                existing.set_password(passwords[data['role']])
+                print(f"Rotated demo password: {data['email']}")
             else:
                 print(f"Already exists: {data['email']}")
 

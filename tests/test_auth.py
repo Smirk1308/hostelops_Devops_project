@@ -2,7 +2,12 @@
 import pytest
 from flask import abort
 
-from scripts.seed import SeedConfigurationError, load_demo_passwords
+import scripts.seed as seed_script
+from scripts.seed import (
+    SeedConfigurationError,
+    load_demo_passwords,
+    load_seed_environment,
+)
 from hostelops import create_app
 from hostelops.models import User
 
@@ -290,3 +295,123 @@ def test_seed_accepts_strong_passwords():
         'staff': environment['HOSTELOPS_SEED_STAFF_PASSWORD'],
         'student': environment['HOSTELOPS_SEED_STUDENT_PASSWORD'],
     }
+
+
+def _seed_environment(**overrides):
+    environment = {
+        'HOSTELOPS_ENABLE_DEMO_SEED': '1',
+        'HOSTELOPS_SEED_ADMIN_PASSWORD': 'AdminDemoSecret!29',
+        'HOSTELOPS_SEED_STAFF_PASSWORD': 'StaffDemoSecret!38',
+        'HOSTELOPS_SEED_STUDENT_PASSWORD': 'StudentDemoSecret!47',
+    }
+    environment.update(overrides)
+    return environment
+
+
+def test_seed_loads_dotenv_from_repository_root_and_shell_wins(
+        tmp_path, monkeypatch):
+    dotenv_file = tmp_path / '.env'
+    dotenv_file.write_text(
+        'HOSTELOPS_ENABLE_DEMO_SEED=1\n'
+        'HOSTELOPS_SEED_ADMIN_PASSWORD=FromDotEnvSecret!29\n',
+        encoding='utf-8',
+    )
+    monkeypatch.setattr(seed_script, 'ROOT_DIR', tmp_path)
+    monkeypatch.delenv('HOSTELOPS_ENABLE_DEMO_SEED', raising=False)
+    monkeypatch.delenv('HOSTELOPS_SEED_ADMIN_PASSWORD', raising=False)
+    monkeypatch.setenv('HOSTELOPS_SEED_STAFF_PASSWORD', 'ShellStaffSecret!38')
+    environment = load_seed_environment()
+    assert environment['HOSTELOPS_ENABLE_DEMO_SEED'] == '1'
+    assert environment['HOSTELOPS_SEED_ADMIN_PASSWORD'] == 'FromDotEnvSecret!29'
+    assert environment['HOSTELOPS_SEED_STAFF_PASSWORD'] == 'ShellStaffSecret!38'
+
+
+def test_injected_seed_environment_skips_dotenv_loading(tmp_path, monkeypatch):
+    monkeypatch.setattr(seed_script, 'ROOT_DIR', tmp_path)
+    (tmp_path / '.env').write_text('UNEXPECTED=value', encoding='utf-8')
+    injected = {'HOSTELOPS_ENABLE_DEMO_SEED': '1'}
+    assert load_seed_environment(injected) is injected
+
+
+@pytest.mark.parametrize('production_marker', [
+    {'ENVIRONMENT': 'production'},
+    {'FLASK_ENV': 'Production'},
+    {'HOSTELOPS_ENV': 'prod'},
+    {'APP_ENV': 'production'},
+    {'RENDER': 'true'},
+])
+def test_seed_rejects_production_environment(production_marker):
+    with pytest.raises(SeedConfigurationError, match='disabled in production'):
+        load_demo_passwords(_seed_environment(**production_marker))
+
+
+def test_seed_does_not_print_password_values(app, monkeypatch, capsys):
+    monkeypatch.setattr(seed_script, 'create_app', lambda: app)
+    environment = _seed_environment()
+    seed_script.seed(environment)
+    output = capsys.readouterr().out
+    for variable in (
+            'HOSTELOPS_SEED_ADMIN_PASSWORD',
+            'HOSTELOPS_SEED_STAFF_PASSWORD',
+            'HOSTELOPS_SEED_STUDENT_PASSWORD'):
+        assert environment[variable] not in output
+
+
+def test_seed_creates_demo_accounts_and_is_idempotent(app, monkeypatch, capsys):
+    monkeypatch.setattr(seed_script, 'create_app', lambda: app)
+    environment = _seed_environment()
+    seed_script.seed(environment)
+    assert User.query.count() == 3
+    assert User.query.filter_by(email='admin@hostelops.local').one().check_password(
+        environment['HOSTELOPS_SEED_ADMIN_PASSWORD'])
+    assert '15 complaint(s) created' in capsys.readouterr().out
+
+    seed_script.seed(environment)
+    assert User.query.count() == 3
+    assert '0 complaint(s) created' in capsys.readouterr().out
+
+
+def test_seed_preserves_existing_passwords_until_explicit_rotation(
+        app, monkeypatch, make_user, capsys):
+    monkeypatch.setattr(seed_script, 'create_app', lambda: app)
+    demo_accounts = [
+        ('admin', 'admin@hostelops.local'),
+        ('staff', 'staff@hostelops.local'),
+        ('student', 'student@hostelops.local'),
+    ]
+    accounts = {}
+    for role, email in demo_accounts:
+        accounts[email] = make_user(
+            role=role, email=email, password='OldDemoPassword!29',
+            name=f'Preserved {role}', room_no='Keep-This',
+        )
+    ordinary = make_user(email='ordinary@example.com', password='Ordinary!Password29')
+    environment = _seed_environment()
+
+    seed_script.seed(environment)
+    for email, account in accounts.items():
+        assert account.check_password('OldDemoPassword!29')
+        assert account.name.startswith('Preserved ')
+        assert account.room_no == 'Keep-This'
+    assert ordinary.check_password('Ordinary!Password29')
+    capsys.readouterr()
+
+    rotated = _seed_environment(HOSTELOPS_ROTATE_DEMO_PASSWORDS='1')
+    seed_script.seed(rotated)
+    for role, email in demo_accounts:
+        account = User.query.filter_by(email=email).one()
+        assert account.check_password(rotated[
+            f'HOSTELOPS_SEED_{role.upper()}_PASSWORD'
+        ])
+        assert account.role == role
+        assert account.name.startswith('Preserved ')
+        assert account.room_no == 'Keep-This'
+    assert ordinary.check_password('Ordinary!Password29')
+    assert User.query.count() == 4
+    assert '15 complaint(s) created' in capsys.readouterr().out
+
+
+def test_seed_rejects_missing_configuration_without_fallbacks():
+    with pytest.raises(SeedConfigurationError, match='Missing required') as error:
+        load_demo_passwords({'HOSTELOPS_ENABLE_DEMO_SEED': '1'})
+    assert 'admin123' not in str(error.value)
