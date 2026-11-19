@@ -12,11 +12,11 @@ Categories: Water, Electricity, Wi-Fi, Mess, Cleanliness, Furniture, Other.
 ## Shared helpers (provided by the foundation, owned by the modules named)
 - hostelops/auth/decorators.py: roles_required(*roles) (Module 1)
 - hostelops/triage/overdue.py: is_overdue(complaint, now=None) -> bool. True when status is Pending or In Progress and age exceeds OVERDUE_HOURS. (Module 3)
-- templates/base.html with blocks `title` and `content`; static/css/style.css (Module 1)
+- hostelops/templates/base.html with blocks `title`, `content` and optionally `scripts`; hostelops/static/css/style.css (Module 1)
 
 ## Routes
 Health: GET /health -> {"status": "ok", "version": APP_VERSION}
-Auth (Module 1): GET/POST /register, GET/POST /login, POST /logout, GET /admin/users (admin), POST /admin/users/<id>/role (admin), POST /admin/staff (admin creates staff account).
+Auth (Module 1): GET/POST /register, GET/POST /login, POST /logout. Public registration creates student accounts; admin user-management screens are outside the reduced expo scope.
 Complaints (Module 2): GET / (redirects to /complaints), GET /complaints (student sees own; staff/admin see all with filters ?status=&category=&priority=), GET/POST /complaints/new, GET /complaints/<id>, GET/POST /complaints/<id>/edit (owner student, Pending only), POST /complaints/<id>/delete (owner student while Pending, or admin), POST /complaints/<id>/assign (staff/admin), POST /complaints/<id>/status (staff/admin).
 Triage (Module 3): POST /api/triage/suggest with JSON {"text": "..."} returns {"category": str|null, "priority": str|null, "confidence": float}; nulls and 0.0 when the model file is missing. GET /api/stats (staff/admin) returns {"by_category": {...}, "by_status": {...}, "overdue": int}. GET /dashboard (staff/admin) renders Chart.js charts from /api/stats.
 
