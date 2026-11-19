@@ -58,13 +58,15 @@ def list_complaints():
         query = query.where(Complaint.created_by == current_user.id)
         totals_query = totals_query.where(Complaint.created_by == current_user.id)
 
-    filters = {
-        'status': request.args.get('status', '').strip(),
-        'category': request.args.get('category', '').strip(),
-        'priority': request.args.get('priority', '').strip(),
-    }
-    # Students always see their own records and cannot use filters to broaden access.
+    # Students always see their own records. Clear ignored query values so the
+    # template cannot present a filtered empty state for their full result set.
+    filters = {'status': '', 'category': '', 'priority': ''}
     if current_user.role in ('staff', 'admin'):
+        filters = {
+            'status': request.args.get('status', '').strip(),
+            'category': request.args.get('category', '').strip(),
+            'priority': request.args.get('priority', '').strip(),
+        }
         valid_values = {
             'status': STATUSES,
             'category': CATEGORIES,

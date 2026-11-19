@@ -2,45 +2,9 @@
 from datetime import timedelta
 
 import pytest
-from flask import g
 
 from hostelops.extensions import db
-from hostelops.models import Complaint, User, utcnow
-
-
-@pytest.fixture
-def make_user(app):
-    """Create and persist a user for a test."""
-    sequence = 0
-
-    def create(name='Resident', role='student', room_no='101'):
-        nonlocal sequence
-        sequence += 1
-        email_name = name.lower().replace(' ', '.')
-        user = User(name=name, email=f'{email_name}.{sequence}@test.local',
-                    role=role, room_no=room_no)
-        user.set_password('test-password')
-        db.session.add(user)
-        db.session.commit()
-        return user
-    return create
-
-
-@pytest.fixture
-def login_as(client):
-    """Set Flask-Login's session directly for route tests."""
-    def login(user):
-        # The app fixture keeps one app context alive for the full test, so
-        # Flask-Login's cached current_user must be reset when switching users.
-        g.pop('_login_user', None)
-        with client.session_transaction() as session:
-            # Remove the prior identity before switching users in a test.
-            session.pop('_user_id', None)
-            session.pop('_fresh', None)
-            session.pop('_id', None)
-            session['_user_id'] = str(user.id)
-            session['_fresh'] = True
-    return login
+from hostelops.models import Complaint, utcnow
 
 
 @pytest.fixture
@@ -72,28 +36,30 @@ def test_index_redirects_to_complaints(client):
 
 def test_student_list_is_private_and_shows_counts(
         client, make_user, make_complaint, login_as):
-    student = make_user('Student One')
-    other = make_user('Student Two')
+    student = make_user(name='Student One')
+    other = make_user(name='Student Two')
     own = make_complaint(student)
     make_complaint(other, title='Private complaint')
     make_complaint(student, title='Fixed issue', status='Resolved')
-    login_as(student)
+    login_as(client, student)
     response = client.get('/complaints?status=Resolved')
     assert response.status_code == 200
     assert b'Leaking tap' in response.data
     assert b'Private complaint' not in response.data
+    assert b'No complaints yet' not in response.data
     assert b'2' in response.data
     assert own.created_by == student.id
 
 
 @pytest.mark.parametrize('role', ['staff', 'admin'])
-def test_manager_list_filters_and_invalid_filters(client, make_user, make_complaint,
-                                                   login_as, role):
-    manager = make_user(f'{role} user', role=role)
+def test_manager_list_filters_and_invalid_filters(
+    client, make_user, make_complaint, login_as, role
+):
+    manager = make_user(role=role, name=f'{role} user')
     make_complaint(title='Water pending')
     make_complaint(title='Water fixed', category='Water', status='Resolved')
     make_complaint(title='Furniture pending', category='Furniture')
-    login_as(manager)
+    login_as(client, manager)
     response = client.get('/complaints?status=Resolved&category=Water&priority=Medium')
     assert response.status_code == 200
     assert b'Water fixed' in response.data
@@ -106,7 +72,7 @@ def test_manager_list_filters_and_invalid_filters(client, make_user, make_compla
 
 def test_create_complaint_saves_defaults_and_redirects(client, make_user, login_as):
     student = make_user()
-    login_as(student)
+    login_as(client, student)
     response = client.post('/complaints/new', data={
         'title': '  Slow drain  ', 'description': '  Drain is blocked  ',
         'category': 'Cleanliness', 'priority': 'Medium',
@@ -135,7 +101,7 @@ def test_create_complaint_saves_defaults_and_redirects(client, make_user, login_
 ])
 def test_create_validation_preserves_values(
         client, make_user, login_as, payload, field):
-    login_as(make_user())
+    login_as(client, make_user())
     response = client.post('/complaints/new', data=payload)
     assert response.status_code == 200
     assert field.encode() in response.data
@@ -144,19 +110,19 @@ def test_create_validation_preserves_values(
 
 def test_detail_permissions_and_overdue_badge(
         client, make_user, make_complaint, login_as):
-    owner = make_user('Owner')
-    stranger = make_user('Stranger')
+    owner = make_user(name='Owner')
+    stranger = make_user(name='Stranger')
     complaint = make_complaint(owner, created_at=utcnow() - timedelta(hours=60))
-    login_as(stranger)
+    login_as(client, stranger)
     assert client.get(f'/complaints/{complaint.id}').status_code == 403
-    login_as(owner)
+    login_as(client, owner)
     response = client.get(f'/complaints/{complaint.id}')
     assert response.status_code == 200
     assert b'Overdue' in response.data
 
 
 def test_missing_detail_returns_404(client, make_user, login_as):
-    login_as(make_user())
+    login_as(client, make_user())
     assert client.get('/complaints/999').status_code == 404
 
 
@@ -164,7 +130,7 @@ def test_owner_can_edit_pending_and_fields_update(
         client, make_user, make_complaint, login_as):
     owner = make_user()
     complaint = make_complaint(owner)
-    login_as(owner)
+    login_as(client, owner)
     response = client.post(f'/complaints/{complaint.id}/edit', data={
         'title': 'Updated', 'description': 'New details', 'category': 'Wi-Fi',
         'priority': 'High',
@@ -180,28 +146,29 @@ def test_owner_cannot_edit_non_pending(
         client, make_user, make_complaint, login_as, status):
     owner = make_user()
     complaint = make_complaint(owner, status=status)
-    login_as(owner)
+    login_as(client, owner)
     assert client.get(f'/complaints/{complaint.id}/edit').status_code == 403
 
 
 @pytest.mark.parametrize('role', ['student', 'staff', 'admin'])
-def test_non_owner_or_non_student_cannot_edit(client, make_user, make_complaint,
-                                               login_as, role):
-    owner = make_user('Owner')
-    actor = make_user('Actor', role=role)
+def test_non_owner_or_non_student_cannot_edit(
+    client, make_user, make_complaint, login_as, role
+):
+    owner = make_user(name='Owner')
+    actor = make_user(role=role, name='Actor')
     complaint = make_complaint(owner)
-    login_as(actor)
+    login_as(client, actor)
     assert client.get(f'/complaints/{complaint.id}/edit').status_code == 403
 
 
 def test_owner_delete_and_delete_permission_rules(
         client, make_user, make_complaint, login_as):
-    owner = make_user('Owner')
-    other = make_user('Other')
+    owner = make_user(name='Owner')
+    other = make_user(name='Other')
     pending = make_complaint(owner)
-    login_as(other)
+    login_as(client, other)
     assert client.post(f'/complaints/{pending.id}/delete').status_code == 403
-    login_as(owner)
+    login_as(client, owner)
     assert client.post(f'/complaints/{pending.id}/delete').status_code == 302
     assert db.session.get(Complaint, pending.id) is None
     in_progress = make_complaint(owner, status='In Progress')
@@ -210,13 +177,13 @@ def test_owner_delete_and_delete_permission_rules(
 
 def test_staff_cannot_delete_admin_can_delete_any_and_missing_404(
         client, make_user, make_complaint, login_as):
-    owner = make_user('Owner')
+    owner = make_user(name='Owner')
     complaint = make_complaint(owner, status='Resolved')
-    staff = make_user('Staff', role='staff')
-    login_as(staff)
+    staff = make_user(role='staff', name='Staff')
+    login_as(client, staff)
     assert client.post(f'/complaints/{complaint.id}/delete').status_code == 403
-    admin = make_user('Admin', role='admin')
-    login_as(admin)
+    admin = make_user(role='admin', name='Admin')
+    login_as(client, admin)
     assert client.post(f'/complaints/{complaint.id}/delete').status_code == 302
     assert db.session.get(Complaint, complaint.id) is None
     assert client.post('/complaints/999/delete').status_code == 404
@@ -225,10 +192,10 @@ def test_staff_cannot_delete_admin_can_delete_any_and_missing_404(
 @pytest.mark.parametrize('role', ['staff', 'admin'])
 def test_managers_assign_and_unassign(
         client, make_user, make_complaint, login_as, role):
-    manager = make_user(f'Manager {role}', role=role)
-    assignee = make_user('Assignee', role='staff')
+    manager = make_user(role=role, name=f'Manager {role}')
+    assignee = make_user(role='staff', name='Assignee')
     complaint = make_complaint()
-    login_as(manager)
+    login_as(client, manager)
     response = client.post(f'/complaints/{complaint.id}/assign',
                            data={'assigned_to': str(assignee.id)})
     assert response.status_code == 302
@@ -243,7 +210,7 @@ def test_managers_assign_and_unassign(
 @pytest.mark.parametrize('bad_id', ['abc', '9999'])
 def test_invalid_assignment_is_rejected(client, make_user, make_complaint,
                                         login_as, bad_id):
-    login_as(make_user('Staff', role='staff'))
+    login_as(client, make_user(role='staff', name='Staff'))
     complaint = make_complaint()
     assert client.post(f'/complaints/{complaint.id}/assign',
                        data={'assigned_to': bad_id}).status_code == 400
@@ -251,12 +218,12 @@ def test_invalid_assignment_is_rejected(client, make_user, make_complaint,
 
 def test_student_cannot_be_assignee_or_assign_complaints(
         client, make_user, make_complaint, login_as):
-    student = make_user('Student')
+    student = make_user(name='Student')
     complaint = make_complaint()
-    login_as(make_user('Manager', role='staff'))
+    login_as(client, make_user(role='staff', name='Manager'))
     assert client.post(f'/complaints/{complaint.id}/assign',
                        data={'assigned_to': str(student.id)}).status_code == 400
-    login_as(student)
+    login_as(client, student)
     assert client.post(f'/complaints/{complaint.id}/assign',
                        data={'assigned_to': ''}).status_code == 403
 
@@ -264,9 +231,9 @@ def test_student_cannot_be_assignee_or_assign_complaints(
 @pytest.mark.parametrize('role', ['staff', 'admin'])
 def test_managers_update_status_and_resolved_timestamp(
         client, make_user, make_complaint, login_as, role):
-    manager = make_user(f'Manager {role}', role=role)
+    manager = make_user(role=role, name=f'Manager {role}')
     complaint = make_complaint()
-    login_as(manager)
+    login_as(client, manager)
     assert client.post(f'/complaints/{complaint.id}/status',
                        data={'status': 'Resolved'}).status_code == 302
     db.session.refresh(complaint)
@@ -281,10 +248,10 @@ def test_managers_update_status_and_resolved_timestamp(
 def test_student_cannot_update_status_invalid_rejected_missing_404(
         client, make_user, make_complaint, login_as):
     complaint = make_complaint()
-    login_as(make_user())
+    login_as(client, make_user())
     assert client.post(f'/complaints/{complaint.id}/status',
                        data={'status': 'Resolved'}).status_code == 403
-    login_as(make_user('Staff', role='staff'))
+    login_as(client, make_user(role='staff', name='Staff'))
     assert client.post(f'/complaints/{complaint.id}/status',
                        data={'status': 'Broken'}).status_code == 400
     response = client.post(
