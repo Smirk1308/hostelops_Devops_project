@@ -9,6 +9,7 @@ from scripts.seed import (
     load_seed_environment,
 )
 from hostelops import create_app
+from hostelops.extensions import db
 from hostelops.models import User
 
 
@@ -398,6 +399,7 @@ def test_seed_preserves_existing_passwords_until_explicit_rotation(
 
     rotated = _seed_environment(HOSTELOPS_ROTATE_DEMO_PASSWORDS='1')
     seed_script.seed(rotated)
+    db.session.expire_all()
     for role, email in demo_accounts:
         account = User.query.filter_by(email=email).one()
         assert account.check_password(rotated[
