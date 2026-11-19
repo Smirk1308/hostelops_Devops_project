@@ -1,4 +1,10 @@
-"""Seed deterministic demo accounts and sample hostel complaints."""
+"""Seed demo data with explicit, environment-provided credentials only.
+
+For local demonstrations, set HOSTELOPS_ENABLE_DEMO_SEED=1 and provide
+HOSTELOPS_SEED_ADMIN_PASSWORD, HOSTELOPS_SEED_STAFF_PASSWORD, and
+HOSTELOPS_SEED_STUDENT_PASSWORD. Each password must be at least 12 characters
+and use at least three character groups. Never commit these values.
+"""
 import os
 import sys
 from datetime import timedelta
@@ -9,6 +15,56 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from hostelops import create_app  # noqa: E402
 from hostelops.extensions import db  # noqa: E402
 from hostelops.models import Complaint, User, utcnow  # noqa: E402
+
+
+SEED_OPT_IN = 'HOSTELOPS_ENABLE_DEMO_SEED'
+PASSWORD_ENV_VARS = {
+    'admin': 'HOSTELOPS_SEED_ADMIN_PASSWORD',
+    'staff': 'HOSTELOPS_SEED_STAFF_PASSWORD',
+    'student': 'HOSTELOPS_SEED_STUDENT_PASSWORD',
+}
+MIN_PASSWORD_LENGTH = 12
+
+
+class SeedConfigurationError(ValueError):
+    """Raised when demo seeding has not been explicitly configured."""
+
+
+def load_demo_passwords(environ=None):
+    """Return validated demo passwords without logging their values."""
+    environment = os.environ if environ is None else environ
+    missing = [
+        variable for variable in PASSWORD_ENV_VARS.values()
+        if not environment.get(variable)
+    ]
+    if missing:
+        raise SeedConfigurationError(
+            'Missing required demo password environment variables: '
+            + ', '.join(missing)
+        )
+    if environment.get(SEED_OPT_IN) != '1':
+        raise SeedConfigurationError(
+            f"Set {SEED_OPT_IN}=1 to explicitly enable demo seeding."
+        )
+
+    passwords = {}
+    for role, variable in PASSWORD_ENV_VARS.items():
+        password = environment.get(variable)
+        character_groups = (
+            any(char.islower() for char in password),
+            any(char.isupper() for char in password),
+            any(char.isdigit() for char in password),
+            any(not char.isalnum() for char in password),
+        )
+        if (len(password) < MIN_PASSWORD_LENGTH
+                or sum(character_groups) < 3):
+            raise SeedConfigurationError(
+                f'{variable} must be at least {MIN_PASSWORD_LENGTH} characters '
+                'and include at least three character groups '
+                '(lowercase, uppercase, digits, symbols).'
+            )
+        passwords[role] = password
+    return passwords
 
 
 DEMO_COMPLAINTS = [
@@ -152,6 +208,7 @@ DEMO_COMPLAINTS = [
 
 def seed():
     """Create demo accounts and seed complaints only in an empty table."""
+    passwords = load_demo_passwords()
     app = create_app()
     with app.app_context():
         db.create_all()
@@ -162,21 +219,18 @@ def seed():
                 'name': 'Demo Admin',
                 'role': 'admin',
                 'room_no': None,
-                'password': 'admin123',
             },
             {
                 'email': 'staff@hostelops.local',
                 'name': 'Demo Staff',
                 'role': 'staff',
                 'room_no': None,
-                'password': 'staff123',
             },
             {
                 'email': 'student@hostelops.local',
                 'name': 'Demo Student',
                 'role': 'student',
                 'room_no': 'A-101',
-                'password': 'student123',
             },
         ]
 
@@ -190,7 +244,7 @@ def seed():
                     role=data['role'],
                     room_no=data['room_no'],
                 )
-                user.set_password(data['password'])
+                user.set_password(passwords[data['role']])
                 db.session.add(user)
                 created += 1
                 print(f"Created {data['role']}: {data['email']}")
@@ -241,4 +295,7 @@ def seed():
 
 
 if __name__ == '__main__':
-    seed()
+    try:
+        seed()
+    except SeedConfigurationError as error:
+        sys.exit(str(error))

@@ -1,40 +1,14 @@
 """Tests for Module 1 authentication and UI shell."""
 import pytest
-from flask import g
+from flask import abort
 
-from hostelops.extensions import db
+from scripts.seed import SeedConfigurationError, load_demo_passwords
+from hostelops import create_app
 from hostelops.models import User
 
 
-@pytest.fixture
-def make_user(app):
-    """Return a helper that creates users with convenient defaults."""
-    def create_user(role='student', email='student@example.com',
-                    password='password123', name='Test Student', room_no='101'):
-        user = User(name=name, email=email, role=role, room_no=room_no)
-        user.set_password(password)
-        db.session.add(user)
-        db.session.commit()
-        return user
-
-    return create_user
-
-
-@pytest.fixture
-def login_as(app, client):
-    """Log a user into the test client through Flask-Login's session keys."""
-    def authenticate(user):
-        with client.session_transaction() as session:
-            session['_user_id'] = str(user.id)
-            session['_fresh'] = True
-        with app.test_request_context():
-            g.pop('_login_user', None)
-
-    return authenticate
-
-
 def register(client, **fields):
-    """Submit the standard registration form with optional overrides."""
+    """Submit the registration form with valid defaults and overrides."""
     form = {
         'name': 'A Student',
         'email': 'student@example.com',
@@ -46,7 +20,7 @@ def register(client, **fields):
     return client.post('/register', data=form, follow_redirects=True)
 
 
-def test_successful_registration(client, app):
+def test_successful_registration(client):
     response = register(client)
     user = User.query.filter_by(email='student@example.com').one()
     assert response.status_code == 200
@@ -55,53 +29,96 @@ def test_successful_registration(client, app):
     assert user.room_no == 'B-12'
 
 
-def test_duplicate_email_rejected(client, make_user):
-    make_user()
-    response = register(client)
+@pytest.mark.parametrize('fields,message', [
+    ({'name': ''}, b'Name is required'),
+    ({'name': '   '}, b'Name is required'),
+    ({'email': ''}, b'Email is required'),
+    ({'password': ''}, b'Password is required'),
+    ({'password': 'short'}, b'at least 8 characters'),
+    ({'confirm_password': 'different'}, b'do not match'),
+])
+def test_registration_required_fields_and_password_rules(client, fields, message):
+    response = register(client, **fields)
+    assert message in response.data
+    assert User.query.count() == 0
+
+
+@pytest.mark.parametrize('email', [
+    'user@', '@example.com', 'user@@example.com', 'user.example.com',
+    'user..name@example.com', 'user@example..com',
+])
+def test_malformed_email_is_rejected(client, email):
+    response = register(client, email=email)
+    assert b'valid email' in response.data
+    assert User.query.count() == 0
+
+
+def test_duplicate_email_rejected_case_insensitively(client, make_user):
+    make_user(email='Student@Example.com')
+    response = register(client, email='student@example.com')
     assert b'already exists' in response.data
     assert User.query.count() == 1
 
 
-def test_missing_email_rejected(client):
-    response = register(client, email='')
-    assert b'Email is required' in response.data
+def test_registration_trims_and_normalizes_values(client):
+    response = register(
+        client,
+        name='  Alice Example  ',
+        email='  Student@Example.com  ',
+        room_no='  A-3  ',
+    )
+    user = User.query.one()
+    assert response.status_code == 200
+    assert user.name == 'Alice Example'
+    assert user.email == 'student@example.com'
+    assert user.room_no == 'A-3'
 
 
-def test_invalid_email_rejected(client):
-    response = register(client, email='not-an-email')
-    assert b'valid email' in response.data
+def test_room_number_is_optional_and_empty_becomes_none(client):
+    register(client, room_no='   ')
+    assert User.query.one().room_no is None
 
 
-def test_short_password_rejected(client):
-    response = register(client, password='short', confirm_password='short')
-    assert b'at least 8 characters' in response.data
+@pytest.mark.parametrize('field,value,message', [
+    ('name', 'N' * 101, b'100 characters or fewer'),
+    ('email', f"{'a' * 64}@{'b' * 53}.com", b'120 characters or fewer'),
+    ('room_no', 'R' * 21, b'20 characters or fewer'),
+])
+def test_registration_respects_database_field_lengths(
+        client, field, value, message):
+    response = register(client, **{field: value})
+    assert message in response.data
+    assert User.query.count() == 0
 
 
-def test_password_confirmation_mismatch_rejected(client):
-    response = register(client, confirm_password='somethingelse')
-    assert b'do not match' in response.data
-
-
-def test_registration_always_assigns_student_role(client):
-    client.post('/register', data={
-        'name': 'A Student', 'email': 'student@example.com',
-        'password': 'longpassword', 'confirm_password': 'longpassword',
-        'role': 'admin',
-    })
+@pytest.mark.parametrize('role', ['staff', 'admin'])
+def test_registration_cannot_assign_privileged_roles(client, role):
+    register(client, role=role)
     assert User.query.one().role == 'student'
 
 
-def test_registration_stores_hashed_password(client):
+def test_registration_stores_a_password_hash(client):
     register(client)
     user = User.query.one()
     assert user.password_hash != 'longpassword'
     assert user.check_password('longpassword')
 
 
-def test_successful_login(client, make_user):
-    make_user()
+def test_successful_login_establishes_session(client, make_user):
+    make_user(email='student@example.com')
     response = client.post('/login', data={
         'email': 'student@example.com', 'password': 'password123',
+    })
+    assert response.status_code == 302
+    assert response.headers['Location'].endswith('/complaints')
+    with client.session_transaction() as session:
+        assert session['_user_id']
+
+
+def test_login_normalizes_email_case(client, make_user):
+    make_user(email='Student@Example.com')
+    response = client.post('/login', data={
+        'email': '  STUDENT@example.com ', 'password': 'password123',
     })
     assert response.status_code == 302
     assert response.headers['Location'].endswith('/complaints')
@@ -111,8 +128,8 @@ def test_successful_login(client, make_user):
     ('student@example.com', 'wrongpassword'),
     ('missing@example.com', 'password123'),
 ])
-def test_invalid_login_shows_generic_message(client, make_user, email, password):
-    make_user()
+def test_invalid_login_uses_generic_message(client, make_user, email, password):
+    make_user(email='student@example.com')
     response = client.post('/login', data={
         'email': email, 'password': password,
     })
@@ -120,30 +137,17 @@ def test_invalid_login_shows_generic_message(client, make_user, email, password)
     assert b'Invalid email or password.' in response.data
 
 
-def test_logout_works(client, make_user, login_as):
-    login_as(make_user())
-    response = client.post('/logout')
-    assert response.status_code == 302
-    assert response.headers['Location'].endswith('/login')
-    with client:
-        response = client.get('/login')
-        assert response.status_code == 200
-
-
-def test_logout_is_not_available_as_get(client):
-    assert client.get('/logout').status_code == 405
-
-
 def test_authenticated_user_visiting_login_is_redirected(
         client, make_user, login_as):
-    login_as(make_user())
+    user = make_user(email='student@example.com')
+    login_as(client, user)
     response = client.get('/login')
     assert response.status_code == 302
     assert response.headers['Location'].endswith('/complaints')
 
 
 def test_safe_internal_next_url_is_accepted(client, make_user):
-    make_user()
+    make_user(email='student@example.com')
     response = client.post('/login?next=/complaints/42', data={
         'email': 'student@example.com', 'password': 'password123',
     })
@@ -153,10 +157,136 @@ def test_safe_internal_next_url_is_accepted(client, make_user):
 @pytest.mark.parametrize('next_url', [
     'https://example.com', '//example.com/path', '/\\example.com',
 ])
-def test_external_next_url_is_rejected(client, make_user, next_url):
-    make_user()
+def test_external_next_urls_are_rejected(client, make_user, next_url):
+    make_user(email='student@example.com')
     response = client.post('/login', query_string={'next': next_url}, data={
         'email': 'student@example.com', 'password': 'password123',
     })
     assert response.headers['Location'].endswith('/complaints')
     assert 'example.com' not in response.headers['Location']
+
+
+def test_authenticated_post_logout_clears_session(client, make_user, login_as):
+    user = make_user(email='student@example.com')
+    login_as(client, user)
+    response = client.post('/logout')
+    assert response.status_code == 302
+    assert response.headers['Location'].endswith('/login')
+    with client.session_transaction() as session:
+        assert '_user_id' not in session
+
+
+def test_unauthenticated_post_logout_cannot_log_user_out(client):
+    response = client.post('/logout')
+    assert response.status_code == 302
+    assert '/login' in response.headers['Location']
+    assert b'logged out' not in response.data
+    with client.session_transaction() as session:
+        assert '_user_id' not in session
+
+
+def test_logout_is_not_available_as_get(client):
+    assert client.get('/logout').status_code == 405
+
+
+def test_auth_pages_render_with_csrf_fields(client):
+    for path in ('/login', '/register'):
+        response = client.get(path)
+        assert response.status_code == 200
+        assert b'name="csrf-token"' in response.data
+        assert b'name="csrf_token"' in response.data
+
+
+@pytest.mark.parametrize('role', ['student', 'staff', 'admin'])
+def test_navigation_matches_authenticated_role(client, make_user, login_as, role):
+    user = make_user(role=role)
+    login_as(client, user)
+    response = client.get('/not-a-real-route')
+    assert response.status_code == 404
+    assert b'/complaints' in response.data
+    assert b'Log out' in response.data
+    assert b'/admin/users' not in response.data
+    if role == 'student':
+        assert b'/complaints/new' in response.data
+        assert b'/dashboard' not in response.data
+    else:
+        assert b'/dashboard' in response.data
+        assert b'/complaints/new' not in response.data
+
+
+def test_anonymous_navigation_shows_auth_links(client):
+    response = client.get('/login')
+    assert b'href="/login"' in response.data
+    assert b'href="/register"' in response.data
+    assert b'Log out' not in response.data
+
+
+def test_friendly_403_page_has_correct_status(app, client):
+    app.add_url_rule(
+        '/_test/forbidden', 'test_forbidden', lambda: abort(403)
+    )
+    response = client.get('/_test/forbidden')
+    assert response.status_code == 403
+    assert b'Access denied' in response.data
+    assert b'/complaints' in response.data
+
+
+def test_friendly_404_page_has_correct_status(client):
+    response = client.get('/not-a-real-route')
+    assert response.status_code == 404
+    assert b'Page not found' in response.data
+    assert b'/complaints' in response.data
+
+
+def test_normal_application_keeps_csrf_protection_enabled():
+    app = create_app(test_config={
+        'TESTING': True,
+        'SQLALCHEMY_DATABASE_URI': 'sqlite:///:memory:',
+        'SECRET_KEY': 'csrf-test-secret',
+    })
+    assert app.config.get('WTF_CSRF_ENABLED', True) is True
+    response = app.test_client().post('/register', data={'name': 'No token'})
+    assert response.status_code == 400
+
+
+def test_seed_requires_explicit_opt_in():
+    environment = {
+        'HOSTELOPS_SEED_ADMIN_PASSWORD': 'AdminDemoSecret!29',
+        'HOSTELOPS_SEED_STAFF_PASSWORD': 'StaffDemoSecret!38',
+        'HOSTELOPS_SEED_STUDENT_PASSWORD': 'StudentDemoSecret!47',
+    }
+    with pytest.raises(
+            SeedConfigurationError, match='HOSTELOPS_ENABLE_DEMO_SEED'):
+        load_demo_passwords(environment)
+
+
+def test_seed_reports_missing_password_variables():
+    with pytest.raises(SeedConfigurationError, match='HOSTELOPS_SEED_ADMIN_PASSWORD'):
+        load_demo_passwords({'HOSTELOPS_ENABLE_DEMO_SEED': '1'})
+
+
+def test_seed_rejects_weak_configured_password():
+    environment = {
+        'HOSTELOPS_ENABLE_DEMO_SEED': '1',
+        'HOSTELOPS_SEED_ADMIN_PASSWORD': 'short',
+        'HOSTELOPS_SEED_STAFF_PASSWORD': 'UnusedStrongStaff!9',
+        'HOSTELOPS_SEED_STUDENT_PASSWORD': 'UnusedStrongStudent!9',
+    }
+    with pytest.raises(SeedConfigurationError, match='at least 12 characters'):
+        load_demo_passwords(environment)
+
+
+def test_seed_accepts_strong_passwords():
+    environment = {
+        'HOSTELOPS_ENABLE_DEMO_SEED': '1',
+        'HOSTELOPS_SEED_ADMIN_PASSWORD': 'AdminDemoSecret!29',
+        'HOSTELOPS_SEED_STAFF_PASSWORD': 'StaffDemoSecret!38',
+        'HOSTELOPS_SEED_STUDENT_PASSWORD': 'StudentDemoSecret!47',
+    }
+    passwords = load_demo_passwords(environment)
+    assert set(passwords) == {'admin', 'staff', 'student'}
+    assert passwords == {
+        'admin': environment['HOSTELOPS_SEED_ADMIN_PASSWORD'],
+        'staff': environment['HOSTELOPS_SEED_STAFF_PASSWORD'],
+        'student': environment['HOSTELOPS_SEED_STUDENT_PASSWORD'],
+    }

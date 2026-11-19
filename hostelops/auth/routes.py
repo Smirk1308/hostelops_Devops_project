@@ -1,10 +1,35 @@
 """Authentication routes and friendly application error pages."""
+import re
+
 from flask import flash, redirect, render_template, request
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
+from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 
 from hostelops.auth import auth_bp
 from hostelops.extensions import db
 from hostelops.models import User
+
+
+EMAIL_PATTERN = re.compile(
+    r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@"
+    r"(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+"
+    r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$"
+)
+
+
+def _valid_email(email):
+    """Validate a practical ASCII email address and its component lengths."""
+    if not EMAIL_PATTERN.fullmatch(email):
+        return False
+    local_part, domain = email.rsplit('@', 1)
+    return (
+        len(local_part) <= 64
+        and len(domain) <= 253
+        and not local_part.startswith('.')
+        and not local_part.endswith('.')
+        and '..' not in local_part
+    )
 
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
@@ -19,12 +44,20 @@ def register():
 
         if not name:
             flash('Name is required.', 'danger')
+        elif len(name) > 100:
+            flash('Name must be 100 characters or fewer.', 'danger')
         elif not email:
             flash('Email is required.', 'danger')
-        elif '@' not in email:
+        elif len(email) > 120:
+            flash('Email must be 120 characters or fewer.', 'danger')
+        elif not _valid_email(email):
             flash('Enter a valid email address.', 'danger')
-        elif User.query.filter_by(email=email).first():
+        elif User.query.filter(func.lower(User.email) == email).first():
             flash('An account with that email already exists.', 'danger')
+        elif room_no and len(room_no) > 20:
+            flash('Room number must be 20 characters or fewer.', 'danger')
+        elif not password:
+            flash('Password is required.', 'danger')
         elif len(password) < 8:
             flash('Password must contain at least 8 characters.', 'danger')
         elif password != confirm_password:
@@ -33,7 +66,12 @@ def register():
             user = User(name=name, email=email, room_no=room_no, role='student')
             user.set_password(password)
             db.session.add(user)
-            db.session.commit()
+            try:
+                db.session.commit()
+            except IntegrityError:
+                db.session.rollback()
+                flash('An account with that email already exists.', 'danger')
+                return render_template('auth/register.html')
             flash('Registration successful. Please log in.', 'success')
             return redirect('/login')
 
@@ -49,7 +87,7 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email', '').strip().lower()
         password = request.form.get('password', '')
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter(func.lower(User.email) == email).first()
 
         if user is None or not user.check_password(password):
             flash('Invalid email or password.', 'danger')
@@ -70,6 +108,7 @@ def login():
 
 
 @auth_bp.route('/logout', methods=['POST'])
+@login_required
 def logout():
     """End the current session."""
     logout_user()
