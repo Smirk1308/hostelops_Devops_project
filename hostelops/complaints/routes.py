@@ -95,6 +95,7 @@ def list_complaints():
 
 @complaints_bp.route('/complaints/new', methods=['GET', 'POST'])
 @login_required
+@roles_required('student')
 def new_complaint():
     """Create a complaint submitted by the signed-in user."""
     values = {'title': '', 'description': '', 'category': '', 'priority': 'Medium'}

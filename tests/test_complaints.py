@@ -98,6 +98,22 @@ def test_create_complaint_saves_defaults_and_redirects(client, make_user, login_
     assert complaint.assigned_to is None and complaint.resolved_at is None
 
 
+@pytest.mark.parametrize('role', ['staff', 'admin'])
+def test_only_students_can_open_or_create_complaints(
+        client, make_user, login_as, role):
+    login_as(client, make_user(role=role))
+
+    assert client.get('/complaints/new').status_code == 403
+    response = client.post('/complaints/new', data={
+        'title': 'Unexpected staff complaint',
+        'description': 'This request should be rejected.',
+        'category': 'Other',
+        'priority': 'Low',
+    })
+    assert response.status_code == 403
+    assert db.session.scalar(db.select(db.func.count(Complaint.id))) == 0
+
+
 @pytest.mark.parametrize(('payload', 'field'), [
     ({'title': '', 'description': 'Issue', 'category': 'Water',
       'priority': 'Low'}, 'title'),
