@@ -63,7 +63,18 @@ Run `python scripts/seed.py` to populate initial demo accounts in the database:
 ```bash
 git clone https://github.com/Smirk1308/hostelops_Devops_project.git
 cd hostelops_Devops_project
-python -m venv .venv
+```
+
+Create the virtual environment:
+
+**Windows PowerShell:**
+```powershell
+py -m venv .venv
+```
+
+**Linux / macOS:**
+```bash
+python3 -m venv .venv
 ```
 
 ### 3. Install Dependencies
@@ -137,7 +148,7 @@ python -m pytest
 docker build -t hostelops .
 
 # Run the container locally on port 8000
-docker run -d --name hostelops-app -p 8000:8000 -e PORT=8000 hostelops
+docker run -d --name hostelops-app --env-file .env -p 8000:8000 -e PORT=8000 hostelops
 
 # Verify health endpoint
 curl http://localhost:8000/health
