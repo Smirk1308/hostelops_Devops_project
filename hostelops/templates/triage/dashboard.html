@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}Operations Dashboard — HostelOps{% endblock %}
+
+{% block content %}
+<div class="page-shell">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">HOSTEL OPERATIONS / ANALYTICS</p>
+      <h1 class="page-title">Operations Dashboard</h1>
+      <p class="page-description">Monitor hostel complaints, track resolution progress and identify issues that need immediate attention.</p>
+    </div>
+    <div class="page-actions" aria-label="Dashboard summary">
+      <span class="muted">Live operational overview</span>
+    </div>
+  </header>
+
+  <section class="stats-grid" aria-label="Complaint summary">
+    <article class="stat-card">
+      <p class="stat-label">Total Complaints</p>
+      <p class="stat-value">{{ total_count }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Pending</p>
+      <p class="stat-value">{{ by_status['Pending'] }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">In Progress</p>
+      <p class="stat-value">{{ by_status['In Progress'] }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Resolved</p>
+      <p class="stat-value">{{ by_status['Resolved'] }}</p>
+    </article>
+    <article class="stat-card badge-overdue">
+      <p class="stat-label">Overdue</p>
+      <p class="stat-value">{{ overdue_count }}</p>
+    </article>
+  </section>
+
+  <section class="grid" aria-label="Complaint analytics">
+    <article class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Complaints by Category</h2>
+          <p class="muted">Volume across hostel service areas</p>
+        </div>
+      </div>
+      <div class="panel-body">
+        <p id="categoryChartError" class="muted" role="status" hidden></p>
+        <canvas id="categoryChart" aria-label="Bar chart of complaints by category" role="img"></canvas>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Complaint Status Distribution</h2>
+          <p class="muted">Current progress across all complaints</p>
+        </div>
+      </div>
+      <div class="panel-body">
+        <p id="statusChartError" class="muted" role="status" hidden></p>
+        <canvas id="statusChart" aria-label="Doughnut chart of complaint status distribution" role="img"></canvas>
+      </div>
+    </article>
+  </section>
+
+  <section class="panel filter-panel" aria-labelledby="attention-heading">
+    <div class="panel-header">
+      <div>
+        <p class="page-eyebrow">PRIORITY QUEUE</p>
+        <h2 id="attention-heading">Attention Required</h2>
+        <p class="muted">Complaints open beyond the configured response window</p>
+      </div>
+      <span class="badge badge-overdue">{{ overdue_count }} overdue</span>
+    </div>
+    <div class="panel-body">
+      {% if overdue_list %}
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Complaint ID</th>
+              <th scope="col">Complaint Title</th>
+              <th scope="col">Category</th>
+              <th scope="col">Status</th>
+              <th scope="col">Hours Open</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in overdue_list %}
+            <tr>
+              <td>#{{ item.id }}</td>
+              <td><a href="/complaints/{{ item.id }}">{{ item.title }}</a></td>
+              <td>{{ item.category }}</td>
+              <td><span class="badge {% if item.status == 'Pending' %}badge-pending{% else %}badge-progress{% endif %}">{{ item.status }}</span></td>
+              <td>{{ item.hours_open }}</td>
+              <td><a href="/complaints/{{ item.id }}" aria-label="View complaint {{ item.id }}">View</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="muted" role="status">
+        <h3>All caught up!</h3>
+        <p>No overdue complaints require attention right now.</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var categories = ['Water', 'Electricity', 'Wi-Fi', 'Mess', 'Cleanliness', 'Furniture', 'Other'];
+  var statuses = ['Pending', 'In Progress', 'Resolved'];
+
+  function showError(id, message) {
+    var el = document.getElementById(id);
+    el.textContent = message;
+    el.hidden = false;
+  }
+
+  function readCounts(source, labels) {
+    if (!source || typeof source !== 'object' || Array.isArray(source)) {
+      throw new Error('The stats response is missing count data.');
+    }
+    return labels.map(function (label) {
+      var value = source[label];
+      if (typeof value !== 'number' || !Number.isFinite(value) || value < 0) {
+        throw new Error('The stats response contains invalid counts.');
+      }
+      return value;
+    });
+  }
+
+  function showChartError(message) {
+    showError('categoryChartError', message);
+    showError('statusChartError', message);
+  }
+
+  if (typeof window.Chart === 'undefined') {
+    showChartError('Charts are unavailable because the chart library could not be loaded.');
+    return;
+  }
+
+  fetch('/api/stats', { credentials: 'same-origin' })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error('Analytics could not be loaded. Please refresh the page.');
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      var categoryValues = readCounts(data.by_category, categories);
+      var statusValues = readCounts(data.by_status, statuses);
+      var categoryCanvas = document.getElementById('categoryChart');
+      var statusCanvas = document.getElementById('statusChart');
+      if (!categoryCanvas || !statusCanvas) {
+        throw new Error('Chart areas are unavailable. Please refresh the page.');
+      }
+
+      new Chart(categoryCanvas, {
+        type: 'bar',
+        data: {
+          labels: categories,
+          datasets: [{
+            label: 'Complaints',
+            data: categoryValues,
+            backgroundColor: ['#4f46e5', '#6366f1', '#818cf8', '#4338ca', '#a5b4fc', '#3730a3', '#c7d2fe'],
+            borderRadius: 6,
+            maxBarThickness: 42,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          animation: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#64748b' } },
+            y: { beginAtZero: true, ticks: { precision: 0, color: '#64748b' }, grid: { color: '#e2e8f0' } },
+          },
+        },
+      });
+
+      new Chart(statusCanvas, {
+        type: 'doughnut',
+        data: {
+          labels: statuses,
+          datasets: [{
+            label: 'Complaints',
+            data: statusValues,
+            backgroundColor: ['#f59e0b', '#4f46e5', '#10b981'],
+            borderColor: '#ffffff',
+            borderWidth: 3,
+            hoverOffset: 4,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          animation: false,
+          cutout: '66%',
+          plugins: {
+            legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, color: '#475569' } },
+          },
+        },
+      });
+    })
+    .catch(function (error) {
+      showChartError(error.message || 'Analytics could not be loaded. Please refresh the page.');
+    });
+}());
+</script>
+{% endblock %}
