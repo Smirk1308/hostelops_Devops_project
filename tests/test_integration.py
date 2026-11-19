@@ -303,25 +303,80 @@ def test_development_allows_default_secret_key(monkeypatch):
 # ===========================================================================
 
 def test_database_url_normalization():
-    """Verify PostgreSQL URL normalization and SQLite fallback defaults."""
-    # Render legacy postgres:// scheme
-    assert normalize_database_url(
-        'postgres://user:pass@ep-sample.render.com:5432/hostelops'
-    ) == 'postgresql://user:pass@ep-sample.render.com:5432/hostelops'
+    """Verify PostgreSQL URL normalization, driver selection, and SQLite defaults."""
+    # 1. Render legacy postgres:// scheme converted to postgresql+psycopg2://
+    legacy_url = (
+        'postgres://user:pass@ep-sample.render.com:5432/hostelops?sslmode=require'
+    )
+    expected_legacy = (
+        'postgresql+psycopg2://user:pass@ep-sample.render.com:5432/hostelops'
+        '?sslmode=require'
+    )
+    assert normalize_database_url(legacy_url) == expected_legacy
 
-    # Standard postgresql:// scheme
-    assert normalize_database_url(
-        'postgresql://user:pass@localhost:5432/hostelops'
-    ) == 'postgresql://user:pass@localhost:5432/hostelops'
+    # 2. Standard postgresql:// scheme converted to postgresql+psycopg2://
+    standard_url = (
+        'postgresql://user:pass@localhost:5432/hostelops?channel_binding=prefer'
+    )
+    expected_standard = (
+        'postgresql+psycopg2://user:pass@localhost:5432/hostelops'
+        '?channel_binding=prefer'
+    )
+    assert normalize_database_url(standard_url) == expected_standard
 
-    # Local SQLite default and custom paths
+    # 3. Already explicit postgresql+psycopg2:// scheme remains unchanged
+    explicit_url = (
+        'postgresql+psycopg2://user:pass@render.host:5432/hostelops?sslmode=require'
+    )
+    assert normalize_database_url(explicit_url) == explicit_url
+
+    # 4. Local SQLite default and custom paths remain unchanged
     assert normalize_database_url('sqlite:///hostelops.db') == 'sqlite:///hostelops.db'
     assert normalize_database_url('sqlite:////var/data/hostel.db') == (
         'sqlite:////var/data/hostel.db'
     )
+    assert normalize_database_url('sqlite:///:memory:') == 'sqlite:///:memory:'
+
+    # 5. Empty and whitespace fallbacks
     assert normalize_database_url(None) == 'sqlite:///hostelops.db'
     assert normalize_database_url('') == 'sqlite:///hostelops.db'
     assert normalize_database_url('   ') == 'sqlite:///hostelops.db'
+
+    # 6. Idempotency across all URL types
+    for sample in (
+        legacy_url,
+        standard_url,
+        explicit_url,
+        'sqlite:///hostelops.db',
+        'sqlite:////var/data/hostel.db',
+        None,
+        '',
+        '   ',
+    ):
+        once = normalize_database_url(sample)
+        twice = normalize_database_url(once)
+        assert once == twice, f'Normalization not idempotent for {sample!r}'
+
+
+def test_database_url_loads_psycopg2_driver():
+    """Verify SQLAlchemy selects the psycopg2 dialect for normalized PostgreSQL URLs."""
+    import importlib.util
+    from sqlalchemy.engine import make_url
+
+    norm = normalize_database_url(
+        'postgres://user:pass@ep-sample.render.com:5432/hostelops'
+    )
+    url = make_url(norm)
+    dialect_cls = url.get_dialect()
+
+    assert dialect_cls.name == 'postgresql'
+    assert dialect_cls.driver == 'psycopg2'
+
+    # If psycopg2 is installed (e.g. CI, Docker, Render), verify DBAPI loads cleanly
+    if importlib.util.find_spec('psycopg2') is not None:
+        dbapi = dialect_cls.import_dbapi()
+        assert dbapi is not None
+        assert dbapi.__name__ == 'psycopg2'
 
 
 # ===========================================================================

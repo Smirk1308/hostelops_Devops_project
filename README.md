@@ -230,7 +230,7 @@ HostelOps supports both local SQLite and PostgreSQL:
 - **Local Development**: Uses SQLite stored in the Flask instance directory (`instance/hostelops.db`). Docker Compose mounts `/app/instance` as a persistent named volume.
 - **Production Persistence**: On cloud platforms like Render, SQLite without a persistent disk loses state across redeployments and restarts. For production, either:
   - Attach a **Render Persistent Disk** mounted at `/app/instance`, or
-  - Configure a managed **Render PostgreSQL** database and provide the connection URI as `DATABASE_URL`. HostelOps automatically normalizes legacy `postgres://` URLs to SQLAlchemy's `postgresql://` dialect via `psycopg2-binary`.
+  - Configure a managed **Render PostgreSQL** database and provide the connection URI as `DATABASE_URL`. HostelOps automatically normalizes legacy `postgres://` and `postgresql://` URLs to SQLAlchemy's `postgresql+psycopg2://` dialect via `psycopg2-binary`.
 - **Note on Migrations**: `db.create_all()` initializes tables on clean deployments, but is not a database migration framework. Future structural schema changes should use Alembic or manual DDL migrations.
 
 ---

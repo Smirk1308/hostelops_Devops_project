@@ -16,13 +16,19 @@ def normalize_database_url(url=None):
     """Normalize database connection URLs for SQLAlchemy compatibility.
 
     Converts legacy 'postgres://' (standard on Render) and 'postgresql://' to
-    SQLAlchemy's PostgreSQL dialect format. Returns a local SQLite URI if empty.
+    'postgresql+psycopg2://' so SQLAlchemy selects the installed psycopg2 driver
+    instead of defaulting to psycopg 3. Preserves SQLite URIs and falls back to
+    local SQLite if empty.
     """
     if not url or not str(url).strip():
         return 'sqlite:///hostelops.db'
     url = str(url).strip()
+    if url.startswith('postgresql+psycopg2://'):
+        return url
     if url.startswith('postgres://'):
-        return url.replace('postgres://', 'postgresql://', 1)
+        return 'postgresql+psycopg2://' + url[len('postgres://'):]
+    if url.startswith('postgresql://'):
+        return 'postgresql+psycopg2://' + url[len('postgresql://'):]
     return url
 
 
