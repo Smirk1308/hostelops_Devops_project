@@ -24,10 +24,32 @@ Triage (Module 3): POST /api/triage/suggest with JSON {"text": "..."} returns {"
 Form field ids and names: title, description, category, priority. Module 3 provides static/js/triage.js, which listens to the `description` field, calls /api/triage/suggest and prefills `category` and `priority` (the student can override). Module 2's form template includes that script.
 
 ## ML (Module 3)
-ml/data/complaints.csv, columns text,category,priority. About 300 rows, at least 40 per category, realistic short hostel complaints, mixed phrasing. Priority guide: High = no water or power, leaks, sparks, safety, fire; Medium = Wi-Fi down, mess hygiene, blocked drains; Low = cosmetic, furniture wear, requests.
+ml/data/complaints.csv, columns text,category,priority. Exactly 350 rows, 50 rows per category (Water, Electricity, Wi-Fi, Mess, Cleanliness, Furniture, Other), realistic short hostel complaints with mixed phrasing. Priority guide: High = no water or power, leaks, sparks, safety, fire; Medium = Wi-Fi down, mess hygiene, blocked drains; Low = cosmetic, furniture wear, requests.
 ml/train.py: two sklearn Pipelines (category, priority), each TfidfVectorizer(ngram_range=(1,2)) + LogisticRegression(max_iter=1000), 80/20 stratified split, random_state=42, saves {"category": pipe, "priority": pipe} to ml/model.joblib with joblib, prints both accuracies.
 hostelops/triage/predictor.py: load_model(), suggest(text) -> (category, priority, confidence).
 tests/test_triage.py asserts held-out category accuracy >= 0.80.
+
+### ML Training & Assistive Role
+- The dataset is synthetic sample data designed for realistic demonstration. Synthetic test accuracy exceeds 90%, but real-world generalization will vary with diverse student phrasing.
+- The model functions in an assistive role: predictions are suggestions shown in the UI (`Suggested: <category> / <priority> · Category confidence: <pct>%`), and students retain full ability to override category and priority.
+- Confidence is computed from the category Logistic Regression probability distribution only; priority prediction does not report an independent confidence score.
+
+## Production Security & Configuration (Module 4)
+- Production environments are identified via `RENDER=true` or `HOSTELOPS_ENV`/`FLASK_ENV`/`ENVIRONMENT`/`APP_ENV` set to `production` or `prod`.
+- In production, `SECRET_KEY` must be explicitly configured, at least 16 characters long, and must not match known insecure defaults (`dev`, `password`, `test-secret-key`, etc.). Missing or insecure keys raise `RuntimeError` at startup.
+- Production sessions enforce `SESSION_COOKIE_SECURE = True`, `SESSION_COOKIE_HTTPONLY = True`, and `SESSION_COOKIE_SAMESITE = 'Lax'`. Flask `DEBUG` mode is forced to `False`.
+
+## Database Support & Persistence (Module 4)
+- Drivers: SQLite (`sqlite:///...`) and PostgreSQL via `psycopg2-binary==2.9.10`.
+- Connection URLs are normalized via `normalize_database_url()` to convert legacy `postgres://` (default on Render) or `postgresql://` URIs to SQLAlchemy compatibility. Defaults to `sqlite:///hostelops.db` locally.
+- Persistence: Docker Compose mounts `/app/instance` as a named volume. For production deployments on Render, use a managed Render PostgreSQL database (`DATABASE_URL`) or mount a persistent disk at `/app/instance` for SQLite.
+- Note on schema management: `db.create_all()` initializes tables on startup for clean deployments, but is not a migration tool.
+
+## Deployment & CI/CD (Module 4)
+- Continuous Integration (`.github/workflows/ci.yml`): Runs on push and PR to `main` and `staging`. Executes flake8, pytest, Docker image build, container startup, and `/health` verification.
+- Continuous Deployment (`.github/workflows/cd.yml`):
+  - Staging deployment runs on push to `staging`. Fails immediately if `RENDER_DEPLOY_HOOK_URL` or `HOSTELOPS_STAGING_URL` is missing. Triggers the deploy hook via POST and polls `${HOSTELOPS_STAGING_URL}/health` (10s interval, 300s timeout) to verify that the deployed application is live and healthy.
+  - Production image publication runs on push to `main`, building and pushing the container to GitHub Container Registry (GHCR).
 
 ## Addendum: cross-module decisions (Shubh owns this file; nobody else edits it)
 

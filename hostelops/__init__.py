@@ -5,7 +5,12 @@ from flask import Flask
 
 from hostelops.auth import auth_bp
 from hostelops.complaints import complaints_bp
-from hostelops.config import Config
+from hostelops.config import (
+    Config,
+    is_production,
+    normalize_database_url,
+    validate_production_config,
+)
 from hostelops.extensions import csrf, db, login_manager
 from hostelops.models import Complaint, User
 from hostelops.triage import triage_bp
@@ -22,10 +27,26 @@ def create_app(config_object=None, test_config=None):
     )
 
     app.config.from_object(Config)
+    has_test_secret = test_config and 'SECRET_KEY' in test_config
+    if 'SECRET_KEY' in os.environ and not has_test_secret:
+        app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+    has_test_db = test_config and 'SQLALCHEMY_DATABASE_URI' in test_config
+    if 'DATABASE_URL' in os.environ and not has_test_db:
+        app.config['SQLALCHEMY_DATABASE_URI'] = normalize_database_url(
+            os.environ['DATABASE_URL']
+        )
     if config_object:
         app.config.from_object(config_object)
     if test_config:
         app.config.update(test_config)
+
+    # Production security validation and hardening
+    if is_production() and not app.config.get('TESTING'):
+        validate_production_config(app.config)
+        app.config['SESSION_COOKIE_SECURE'] = True
+        app.config['SESSION_COOKIE_HTTPONLY'] = True
+        app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+        app.config['DEBUG'] = False
 
     # SQLite stores its database under Flask's instance directory.
     os.makedirs(app.instance_path, exist_ok=True)

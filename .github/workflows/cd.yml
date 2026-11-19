@@ -13,16 +13,69 @@ jobs:
     if: github.ref == 'refs/heads/staging'
 
     steps:
-      - name: Trigger Render Deploy Hook
+      - name: Validate Deployment Secrets
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          HOSTELOPS_STAGING_URL: ${{ secrets.HOSTELOPS_STAGING_URL }}
+        run: |
+          missing=0
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "::error::Missing required secret: RENDER_DEPLOY_HOOK_URL"
+            missing=1
+          fi
+          if [ -z "$HOSTELOPS_STAGING_URL" ]; then
+            echo "::error::Missing required secret: HOSTELOPS_STAGING_URL"
+            missing=1
+          fi
+          if [ "$missing" -ne 0 ]; then
+            echo "Deployment failed: Required deployment secret(s) not configured."
+            echo "Please set RENDER_DEPLOY_HOOK_URL and HOSTELOPS_STAGING_URL in GitHub Repository Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          echo "Deployment secrets validated successfully."
+
+      - name: Trigger Render Deployment
         env:
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          if [ -n "$RENDER_DEPLOY_HOOK_URL" ]; then
-            echo "Triggering Render deployment..."
-            curl -f -X POST "$RENDER_DEPLOY_HOOK_URL"
+          echo "Triggering deployment via Render deploy hook..."
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$RENDER_DEPLOY_HOOK_URL")
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "✓ Render deployment trigger accepted (HTTP $HTTP_STATUS)."
           else
-            echo "RENDER_DEPLOY_HOOK_URL secret not set. Skipping Render deployment."
+            echo "::error::Render deploy hook failed with HTTP status $HTTP_STATUS."
+            exit 1
           fi
+
+      - name: Verify Service Health
+        env:
+          HOSTELOPS_STAGING_URL: ${{ secrets.HOSTELOPS_STAGING_URL }}
+        run: |
+          CLEAN_URL="${HOSTELOPS_STAGING_URL%/}"
+          HEALTH_URL="${CLEAN_URL}/health"
+          echo "Polling health endpoint: ${HEALTH_URL}"
+
+          TIMEOUT_SECONDS=300
+          POLL_INTERVAL=10
+          ELAPSED=0
+
+          echo "Waiting 15 seconds for Render to begin deploying..."
+          sleep 15
+          ELAPSED=15
+
+          while [ "$ELAPSED" -lt "$TIMEOUT_SECONDS" ]; do
+            RESPONSE=$(curl -fsS --max-time 10 "$HEALTH_URL" 2>/dev/null || true)
+            if echo "$RESPONSE" | grep -q '"status"[[:space:]]*:[[:space:]]*"ok"'; then
+              echo "✓ Deployment verified healthy after ${ELAPSED}s: $RESPONSE"
+              exit 0
+            fi
+            echo "Health check not ready yet (${ELAPSED}s / ${TIMEOUT_SECONDS}s). Retrying in ${POLL_INTERVAL}s..."
+            sleep "$POLL_INTERVAL"
+            ELAPSED=$((ELAPSED + POLL_INTERVAL))
+          done
+
+          echo "::error::Health check timed out after ${TIMEOUT_SECONDS}s. Application failed to report healthy status at ${HEALTH_URL}."
+          exit 1
 
   publish-ghcr:
     name: Build & Push Image to GHCR (Main)

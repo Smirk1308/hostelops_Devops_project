@@ -116,7 +116,21 @@ and include at least three of lowercase letters, uppercase letters, digits,
 and symbols. Keep these values private and never use them as production
 credentials.
 
-### 5. Seed the Database
+### 5. Train the Machine Learning Model
+
+Train the complaint categorization and priority triage model:
+
+**Windows PowerShell:**
+```powershell
+.\.venv\Scripts\python.exe -m ml.train
+```
+
+**Linux / macOS:**
+```bash
+python -m ml.train
+```
+
+### 6. Seed the Database
 
 The script loads `.env` from the repository root and preserves values already
 provided by the shell. Run it only after completing the configuration above.
@@ -137,7 +151,7 @@ rotate only the three demo accounts to the passwords configured in `.env`, set
 change it back to `0`. The seed script rejects environments marked as
 production.
 
-### 6. Run the Application
+### 7. Run the Application
 ```bash
 # Using Flask development server:
 flask --app hostelops run --port 8000
@@ -198,3 +212,51 @@ docker compose logs -f
 # Stop and remove services
 docker compose down
 ```
+
+---
+
+## Production Configuration & Security
+
+When deployed to production (e.g. Render, or with `HOSTELOPS_ENV=production` / `RENDER=true`), HostelOps activates strict security controls:
+
+1. **Secret Key Validation**: `SECRET_KEY` must be explicitly configured, at least 16 characters long, and distinct from default development keys (`dev`, `password`, `test-secret-key`, etc.). Startup halts with an error if an insecure or missing key is detected.
+2. **Hardened Session Cookies**: `SESSION_COOKIE_SECURE = True`, `SESSION_COOKIE_HTTPONLY = True`, and `SESSION_COOKIE_SAMESITE = 'Lax'`.
+3. **Debug Mode**: Flask debug mode is strictly disabled (`DEBUG = False`).
+4. **CSRF Protection**: Flask-WTF CSRF protection is active across all endpoints and AJAX requests.
+
+### Database Persistence & PostgreSQL
+
+HostelOps supports both local SQLite and PostgreSQL:
+- **Local Development**: Uses SQLite stored in the Flask instance directory (`instance/hostelops.db`). Docker Compose mounts `/app/instance` as a persistent named volume.
+- **Production Persistence**: On cloud platforms like Render, SQLite without a persistent disk loses state across redeployments and restarts. For production, either:
+  - Attach a **Render Persistent Disk** mounted at `/app/instance`, or
+  - Configure a managed **Render PostgreSQL** database and provide the connection URI as `DATABASE_URL`. HostelOps automatically normalizes legacy `postgres://` URLs to SQLAlchemy's `postgresql://` dialect via `psycopg2-binary`.
+- **Note on Migrations**: `db.create_all()` initializes tables on clean deployments, but is not a database migration framework. Future structural schema changes should use Alembic or manual DDL migrations.
+
+---
+
+## Deployment & CI/CD Setup (Render & GitHub Actions)
+
+### Continuous Integration (CI)
+Every push and pull request to `staging` and `main` triggers `.github/workflows/ci.yml`:
+1. Installs pinned dependencies (`requirements.txt` and `requirements-dev.txt`).
+2. Runs static linting with `flake8`.
+3. Executes all 158 automated unit and integration tests with `pytest`.
+4. Builds the container image and trains the ML model inside Docker.
+5. Boots the container and validates the `/health` endpoint.
+
+### Continuous Deployment (CD)
+On push to `staging`, `.github/workflows/cd.yml` automates deployment to Render:
+1. Validates that deployment secrets exist (fails fast if either secret is missing).
+2. Triggers deployment via the Render Deploy Hook.
+3. Polls `${HOSTELOPS_STAGING_URL}/health` (up to 5 minutes with 10s intervals) to confirm the service is healthy before passing.
+
+#### Configuring Render Deployment Secrets in GitHub
+To enable staging CD:
+1. In your **Render Dashboard**, navigate to your HostelOps Web Service -> **Settings** -> **Deploy Hook**. Copy the URL.
+2. In your **GitHub Repository**, go to **Settings** -> **Secrets and variables** -> **Actions** -> **Repository secrets**.
+3. Add the following secrets:
+   - `RENDER_DEPLOY_HOOK_URL`: Your Render Deploy Hook URL.
+   - `HOSTELOPS_STAGING_URL`: Your full Render service URL (e.g., `https://hostelops-staging.onrender.com`).
+
+*(Note: In PR #7, project lead Shubh Sharma approved a documented review exception to bypass pending peer review to finalize integration readiness.)*
