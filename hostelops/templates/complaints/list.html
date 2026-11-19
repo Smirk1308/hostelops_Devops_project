@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Complaints · HostelOps{% endblock %}
+{% block content %}
+<section class="page-shell">
+  <header class="page-header">
+    <div><p class="page-eyebrow">HOSTELOPS · SERVICE DESK</p><h1 class="page-title">Complaints</h1>
+      <p class="page-description">Track hostel requests and follow each issue through to resolution.</p></div>
+    <div class="page-actions">{% if current_user.role == 'student' %}<a class="btn btn-primary" href="{{ url_for('complaints.new_complaint') }}">New complaint</a>{% endif %}</div>
+  </header>
+  <section class="stats-grid" aria-label="Complaint totals">
+    {% for label, key in [('Pending','Pending'), ('In progress','In Progress'), ('Resolved','Resolved')] %}
+    <article class="stat-card"><span class="stat-label">{{ label }}</span><strong class="stat-value">{{ counts[key] }}</strong></article>
+    {% endfor %}
+  </section>
+  {% if current_user.role in ('staff', 'admin') %}
+  <section class="panel filter-panel">
+    <div class="panel-header"><h2>Filter complaints</h2></div><div class="panel-body">
+      <form method="get" action="{{ url_for('complaints.list_complaints') }}" class="filter-grid">
+        <div class="form-group"><label for="filter-status">Status</label><select id="filter-status" name="status"><option value="">All statuses</option>{% for item in statuses %}<option value="{{ item }}" {% if filters.status == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select></div>
+        <div class="form-group"><label for="filter-category">Category</label><select id="filter-category" name="category"><option value="">All categories</option>{% for item in categories %}<option value="{{ item }}" {% if filters.category == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select></div>
+        <div class="form-group"><label for="filter-priority">Priority</label><select id="filter-priority" name="priority"><option value="">All priorities</option>{% for item in priorities %}<option value="{{ item }}" {% if filters.priority == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select></div>
+        <div class="complaint-actions"><button class="btn btn-primary" type="submit">Apply filters</button><a class="btn btn-secondary" href="{{ url_for('complaints.list_complaints') }}">Clear filters</a></div>
+      </form>
+    </div>
+  </section>
+  {% endif %}
+  <section class="panel"><div class="panel-header"><h2>All complaints</h2><span class="muted">{{ matching_count }} matching</span></div>
+    {% if complaints %}<div class="complaint-list">
+      {% for complaint in complaints %}<article class="complaint-card">
+        <div class="complaint-card-header"><div><p class="page-eyebrow">Complaint #{{ complaint.id }} · {{ complaint.category }}</p><h3 class="complaint-card-title"><a href="{{ url_for('complaints.detail', complaint_id=complaint.id) }}">{{ complaint.title }}</a></h3></div>
+          <div class="complaint-actions"><span class="badge badge-{{ 'progress' if complaint.status == 'In Progress' else complaint.status|lower }}">{{ complaint.status }}</span><span class="badge badge-{{ complaint.priority|lower }}">{{ complaint.priority }}</span>{% if complaint.id in overdue_ids %}<span class="badge badge-overdue">Overdue</span>{% endif %}</div></div>
+        <div class="complaint-meta"><span>Created by {{ complaint.creator.name }}</span><span>Assigned to {{ complaint.assignee.name if complaint.assignee else 'Unassigned' }}</span><span>Created {{ complaint.created_at.strftime('%d %b %Y %H:%M') }}</span><span>Updated {{ complaint.updated_at.strftime('%d %b %Y %H:%M') }}</span></div>
+      </article>{% endfor %}
+    </div>{% else %}<div class="empty-state"><span class="empty-state-icon" aria-hidden="true">⌕</span><h3>{{ 'No complaints yet' if current_user.role == 'student' and not filters.status and not filters.category and not filters.priority else 'No complaints found' }}</h3><p>{{ 'Your hostel requests will appear here once submitted.' if current_user.role == 'student' and not filters.status and not filters.category and not filters.priority else 'Try changing your filters to see more results.' }}</p>{% if current_user.role == 'student' %}<a class="btn btn-primary" href="{{ url_for('complaints.new_complaint') }}">Submit a complaint</a>{% else %}<a class="btn btn-secondary" href="{{ url_for('complaints.list_complaints') }}">Clear filters</a>{% endif %}</div>{% endif %}
+  </section>
+</section>
+{% endblock %}
