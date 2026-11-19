@@ -41,7 +41,7 @@ tests/test_triage.py asserts held-out category accuracy >= 0.80.
 
 ## Database Support & Persistence (Module 4)
 - Drivers: SQLite (`sqlite:///...`) and PostgreSQL via `psycopg2-binary==2.9.10`.
-- Connection URLs are normalized via `normalize_database_url()` to convert legacy `postgres://` (default on Render) or `postgresql://` URIs to SQLAlchemy compatibility. Defaults to `sqlite:///hostelops.db` locally.
+- Connection URLs are normalized via `normalize_database_url()` to convert legacy `postgres://` (default on Render) or `postgresql://` URIs to SQLAlchemy compatibility with explicit psycopg2 driver specification (`postgresql+psycopg2://`). Defaults to `sqlite:///hostelops.db` locally.
 - Persistence: Docker Compose mounts `/app/instance` as a named volume. For production deployments on Render, use a managed Render PostgreSQL database (`DATABASE_URL`) or mount a persistent disk at `/app/instance` for SQLite.
 - Note on schema management: `db.create_all()` initializes tables on startup for clean deployments, but is not a migration tool.
 
