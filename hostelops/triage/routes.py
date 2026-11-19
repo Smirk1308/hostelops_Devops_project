@@ -52,7 +52,7 @@ def _collect_stats():
         if c.status in by_status:
             by_status[c.status] += 1
 
-    # Overdue complaints
+    # Keep one timestamp for a consistent age and overdue calculation.
     overdue_list = []
     for c in complaints:
         if is_overdue(c, now=now):
@@ -64,6 +64,7 @@ def _collect_stats():
                 'status': c.status,
                 'hours_open': age_hours,
             })
+    overdue_list.sort(key=lambda item: item['hours_open'], reverse=True)
 
     return {
         'by_category': by_category,
@@ -80,7 +81,7 @@ def stats():
         return jsonify(error='Authentication required'), 401
 
     if getattr(current_user, 'role', None) not in ('staff', 'admin'):
-        return jsonify(error='Forbidden: staff or admin role required'), 403
+        return jsonify(error='Permission denied'), 403
 
     data = _collect_stats()
     return jsonify(
@@ -97,6 +98,8 @@ def dashboard():
     data = _collect_stats()
     return render_template(
         'triage/dashboard.html',
+        by_status=data['by_status'],
+        total_count=sum(data['by_status'].values()),
         overdue_count=data['overdue_count'],
         overdue_list=data['overdue_list'],
     )

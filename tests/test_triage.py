@@ -250,6 +250,11 @@ class TestStatsAPI:
         data = resp.get_json()
         assert data['by_category']['Water'] == 1
         assert data['by_category']['Electricity'] == 1
+        assert data['by_status'] == {
+            'Pending': 1,
+            'In Progress': 0,
+            'Resolved': 1,
+        }
         # Other categories should be zero
         for cat in CATEGORIES:
             if cat not in ('Water', 'Electricity'):
@@ -258,28 +263,38 @@ class TestStatsAPI:
         for s in STATUSES:
             assert s in data['by_status']
 
+    def test_admin_can_access_stats(self, client, make_user, login_as):
+        admin = make_user(role='admin')
+        login_as(client, admin)
+        response = client.get('/api/stats')
+        assert response.status_code == 200
+        assert response.is_json
+        assert set(response.get_json()['by_category']) == set(CATEGORIES)
+
     def test_overdue_count(self, app, client, make_user, login_as):
         from datetime import timedelta
         staff = make_user(role='staff')
         old_time = utcnow() - timedelta(days=3)
-        # An old Pending complaint — should be overdue (default 48 h)
+        # An old Pending complaint — should be overdue (default 48 h).
         self._make_complaint(staff, status='Pending', created_at=old_time)
+        # Even an old Resolved complaint must not be counted as overdue.
+        self._make_complaint(staff, status='Resolved', created_at=old_time)
         login_as(client, staff)
         resp = client.get('/api/stats')
         assert resp.status_code == 200
-        assert resp.get_json()['overdue'] >= 1
+        assert resp.get_json()['overdue'] == 1
 
     def test_student_gets_403(self, client, make_user, login_as):
         student = make_user(role='student')
         login_as(client, student)
         resp = client.get('/api/stats')
         assert resp.status_code == 403
-        assert resp.get_json().get('error')
+        assert resp.get_json() == {'error': 'Permission denied'}
 
     def test_unauthenticated_gets_401(self, client):
         resp = client.get('/api/stats')
         assert resp.status_code == 401
-        assert resp.get_json().get('error')
+        assert resp.get_json() == {'error': 'Authentication required'}
 
 
 # ---------------------------------------------------------------------------
@@ -292,19 +307,33 @@ class TestDashboard:
         login_as(client, staff)
         resp = client.get('/dashboard')
         assert resp.status_code == 200
+        assert b'Operations Dashboard' in resp.data
         assert b'categoryChart' in resp.data
+        assert b'statusChart' in resp.data
+        assert b'Attention Required' in resp.data
 
     def test_admin_gets_200(self, client, make_user, login_as):
         admin = make_user(role='admin')
         login_as(client, admin)
         resp = client.get('/dashboard')
         assert resp.status_code == 200
+        assert b'Operations Dashboard' in resp.data
 
     def test_student_gets_403(self, client, make_user, login_as):
         student = make_user(role='student')
         login_as(client, student)
         resp = client.get('/dashboard')
         assert resp.status_code == 403
+
+    def test_empty_database_has_zero_summary_and_empty_state(
+            self, client, make_user, login_as):
+        staff = make_user(role='staff')
+        login_as(client, staff)
+        response = client.get('/dashboard')
+        assert response.status_code == 200
+        assert b'All caught up!' in response.data
+        assert b'No overdue complaints require attention right now.' in response.data
+        assert b'Operations Dashboard' in response.data
 
 
 # ---------------------------------------------------------------------------
@@ -353,5 +382,5 @@ class TestIsOverdue:
         # 1 h + 1 s old with 1-hour threshold — overdue
         c = self._complaint('Pending', now - timedelta(hours=1, seconds=1))
         assert is_overdue(c, now=now)
-        # Reset to avoid affecting other tests
-        app.config['OVERDUE_HOURS'] = 48
+        at_limit = self._complaint('Pending', now - timedelta(hours=1))
+        assert not is_overdue(at_limit, now=now)
