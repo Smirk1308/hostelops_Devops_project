@@ -59,7 +59,7 @@ Run `python scripts/seed.py` to populate initial demo accounts in the database:
 - Python 3.12+ installed
 - Git
 
-### 2. Clone and Create Virtual Environment
+### 2. Clone the Repository and Create a Virtual Environment
 ```bash
 git clone https://github.com/Smirk1308/hostelops_Devops_project.git
 cd hostelops_Devops_project
