@@ -1,2142 +1,351 @@
 text,category,priority
-Bookshelf collapsed in block A,Furniture,Medium
-No water in washroom of block C for 3 hours,Water,High
-Garbage dumped outside the corridor,Cleanliness,Medium
-Window latch broken in block B,Furniture,Medium
-Noise disturbance in my room for 3 hours,Other,Medium
-Sparks coming from the switch board in the ground floor washroom,Electricity,High
-Suggestion: add water cooler near the ground floor washroom,Other,Low
-Mess is closed earlier than scheduled since yesterday evening,Mess,High
-Wi-Fi is not working in my room for two days,Wi-Fi,Medium
-The flush in room 204 is not working for 3 hours,Water,Medium
-Garbage dumped outside block B,Cleanliness,Medium
-Fire extinguisher missing from block A,Other,High
-No soap or sanitizer in room 204 for two days,Cleanliness,Medium
-Rats seen in room 204 since last night,Cleanliness,High
-Litter everywhere in room 101,Cleanliness,Low
-Cupboard hinge broken in block A,Furniture,Low
-No electricity in block A this morning,Electricity,High
-Noise disturbance in the common room since last night,Other,Medium
-Fan is not working in room 204 since last night,Electricity,Medium
-Staircase light not working in the second floor for 3 hours,Other,Medium
-Power fluctuation in room 101 for 3 hours,Electricity,Medium
-Insufficient quantity of food in mess for a week,Mess,Medium
-Cupboard hinge broken in block B,Furniture,Low
-No vegetables served in mess since yesterday evening,Mess,Medium
-The flush in the corridor is not working for two days,Water,Medium
-The flush in the second floor is not working for two days,Water,Medium
-Wi-Fi login page not loading in the ground floor washroom,Wi-Fi,Medium
-Mould on walls of my room,Cleanliness,Medium
-Lights not working in the corridor this morning,Electricity,High
-First aid kit not available near the common room,Other,High
-Chair in the second floor has a broken leg,Furniture,Low
-Noise disturbance in block C for 3 hours,Other,Medium
-Drain pipe is blocked in room 204,Water,Medium
-Common room TV not working since the last two days,Other,Low
-Router offline in my room for two days,Wi-Fi,Medium
-Tube light in block C needs replacing,Electricity,Low
-Bed frame broken in room 204,Furniture,Medium
-Mess food quality is very poor for two days,Mess,Medium
-Wi-Fi is not working in my room since last night,Wi-Fi,Medium
-Broken stool in room 204,Furniture,Low
-Foul smell in the ground floor washroom since last night,Cleanliness,Medium
-Noise disturbance in room 101 for 3 hours,Other,Medium
-Window latch broken in the ground floor washroom,Furniture,Medium
-Staircase light not working in the corridor this morning,Other,Medium
-No water in my room this morning,Water,High
-Washroom tiles very slippery in block C,Cleanliness,High
-Network cable unplugged in block B,Wi-Fi,Low
-Mess workers behaving rudely since Monday,Mess,Medium
-Ceiling fan wobbling dangerously in the second floor,Electricity,High
-Ceiling fan wobbling dangerously in block B,Electricity,High
-No water in the corridor for 3 hours,Water,High
-Cleaning staff not coming to block C since last night,Cleanliness,Medium
-Power cut in the common room this morning,Electricity,High
-Internet down completely in the second floor for two days,Wi-Fi,High
-Wi-Fi is not working in the common room for 3 hours,Wi-Fi,Medium
-Garbage not collected in block B for 3 hours,Cleanliness,Medium
-Lost and found box needed near block A,Other,Low
-Cannot connect to hostel wifi in room 204 for two days,Wi-Fi,Medium
-The flush in the corridor is not working this morning,Water,Medium
-Wi-Fi is not working in block A this morning,Wi-Fi,Medium
-Internet down completely in block B for 3 hours,Wi-Fi,High
-Study table wobbly in block C,Furniture,Low
-Window latch broken in the corridor,Furniture,Medium
-Curtain rod fallen in block A,Furniture,Low
-Insufficient quantity of food in mess since the last two days,Mess,Medium
-Corridor in the corridor is very dirty for two days,Cleanliness,Medium
-Need iron stand in my room,Other,Low
-Drain pipe is blocked in the common room,Water,Medium
-Slow upload speed in the common room since last night,Wi-Fi,Low
-Generator not starting in room 101,Electricity,High
-WiFi disconnects at night in the ground floor washroom,Wi-Fi,Medium
-MCB tripping repeatedly in my room this morning,Electricity,High
-Water logging in block A since last night,Water,High
-Slow upload speed in room 101 for 3 hours,Wi-Fi,Low
-MCB tripping repeatedly in the second floor for two days,Electricity,High
-No water in the corridor since last night,Water,High
-Washroom tiles very slippery in room 101,Cleanliness,High
-Bulb fused in the second floor,Electricity,Low
-Wi-Fi is not working in block A for 3 hours,Wi-Fi,Medium
-Wifi has been down for 3 hours in the ground floor washroom,Wi-Fi,High
-Lights not working in the ground floor washroom for 3 hours,Electricity,High
-No wifi coverage in block B,Wi-Fi,Medium
-Table in room 204 is damaged,Furniture,Low
-Pests in the corridor this morning,Cleanliness,High
-Slow upload speed in the corridor this morning,Wi-Fi,Low
-No drinking water available near room 101 for 3 hours,Water,High
-Fan is not working in the common room since last night,Electricity,Medium
-Wifi has been down since last night in the corridor,Wi-Fi,High
-No drinking water available near block A for 3 hours,Water,High
-Study chair missing in block A,Furniture,Low
-Fire extinguisher missing from room 101,Other,High
-Water supply has been cut off in block C for 3 hours,Water,High
-Heater not working in the corridor,Electricity,Medium
-Cleaning staff not coming to the ground floor washroom since last night,Cleanliness,Medium
-Window glass cracked in the second floor,Furniture,Medium
-Staircase light not working in room 204 for two days,Other,Medium
-Litter everywhere in block C,Cleanliness,Low
-Drawer stuck in block C,Furniture,Low
-Fan is not working in room 101 for two days,Electricity,Medium
-Bed mattress has bugs in the second floor,Furniture,High
-Network cable unplugged in room 204,Wi-Fi,Low
-Power cut in the corridor for two days,Electricity,High
-Wi-Fi login page not loading in room 204,Wi-Fi,Medium
-No water in washroom of the ground floor washroom since last night,Water,High
-UPS battery dead in room 101,Electricity,Medium
-No water in washroom of the second floor for 3 hours,Water,High
-Sweeping not done in the ground floor washroom for two days,Cleanliness,Low
-Cleaning staff not coming to my room this morning,Cleanliness,Medium
-Wifi has been down for two days in the second floor,Wi-Fi,High
-No water in washroom of the second floor this morning,Water,High
-Lights not working in block A for 3 hours,Electricity,High
-Router offline in the common room for 3 hours,Wi-Fi,Medium
-Bed frame broken in the second floor,Furniture,Medium
-Wi-Fi is not working in block A for two days,Wi-Fi,Medium
-Router offline in block A for two days,Wi-Fi,Medium
-Rats seen in my room since last night,Cleanliness,High
-Lights not working in the common room for two days,Electricity,High
-Window glass cracked in the corridor,Furniture,Medium
-No internet connectivity in block A this morning,Wi-Fi,Medium
-Pests in the corridor since last night,Cleanliness,High
-Network drops every few minutes in the common room,Wi-Fi,Medium
-Sweeping not done in block B this morning,Cleanliness,Low
-Bike parking area messy near the ground floor washroom,Other,Low
-Rats seen in the common room since last night,Cleanliness,High
-No water in room 101 since last night,Water,High
-Door lock not working in block A,Furniture,High
-Power fluctuation in the second floor for two days,Electricity,Medium
-Foul smell in the second floor this morning,Cleanliness,Medium
-Request for extra blanket in the common room,Other,Low
-Washroom tap dripping constantly in the corridor,Water,Medium
-Power cut in the corridor since last night,Electricity,High
-No soap or sanitizer in the second floor this morning,Cleanliness,Medium
-Router offline in the second floor since last night,Wi-Fi,Medium
-Water logging in the corridor for 3 hours,Water,High
-The flush in room 101 is not working this morning,Water,Medium
-No water in my room for two days,Water,High
-The flush in the corridor is not working since last night,Water,Medium
-Cleaning staff not coming to the second floor this morning,Cleanliness,Medium
-Cockroaches found in mess food since the last two days,Mess,High
-Water logging in room 204 this morning,Water,High
-No water in washroom of the ground floor washroom for two days,Water,High
-Garbage not collected in my room since last night,Cleanliness,Medium
-Router offline in the second floor for two days,Wi-Fi,Medium
-Cleaning staff not coming to the ground floor washroom this morning,Cleanliness,Medium
-No internet connectivity in my room for 3 hours,Wi-Fi,Medium
-Wi-Fi speed is very slow in room 204,Wi-Fi,Low
-Bed mattress has bugs in the common room,Furniture,High
-Cleaning staff not coming to block C for two days,Cleanliness,Medium
-Internet down completely in block C this morning,Wi-Fi,High
-Lights not working in block B for two days,Electricity,High
-Mess food quality is very poor for 3 hours,Mess,Medium
-No hot water in the corridor for 3 hours,Water,Medium
-No soap or sanitizer in the ground floor washroom since last night,Cleanliness,Medium
-Drain pipe is blocked in the second floor,Water,Medium
-No soap or sanitizer in my room since last night,Cleanliness,Medium
-Wi-Fi is not working in the corridor since last night,Wi-Fi,Medium
-Washroom in block B is very dirty,Cleanliness,Medium
-Wi-Fi router needs restart in the ground floor washroom,Wi-Fi,Low
-Noise disturbance in the common room for two days,Other,Medium
-Lift not working in the corridor for two days,Other,High
-Common room TV not working this morning,Other,Low
-Cannot attend online classes due to no wifi in the corridor,Wi-Fi,High
-No water in washroom of the common room this morning,Water,High
-No water in washroom of the common room for 3 hours,Water,High
-Mess food has insects since Monday,Mess,High
-Mould on walls of the ground floor washroom,Cleanliness,Medium
-Wi-Fi signal too weak in block A,Wi-Fi,Low
-No internet connectivity in the common room this morning,Wi-Fi,Medium
-Staircase light not working in the corridor for 3 hours,Other,Medium
-Rats seen in room 101 this morning,Cleanliness,High
-Wi-Fi is not working in room 101 since last night,Wi-Fi,Medium
-Almirah key missing for room in block B,Furniture,Medium
-Rats seen in the ground floor washroom this morning,Cleanliness,High
-Lift not working in the ground floor washroom for 3 hours,Other,High
-No soap or sanitizer in room 204 since last night,Cleanliness,Medium
-No hot water in block B since last night,Water,Medium
-No electricity in my room since last night,Electricity,High
-Fan is not working in the corridor for 3 hours,Electricity,Medium
-Garbage not collected in my room for 3 hours,Cleanliness,Medium
-Wifi has been down for 3 hours in block C,Wi-Fi,High
-No soap or sanitizer in my room for two days,Cleanliness,Medium
-Water logging in the second floor for 3 hours,Water,High
-Wi-Fi is not working in the ground floor washroom since last night,Wi-Fi,Medium
-No drinking water available near the corridor this morning,Water,High
-No soap or sanitizer in room 204 this morning,Cleanliness,Medium
-Foul smell in room 204 for two days,Cleanliness,Medium
-Power fluctuation in block A for 3 hours,Electricity,Medium
-Wi-Fi is not working in block A since last night,Wi-Fi,Medium
-No internet connectivity in block A for 3 hours,Wi-Fi,Medium
-No soap or sanitizer in the common room since last night,Cleanliness,Medium
-Toilet seat broken in room 101,Cleanliness,Medium
-No drinking water available near block C for 3 hours,Water,High
-Lights not working in block C since last night,Electricity,High
-Foul smell in block A since last night,Cleanliness,Medium
-Water supply has been cut off in block A since last night,Water,High
-Rats seen in room 101 for 3 hours,Cleanliness,High
-Foul smell in block A this morning,Cleanliness,Medium
-Washroom tiles very slippery in the corridor,Cleanliness,High
-Network cable unplugged in the common room,Wi-Fi,Low
-Router offline in the common room this morning,Wi-Fi,Medium
-Wifi has been down this morning in the common room,Wi-Fi,High
-Sweeping not done in block A since last night,Cleanliness,Low
-Garbage not collected in the corridor for 3 hours,Cleanliness,Medium
-Bookshelf collapsed in room 101,Furniture,Medium
-MCB tripping repeatedly in block C for 3 hours,Electricity,High
-No electricity in block C for two days,Electricity,High
-Sweeping not done in my room since last night,Cleanliness,Low
-Bookshelf collapsed in block B,Furniture,Medium
-Pests in room 204 since last night,Cleanliness,High
-Water supply has been cut off in room 204 for two days,Water,High
-Cannot connect to hostel wifi in the corridor for two days,Wi-Fi,Medium
-No drinking water available near the second floor for 3 hours,Water,High
-Bed frame broken in the ground floor washroom,Furniture,Medium
-Mess is closed earlier than scheduled this morning,Mess,High
-Request for extra blanket in my room,Other,Low
-No hot water in the ground floor washroom this morning,Water,Medium
-Lights not working in room 101 for 3 hours,Electricity,High
-No drinking water available near block A this morning,Water,High
-Slow upload speed in the second floor since last night,Wi-Fi,Low
-No soap or sanitizer in room 101 since last night,Cleanliness,Medium
-Mess closed without notice for 3 hours,Mess,High
-Garbage not collected in the ground floor washroom for 3 hours,Cleanliness,Medium
-Foul smell in block B for two days,Cleanliness,Medium
-No water in the second floor for two days,Water,High
-No wifi coverage in room 204,Wi-Fi,Medium
-Wi-Fi is not working in the ground floor washroom for two days,Wi-Fi,Medium
-Mess food has insects this morning,Mess,High
-Wi-Fi router needs restart in my room,Wi-Fi,Low
-No hot water in common bathroom for a week,Other,Medium
-No breakfast served in mess for two days,Mess,High
-Lift not working in the second floor this morning,Other,High
-No water in washroom of the corridor since last night,Water,High
-The overhead tank in block C is overflowing,Water,High
-wifi nt working again in the second floor,Wi-Fi,Medium
-Washroom mirror broken in the ground floor washroom,Cleanliness,Low
-No internet connectivity in block B since last night,Wi-Fi,Medium
-No drinking water available near my room for 3 hours,Water,High
-Bookshelf collapsed in my room,Furniture,Medium
-No water in washroom of the ground floor washroom this morning,Water,High
-Heater not working in block A,Electricity,Medium
-Wardrobe door not closing in room 204,Furniture,Low
-Switchboard burnt in the ground floor washroom,Electricity,High
-Bed mattress has bugs in the corridor,Furniture,High
-Rats seen in block C since last night,Cleanliness,High
-Tap is leaking in the common room,Water,High
-Corridor in block B is very dirty since last night,Cleanliness,Medium
-Lights not working in the ground floor washroom since last night,Electricity,High
-MCB tripping repeatedly in block B for two days,Electricity,High
-Water logging in my room for 3 hours,Water,High
-Pests in block A since last night,Cleanliness,High
-Long queue at mess counter since yesterday evening,Mess,Low
-The flush in the common room is not working since last night,Water,Medium
-Power fluctuation in the corridor this morning,Electricity,Medium
-No hot water in the corridor this morning,Water,Medium
-Wi-Fi login page not loading in block B,Wi-Fi,Medium
-Sewage smell coming from drain in block C,Water,Medium
-Power cut in room 204 for 3 hours,Electricity,High
-Water pipe burst in block C,Water,High
-No hot water in room 204 for 3 hours,Water,Medium
-Door lock not working in room 101,Furniture,High
-Street light outside the common room not working,Electricity,Low
-Washroom mirror broken in the common room,Cleanliness,Low
-No electricity in block C this morning,Electricity,High
-Garbage not collected in the ground floor washroom this morning,Cleanliness,Medium
-Corridor in the second floor is very dirty since last night,Cleanliness,Medium
-Lights not working in the ground floor washroom this morning,Electricity,High
-Power cut in room 204 this morning,Electricity,High
-WiFi disconnects at night in the second floor,Wi-Fi,Medium
-No electricity in room 204 since last night,Electricity,High
-Washroom tap dripping constantly in room 204,Water,Medium
-Washroom in room 204 is very dirty,Cleanliness,Medium
-Mess workers behaving rudely since yesterday evening,Mess,Medium
-No soap or sanitizer in block A this morning,Cleanliness,Medium
-No soap or sanitizer in room 101 for 3 hours,Cleanliness,Medium
-Common room TV not working since Monday,Other,Low
-Corridor in my room is very dirty this morning,Cleanliness,Medium
-Common room lock broken in the common room,Other,Medium
-No electricity in my room this morning,Electricity,High
-No hot water in block B for two days,Water,Medium
-Power fluctuation in the ground floor washroom since last night,Electricity,Medium
-Slow upload speed in the corridor since last night,Wi-Fi,Low
-Wifi has been down since last night in block B,Wi-Fi,High
-Wi-Fi router needs restart in the second floor,Wi-Fi,Low
-Wi-Fi is not working in my room for 3 hours,Wi-Fi,Medium
-Power cut in room 101 since last night,Electricity,High
-Broken stool in my room,Furniture,Low
-Bed frame broken in block A,Furniture,Medium
-Noise disturbance in the second floor for 3 hours,Other,Medium
-Lift not working in block B for 3 hours,Other,High
-Garbage dumped outside block C,Cleanliness,Medium
-Router offline in my room since last night,Wi-Fi,Medium
-Heater not working in block B,Electricity,Medium
-No electricity in room 101 for 3 hours,Electricity,High
-Heater not working in block C,Electricity,Medium
-No drinking water available near the second floor since last night,Water,High
-Cleaning staff not coming to the common room this morning,Cleanliness,Medium
-Washroom tiles very slippery in the common room,Cleanliness,High
-Corridor in the corridor is very dirty this morning,Cleanliness,Medium
-Wi-Fi is not working in block C this morning,Wi-Fi,Medium
-Curtain rod fallen in block B,Furniture,Low
-Pests in the corridor for two days,Cleanliness,High
-Long queue at mess counter since the last two days,Mess,Low
-Water supply has been cut off in the second floor since last night,Water,High
-Water logging in my room this morning,Water,High
-Foul smell in my room for two days,Cleanliness,Medium
-Table in block C is damaged,Furniture,Low
-Garbage dumped outside block A,Cleanliness,Medium
-Pests in room 101 this morning,Cleanliness,High
-Wifi has been down for 3 hours in my room,Wi-Fi,High
-No drinking water available near my room for two days,Water,High
-AC unit not cooling in the ground floor washroom,Electricity,Medium
-Bathroom drain blocked in my room,Cleanliness,Medium
-Staircase light not working in my room since last night,Other,Medium
-Internet down completely in my room for 3 hours,Wi-Fi,High
-Dustbin overflowing in the common room,Cleanliness,Medium
-wifi nt working again in room 204,Wi-Fi,Medium
-Pests in the second floor this morning,Cleanliness,High
-Garbage not collected in room 101 for two days,Cleanliness,Medium
-No drinking water available near block C for two days,Water,High
-Please add a notice board near block A,Other,Low
-Broken stool in the ground floor washroom,Furniture,Low
-Pests in the second floor for two days,Cleanliness,High
-Wifi has been down this morning in block A,Wi-Fi,High
-Cupboard hinge broken in the common room,Furniture,Low
-Foul smell in the second floor for 3 hours,Cleanliness,Medium
-No soap or sanitizer in room 101 for two days,Cleanliness,Medium
-Cleaning staff not coming to my room for 3 hours,Cleanliness,Medium
-Tap handle broken in room 101,Water,Low
-No soap or sanitizer in my room this morning,Cleanliness,Medium
-Litter everywhere in my room,Cleanliness,Low
-Unhygienic conditions in mess since Monday,Mess,High
-Power cut in the second floor since last night,Electricity,High
-No water in washroom of the corridor for 3 hours,Water,High
-Corridor in room 101 is very dirty this morning,Cleanliness,Medium
-Noise disturbance in block A this morning,Other,Medium
-Unhygienic conditions in mess for 3 hours,Mess,High
-Stagnant water on floor of block C,Cleanliness,High
-Router offline in block B for 3 hours,Wi-Fi,Medium
-Study chair missing in room 101,Furniture,Low
-Sweeping not done in block C this morning,Cleanliness,Low
-Rats seen in block A since last night,Cleanliness,High
-Generator not starting in the corridor,Electricity,High
-Mess menu is not being followed this morning,Mess,Low
-Sweeping not done in block A for two days,Cleanliness,Low
-Bike parking area messy near my room,Other,Low
-No water in washroom of block A for 3 hours,Water,High
-Need iron stand in the common room,Other,Low
-Water cooler is leaking in block A,Water,Medium
-Staircase light not working in the ground floor washroom since last night,Other,Medium
-Router offline in room 204 for two days,Wi-Fi,Medium
-Water logging in my room for two days,Water,High
-No water in washroom of room 101 this morning,Water,High
-No drinking water available near my room since last night,Water,High
-Gym equipment broken near the second floor,Other,Medium
-Water logging in the corridor since last night,Water,High
-Water logging in room 101 this morning,Water,High
-Heater not working in my room,Electricity,Medium
-Power cut in my room for 3 hours,Electricity,High
-Insufficient quantity of food in mess this morning,Mess,Medium
-Noise disturbance in block C for two days,Other,Medium
-No drinking water available near room 204 since last night,Water,High
-MCB tripping repeatedly in the common room for two days,Electricity,High
-No soap or sanitizer in the ground floor washroom for 3 hours,Cleanliness,Medium
-Wi-Fi login page not loading in room 101,Wi-Fi,Medium
-No soap or sanitizer in room 101 this morning,Cleanliness,Medium
-Power cut in the common room for two days,Electricity,High
-Garbage dumped outside room 101,Cleanliness,Medium
-No drinking water in mess since Monday,Mess,High
-Wi-Fi login page not loading in block C,Wi-Fi,Medium
-Lights not working in my room this morning,Electricity,High
-Rats seen in my room for two days,Cleanliness,High
-No internet connectivity in the second floor for two days,Wi-Fi,Medium
-Food is undercooked in the mess for 3 hours,Mess,Medium
-Bed frame broken in the common room,Furniture,Medium
-Slow upload speed in the ground floor washroom since last night,Wi-Fi,Low
-MCB tripping repeatedly in the common room this morning,Electricity,High
-No internet connectivity in block B for two days,Wi-Fi,Medium
-Water pipe burst in the ground floor washroom,Water,High
-Cleaning staff not coming to the corridor this morning,Cleanliness,Medium
-Cleaning staff not coming to block B since last night,Cleanliness,Medium
-Long queue at mess counter for 3 hours,Mess,Low
-Sweeping not done in the second floor for two days,Cleanliness,Low
-Insufficient quantity of food in mess since yesterday evening,Mess,Medium
-Garbage not collected in block A since last night,Cleanliness,Medium
-Sweeping not done in block A for 3 hours,Cleanliness,Low
-Water logging in room 204 for two days,Water,High
-No water in washroom of my room this morning,Water,High
-Power fluctuation in block A since last night,Electricity,Medium
-Sweeping not done in the common room for two days,Cleanliness,Low
-Power cut in room 204 for two days,Electricity,High
-Water logging in room 204 since last night,Water,High
-No hot water in common bathroom for 3 hours,Other,Medium
-Staircase light not working in room 101 since last night,Other,Medium
-The flush in the second floor is not working since last night,Water,Medium
-Study chair missing in room 204,Furniture,Low
-Request for extra blanket in room 204,Other,Low
-Heater not working in the second floor,Electricity,Medium
-UPS battery dead in block C,Electricity,Medium
-Bed mattress has bugs in the ground floor washroom,Furniture,High
-Internet down completely in room 204 for two days,Wi-Fi,High
-Pests in the ground floor washroom this morning,Cleanliness,High
-Unhygienic conditions in mess since the last two days,Mess,High
-Water supply has been cut off in block C since last night,Water,High
-Cleaning staff not coming to the common room for two days,Cleanliness,Medium
-Sweeping not done in block B for two days,Cleanliness,Low
-Water supply has been cut off in the second floor this morning,Water,High
-Chair in my room has a broken leg,Furniture,Low
-Almirah key missing for room in my room,Furniture,Medium
-Corridor in the ground floor washroom is very dirty for 3 hours,Cleanliness,Medium
-No soap or sanitizer in block C this morning,Cleanliness,Medium
-Washroom mirror broken in block B,Cleanliness,Low
-wifi nt working again in the ground floor washroom,Wi-Fi,Medium
-Generator not starting in room 204,Electricity,High
-Room door not closing properly in block C,Furniture,Medium
-MCB tripping repeatedly in the common room for 3 hours,Electricity,High
-Wifi has been down for two days in block C,Wi-Fi,High
-Sweeping not done in the common room since last night,Cleanliness,Low
-No soap or sanitizer in block A for 3 hours,Cleanliness,Medium
-Study chair missing in my room,Furniture,Low
-Slow upload speed in the corridor for 3 hours,Wi-Fi,Low
-Cleaning staff not coming to room 204 since last night,Cleanliness,Medium
-Lights not working in the corridor for 3 hours,Electricity,High
-Rats seen in my room for 3 hours,Cleanliness,High
-Network drops every few minutes in room 204,Wi-Fi,Medium
-No hot water in block A for 3 hours,Water,Medium
-Cleaning staff not coming to block A for 3 hours,Cleanliness,Medium
-No internet connectivity in the common room for 3 hours,Wi-Fi,Medium
-Sweeping not done in the ground floor washroom this morning,Cleanliness,Low
-Staircase light not working in the second floor for two days,Other,Medium
-No internet connectivity in room 204 since last night,Wi-Fi,Medium
-Wi-Fi is not working in room 204 for two days,Wi-Fi,Medium
-Almirah key missing for room in room 101,Furniture,Medium
-Bulb fused in the common room,Electricity,Low
-Sweeping not done in room 101 for 3 hours,Cleanliness,Low
-Cupboard hinge broken in room 101,Furniture,Low
-Water cooler near my room is not working,Water,Low
-Cockroaches found in mess food since last night,Mess,High
-Fan is not working in the second floor for two days,Electricity,Medium
-Tap is leaking in the ground floor washroom,Water,High
-Foul smell in the common room for two days,Cleanliness,Medium
-Window glass cracked in room 101,Furniture,Medium
-Power fluctuation in room 101 this morning,Electricity,Medium
-Fan is not working in room 204 for 3 hours,Electricity,Medium
-Fire extinguisher missing from block C,Other,High
-Window glass cracked in my room,Furniture,Medium
-Wardrobe door not closing in block A,Furniture,Low
-Mess food quality is very poor since Monday,Mess,Medium
-No water in room 204 this morning,Water,High
-No electricity in the second floor for two days,Electricity,High
-Toilet seat broken in the ground floor washroom,Cleanliness,Medium
-Common room lock broken in the second floor,Other,Medium
-No drinking water available near room 101 for two days,Water,High
-CCTV camera not working in the common room,Other,High
-No water in washroom of room 101 for two days,Water,High
-No drinking water available near the corridor for 3 hours,Water,High
-Cupboard hinge broken in block C,Furniture,Low
-Chair in the common room has a broken leg,Furniture,Low
-Power fluctuation in room 204 since last night,Electricity,Medium
-Drain pipe is blocked in block A,Water,Medium
-Router offline in room 101 this morning,Wi-Fi,Medium
-Foul smell in block C for two days,Cleanliness,Medium
-Cleaning staff not coming to my room since last night,Cleanliness,Medium
-Cannot connect to hostel wifi in the second floor this morning,Wi-Fi,Medium
-Staircase light not working in block B this morning,Other,Medium
-Street light outside my room not working,Electricity,Low
-Pests in my room this morning,Cleanliness,High
-Wi-Fi password not working in block B,Wi-Fi,Low
-Wi-Fi router needs restart in the corridor,Wi-Fi,Low
-Internet down completely in block A since last night,Wi-Fi,High
-No drinking water available near block A for two days,Water,High
-Power cut in the ground floor washroom this morning,Electricity,High
-No water in washroom of the second floor since last night,Water,High
-Power cut in the common room since last night,Electricity,High
-Network drops every few minutes in block B,Wi-Fi,Medium
-UPS battery dead in my room,Electricity,Medium
-Router offline in the common room since last night,Wi-Fi,Medium
-Food has bad smell in mess for 3 hours,Mess,High
-The flush in room 101 is not working since last night,Water,Medium
-No drinking water in mess this morning,Mess,High
-Security guard not present at gate since last night,Other,High
-Water supply has been cut off in block C for two days,Water,High
-Router offline in block B since last night,Wi-Fi,Medium
-Sewage smell coming from drain in room 204,Water,Medium
-Wifi has been down this morning in block C,Wi-Fi,High
-Electric shock from socket in the corridor,Electricity,High
-Power fluctuation in my room since last night,Electricity,Medium
-Mould on walls of room 101,Cleanliness,Medium
-Staircase light not working in block B since last night,Other,Medium
-CCTV camera not working in my room,Other,High
-Cannot connect to hostel wifi in block C since last night,Wi-Fi,Medium
-Mess workers behaving rudely for 3 hours,Mess,Medium
-Bed mattress has bugs in block C,Furniture,High
-Gym equipment broken near my room,Other,Medium
-Slow upload speed in block B for 3 hours,Wi-Fi,Low
-No soap or sanitizer in the ground floor washroom for two days,Cleanliness,Medium
-Garbage dumped outside room 204,Cleanliness,Medium
-Pests in block B since last night,Cleanliness,High
-Slow upload speed in my room for 3 hours,Wi-Fi,Low
-Washroom tiles very slippery in room 204,Cleanliness,High
-No drinking water available near the ground floor washroom this morning,Water,High
-No internet connectivity in room 204 for two days,Wi-Fi,Medium
-No hot water in common bathroom for two days,Other,Medium
-Water pressure is very low in block C,Water,Medium
-No soap or sanitizer in the corridor for two days,Cleanliness,Medium
-The flush in block C is not working for two days,Water,Medium
-Street light outside block B not working,Electricity,Low
-No soap or sanitizer in the second floor for two days,Cleanliness,Medium
-Unhygienic conditions in mess for two days,Mess,High
-Internet down completely in room 204 this morning,Wi-Fi,High
-Fire extinguisher missing from the common room,Other,High
-Pests in block C since last night,Cleanliness,High
-MCB tripping repeatedly in block C since last night,Electricity,High
-Please add a notice board near the ground floor washroom,Other,Low
-Wi-Fi signal too weak in the corridor,Wi-Fi,Low
-No soap or sanitizer in block C for 3 hours,Cleanliness,Medium
-Switchboard burnt in room 101,Electricity,High
-Garbage not collected in block B since last night,Cleanliness,Medium
-Study table wobbly in my room,Furniture,Low
-Garbage not collected in block C since last night,Cleanliness,Medium
-Cleaning staff not coming to room 101 for two days,Cleanliness,Medium
-Noise disturbance in the second floor for two days,Other,Medium
-The flush in the common room is not working this morning,Water,Medium
-Water supply has been cut off in the ground floor washroom for 3 hours,Water,High
-Slow upload speed in my room this morning,Wi-Fi,Low
-Lights not working in block C for 3 hours,Electricity,High
-Water pressure is very low in the common room,Water,Medium
-UPS battery dead in room 204,Electricity,Medium
-Water supply has been cut off in the corridor this morning,Water,High
-Window glass cracked in block C,Furniture,Medium
-Washroom tiles very slippery in block B,Cleanliness,High
-Water filter needs replacement in room 101,Water,Low
-Cannot connect to hostel wifi in room 204 since last night,Wi-Fi,Medium
-No water in washroom of my room for 3 hours,Water,High
-Food served in the mess for 3 hours was stale,Mess,Medium
-Washroom mirror broken in my room,Cleanliness,Low
-Sewage smell coming from drain in the ground floor washroom,Water,Medium
-Generator not starting in the ground floor washroom,Electricity,High
-Request for extra blanket in the corridor,Other,Low
-Noise disturbance in the common room this morning,Other,Medium
-Pests in my room for two days,Cleanliness,High
-Water supply has been cut off in room 204 for 3 hours,Water,High
-Power cut in the ground floor washroom since last night,Electricity,High
-Room door not closing properly in room 101,Furniture,Medium
-No drinking water available near block B for two days,Water,High
-First aid kit not available near my room,Other,High
-No water in washroom of block C for two days,Water,High
-Lift not working in block C for 3 hours,Other,High
-No internet connectivity in block B for 3 hours,Wi-Fi,Medium
-Pests in room 204 for 3 hours,Cleanliness,High
-Network drops every few minutes in the ground floor washroom,Wi-Fi,Medium
-Wi-Fi password not working in the common room,Wi-Fi,Low
-Stagnant water on floor of the corridor,Cleanliness,High
-Mess closed without notice for two days,Mess,High
-Sparks coming from the switch board in the common room,Electricity,High
-No breakfast served in mess since yesterday evening,Mess,High
-Water logging in block B for two days,Water,High
-Fire extinguisher missing from the second floor,Other,High
-Wi-Fi signal too weak in the ground floor washroom,Wi-Fi,Low
-Wifi has been down this morning in room 204,Wi-Fi,High
-Cockroaches found in mess food since yesterday evening,Mess,High
-No soap or sanitizer in the ground floor washroom this morning,Cleanliness,Medium
-Bathroom drain blocked in block B,Cleanliness,Medium
-Pests in block A for 3 hours,Cleanliness,High
-Wi-Fi is not working in room 204 this morning,Wi-Fi,Medium
-Lights not working in my room for 3 hours,Electricity,High
-Foul smell in the corridor for 3 hours,Cleanliness,Medium
-No internet connectivity in the corridor for two days,Wi-Fi,Medium
-Water logging in the common room for 3 hours,Water,High
-Mess workers behaving rudely for a week,Mess,Medium
-Sweeping not done in the second floor this morning,Cleanliness,Low
-Foul smell in the common room for 3 hours,Cleanliness,Medium
-Toilet seat broken in block A,Cleanliness,Medium
-Washroom mirror broken in the corridor,Cleanliness,Low
-Wi-Fi is not working in the corridor for two days,Wi-Fi,Medium
-Almirah key missing for room in the second floor,Furniture,Medium
-Power fluctuation in the second floor for 3 hours,Electricity,Medium
-Water supply has been cut off in block A for two days,Water,High
-Lost and found box needed near the ground floor washroom,Other,Low
-Broken stool in block A,Furniture,Low
-Sewage smell coming from drain in block B,Water,Medium
-Water supply has been cut off in the common room this morning,Water,High
-Tube light in room 204 needs replacing,Electricity,Low
-Water supply has been cut off in room 101 for 3 hours,Water,High
-Water supply has been cut off in the corridor for 3 hours,Water,High
-No internet connectivity in block C for two days,Wi-Fi,Medium
-Water supply has been cut off in room 204 since last night,Water,High
-Fan is not working in room 101 for 3 hours,Electricity,Medium
-Water pressure is very low in the corridor,Water,Medium
-Mess menu is not being followed since last night,Mess,Low
-No hot water in common bathroom since last night,Other,Medium
-Power fluctuation in room 101 since last night,Electricity,Medium
-Staircase light not working in block A for 3 hours,Other,Medium
-Lift not working in block A for two days,Other,High
-Water supply has been cut off in the common room for two days,Water,High
-No internet connectivity in the common room for two days,Wi-Fi,Medium
-Foul smell in my room this morning,Cleanliness,Medium
-Cockroaches found in mess food since Monday,Mess,High
-Cleaning staff not coming to block B for two days,Cleanliness,Medium
-Corridor in the common room is very dirty for two days,Cleanliness,Medium
-Food is undercooked in the mess this morning,Mess,Medium
-Internet down completely in the ground floor washroom since last night,Wi-Fi,High
-Mess utensils are dirty for a week,Mess,Medium
-Water pipe burst in block A,Water,High
-Power fluctuation in block B since last night,Electricity,Medium
-No drinking water in mess since the last two days,Mess,High
-MCB tripping repeatedly in room 204 for 3 hours,Electricity,High
-Tube light in block A needs replacing,Electricity,Low
-Food is undercooked in the mess since yesterday evening,Mess,Medium
-Toilet seat broken in the common room,Cleanliness,Medium
-Rats seen in block C this morning,Cleanliness,High
-wifi nt working again in block A,Wi-Fi,Medium
-Street light outside the ground floor washroom not working,Electricity,Low
-Wi-Fi is not working in block B for 3 hours,Wi-Fi,Medium
-Curtain rod fallen in the corridor,Furniture,Low
-No drinking water in mess for a week,Mess,High
-Power fluctuation in the common room for 3 hours,Electricity,Medium
-Room door not closing properly in the ground floor washroom,Furniture,Medium
-Stagnant water on floor of block A,Cleanliness,High
-Water supply has been cut off in block B for 3 hours,Water,High
-MCB tripping repeatedly in the corridor for two days,Electricity,High
-Need iron stand in block C,Other,Low
-Slow upload speed in the common room for 3 hours,Wi-Fi,Low
-No soap or sanitizer in the common room for 3 hours,Cleanliness,Medium
-MCB tripping repeatedly in the second floor for 3 hours,Electricity,High
-Washroom in my room is very dirty,Cleanliness,Medium
-Wi-Fi is not working in block B since last night,Wi-Fi,Medium
-Wardrobe door not closing in room 101,Furniture,Low
-Noise disturbance in my room this morning,Other,Medium
-No parking space available near room 204,Other,Low
-No wifi coverage in the corridor,Wi-Fi,Medium
-No water in block C for 3 hours,Water,High
-Fan is not working in my room for 3 hours,Electricity,Medium
-Sweeping not done in room 204 for 3 hours,Cleanliness,Low
-Lights not working in room 101 for two days,Electricity,High
-Food has bad smell in mess since yesterday evening,Mess,High
-Wifi has been down for two days in room 101,Wi-Fi,High
-Washroom tiles very slippery in the ground floor washroom,Cleanliness,High
-Lights not working in the second floor for 3 hours,Electricity,High
-No breakfast served in mess since Monday,Mess,High
-Sweeping not done in the corridor this morning,Cleanliness,Low
-Bed mattress has bugs in my room,Furniture,High
-Lights not working in the corridor for two days,Electricity,High
-Water filter needs replacement in block A,Water,Low
-Foul smell in the corridor for two days,Cleanliness,Medium
-No parking space available near block B,Other,Low
-Water supply has been cut off in block B for two days,Water,High
-Door lock not working in block C,Furniture,High
-Internet down completely in room 101 for 3 hours,Wi-Fi,High
-Chair in room 204 has a broken leg,Furniture,Low
-Corridor in block B is very dirty for 3 hours,Cleanliness,Medium
-Water cooler near the second floor is not working,Water,Low
-Washroom in the common room is very dirty,Cleanliness,Medium
-Bookshelf collapsed in room 204,Furniture,Medium
-Table in the common room is damaged,Furniture,Low
-No water in washroom of block A for two days,Water,High
-Mess food has insects since last night,Mess,High
-The flush in block A is not working for 3 hours,Water,Medium
-No water in washroom of the common room since last night,Water,High
-Garbage not collected in the ground floor washroom since last night,Cleanliness,Medium
-No internet connectivity in block A for two days,Wi-Fi,Medium
-Staircase light not working in the common room this morning,Other,Medium
-No hot water in block A this morning,Water,Medium
-Washroom tap dripping constantly in room 101,Water,Medium
-Noise disturbance in block C since last night,Other,Medium
-Network drops every few minutes in the corridor,Wi-Fi,Medium
-Food is undercooked in the mess for two days,Mess,Medium
-Door lock not working in my room,Furniture,High
-Sweeping not done in the second floor since last night,Cleanliness,Low
-Window latch broken in my room,Furniture,Medium
-No electricity in block A since last night,Electricity,High
-Rats seen in the ground floor washroom since last night,Cleanliness,High
-Internet down completely in the second floor this morning,Wi-Fi,High
-Water cooler is leaking in room 101,Water,Medium
-Garbage not collected in the common room for 3 hours,Cleanliness,Medium
-Bulb fused in block A,Electricity,Low
-Table in the second floor is damaged,Furniture,Low
-Sweeping not done in the corridor for 3 hours,Cleanliness,Low
-Wi-Fi signal too weak in room 101,Wi-Fi,Low
-Mess menu is not being followed since Monday,Mess,Low
-Power fluctuation in my room this morning,Electricity,Medium
-No hot water in my room this morning,Water,Medium
-The flush in room 204 is not working for two days,Water,Medium
-No water in washroom of room 204 for 3 hours,Water,High
-Water cooler near block B is not working,Water,Low
-No water in the ground floor washroom for two days,Water,High
-Corridor in the corridor is very dirty for 3 hours,Cleanliness,Medium
-Cannot connect to hostel wifi in block A this morning,Wi-Fi,Medium
-Corridor in the ground floor washroom is very dirty this morning,Cleanliness,Medium
-Fire extinguisher missing from room 204,Other,High
-Pests in block C for two days,Cleanliness,High
-Staircase light not working in my room this morning,Other,Medium
-Please add a notice board near the second floor,Other,Low
-No hot water in the second floor for 3 hours,Water,Medium
-No internet connectivity in the ground floor washroom this morning,Wi-Fi,Medium
-Water logging in block A this morning,Water,High
-Internet down completely in my room this morning,Wi-Fi,High
-Water supply has been cut off in block A this morning,Water,High
-No wifi coverage in block C,Wi-Fi,Medium
-Wifi has been down this morning in my room,Wi-Fi,High
-Wifi has been down this morning in the corridor,Wi-Fi,High
-Water filter needs replacement in the corridor,Water,Low
-Corridor in the ground floor washroom is very dirty since last night,Cleanliness,Medium
-Wifi has been down for two days in block B,Wi-Fi,High
-The flush in block A is not working for two days,Water,Medium
-Litter everywhere in block B,Cleanliness,Low
-Pests in block B this morning,Cleanliness,High
-Pests in the ground floor washroom for two days,Cleanliness,High
-MCB tripping repeatedly in room 101 for two days,Electricity,High
-Garbage not collected in the second floor for two days,Cleanliness,Medium
-No water in room 101 for two days,Water,High
-Water logging in block B this morning,Water,High
-Power cut in the corridor for 3 hours,Electricity,High
-No electricity in the ground floor washroom since last night,Electricity,High
-WiFi disconnects at night in the corridor,Wi-Fi,Medium
-The overhead tank in block B is overflowing,Water,High
-Corridor in room 204 is very dirty for two days,Cleanliness,Medium
-Power cut in room 101 this morning,Electricity,High
-Room door not closing properly in my room,Furniture,Medium
-Broken stool in the second floor,Furniture,Low
-Power cut in the common room for 3 hours,Electricity,High
-Garbage not collected in block A for 3 hours,Cleanliness,Medium
-MCB tripping repeatedly in the ground floor washroom for 3 hours,Electricity,High
-Rats seen in the common room for two days,Cleanliness,High
-Stagnant water on floor of block B,Cleanliness,High
-Fan is not working in the second floor this morning,Electricity,Medium
-Mess utensils are dirty since Monday,Mess,Medium
-No parking space available near room 101,Other,Low
-AC unit not cooling in block A,Electricity,Medium
-Wi-Fi signal too weak in block C,Wi-Fi,Low
-Cannot connect to hostel wifi in room 101 this morning,Wi-Fi,Medium
-Lift not working in room 204 this morning,Other,High
-Almirah key missing for room in the corridor,Furniture,Medium
-Water logging in block C for 3 hours,Water,High
-No water in the common room this morning,Water,High
-Tap is leaking in the corridor,Water,High
-Fire extinguisher missing from the corridor,Other,High
-Lift not working in the second floor for 3 hours,Other,High
-Mattress is torn in block A,Furniture,Low
-Extension board damaged in my room,Electricity,Medium
-Slow upload speed in room 204 for 3 hours,Wi-Fi,Low
-MCB tripping repeatedly in the corridor for 3 hours,Electricity,High
-Fan is not working in the corridor for two days,Electricity,Medium
-Generator not starting in block A,Electricity,High
-No parking space available near the corridor,Other,Low
-Lift not working in the ground floor washroom for two days,Other,High
-Water pipe burst in the corridor,Water,High
-Pests in my room for 3 hours,Cleanliness,High
-Need iron stand in block B,Other,Low
-Power fluctuation in the second floor this morning,Electricity,Medium
-Garbage not collected in room 204 this morning,Cleanliness,Medium
-Mess menu is not being followed for a week,Mess,Low
-Fan is not working in room 101 since last night,Electricity,Medium
-Lift not working in block A this morning,Other,High
-Foul smell in the common room since last night,Cleanliness,Medium
-Room door not closing properly in block B,Furniture,Medium
-Door lock not working in the second floor,Furniture,High
-Garbage not collected in room 204 since last night,Cleanliness,Medium
-Corridor in the common room is very dirty for 3 hours,Cleanliness,Medium
-No drinking water in mess for two days,Mess,High
-Unhygienic conditions in mess for a week,Mess,High
-Wi-Fi is not working in room 204 for 3 hours,Wi-Fi,Medium
-First aid kit not available near room 204,Other,High
-Lift not working in room 204 since last night,Other,High
-Mess utensils are dirty since yesterday evening,Mess,Medium
-No hot water in my room since last night,Water,Medium
-Sweeping not done in the corridor since last night,Cleanliness,Low
-Security guard not present at gate for 3 hours,Other,High
-Common room TV not working since yesterday evening,Other,Low
-Power cut in the second floor this morning,Electricity,High
-Staircase light not working in room 204 this morning,Other,Medium
-wifi nt working again in block B,Wi-Fi,Medium
-Please add a notice board near the corridor,Other,Low
-Garbage not collected in room 101 since last night,Cleanliness,Medium
-Bathroom drain blocked in the common room,Cleanliness,Medium
-Bed mattress has bugs in block A,Furniture,High
-Noise disturbance in block A for 3 hours,Other,Medium
-Water cooler is leaking in block B,Water,Medium
-Wi-Fi is not working in the ground floor washroom this morning,Wi-Fi,Medium
-No hot water in room 101 this morning,Water,Medium
-Water supply has been cut off in my room for two days,Water,High
-Fan is not working in block C for two days,Electricity,Medium
-Cupboard hinge broken in the ground floor washroom,Furniture,Low
-Lift not working in block C since last night,Other,High
-Food served in the mess for a week was stale,Mess,Medium
-Almirah key missing for room in block A,Furniture,Medium
-Lift not working in room 204 for two days,Other,High
-The flush in the ground floor washroom is not working for 3 hours,Water,Medium
-Drain pipe is blocked in room 101,Water,Medium
-Slow upload speed in block A since last night,Wi-Fi,Low
-Lights not working in the second floor for two days,Electricity,High
-Bike parking area messy near the common room,Other,Low
-Water filter needs replacement in my room,Water,Low
-AC unit not cooling in room 204,Electricity,Medium
-No hot water in the corridor for two days,Water,Medium
-Mess utensils are dirty since the last two days,Mess,Medium
-CCTV camera not working in block A,Other,High
-Mattress is torn in my room,Furniture,Low
-Lift not working in room 101 since last night,Other,High
-No water in washroom of block B since last night,Water,High
-Wi-Fi speed is very slow in the ground floor washroom,Wi-Fi,Low
-Sweeping not done in block C for 3 hours,Cleanliness,Low
-No hot water in the corridor since last night,Water,Medium
-UPS battery dead in the common room,Electricity,Medium
-Water filter needs replacement in the second floor,Water,Low
-WiFi disconnects at night in room 101,Wi-Fi,Medium
-No water in room 101 this morning,Water,High
-Corridor in the ground floor washroom is very dirty for two days,Cleanliness,Medium
-Toilet seat broken in the second floor,Cleanliness,Medium
-Corridor in room 101 is very dirty for two days,Cleanliness,Medium
-Extension board damaged in block B,Electricity,Medium
-Staircase light not working in room 204 since last night,Other,Medium
-Water supply has been cut off in the common room for 3 hours,Water,High
-Common room lock broken in room 204,Other,Medium
-Foul smell in the ground floor washroom for 3 hours,Cleanliness,Medium
-Cleaning staff not coming to my room for two days,Cleanliness,Medium
-WiFi disconnects at night in block C,Wi-Fi,Medium
-Slow upload speed in block A this morning,Wi-Fi,Low
-Heater not working in room 101,Electricity,Medium
-Wi-Fi is not working in the ground floor washroom for 3 hours,Wi-Fi,Medium
-Drawer stuck in the second floor,Furniture,Low
-Wi-Fi router needs restart in the common room,Wi-Fi,Low
-Rats seen in room 101 for two days,Cleanliness,High
-No drinking water available near the second floor this morning,Water,High
-Generator not starting in block B,Electricity,High
-Bike parking area messy near room 204,Other,Low
-Common room TV not working for two days,Other,Low
-Almirah key missing for room in the ground floor washroom,Furniture,Medium
-No electricity in room 204 for 3 hours,Electricity,High
-Cannot attend online classes due to no wifi in room 204,Wi-Fi,High
-Lift not working in the corridor this morning,Other,High
-Router offline in the ground floor washroom for 3 hours,Wi-Fi,Medium
-Water logging in the second floor for two days,Water,High
-No vegetables served in mess since the last two days,Mess,Medium
-Wi-Fi is not working in the second floor for two days,Wi-Fi,Medium
-No electricity in room 204 this morning,Electricity,High
-Study table wobbly in room 204,Furniture,Low
-Router offline in my room for 3 hours,Wi-Fi,Medium
-Pests in block C for 3 hours,Cleanliness,High
-Chair in block A has a broken leg,Furniture,Low
-Lift not working in the common room this morning,Other,High
-No water in room 204 since last night,Water,High
-Water logging in block A for two days,Water,High
-Noise disturbance in block A since last night,Other,Medium
-Ceiling fan wobbling dangerously in my room,Electricity,High
-No water in the ground floor washroom this morning,Water,High
-Wi-Fi speed is very slow in block C,Wi-Fi,Low
-Foul smell in the corridor this morning,Cleanliness,Medium
-Rats seen in the second floor since last night,Cleanliness,High
-Power fluctuation in block C since last night,Electricity,Medium
-Wi-Fi password not working in the second floor,Wi-Fi,Low
-Router offline in the corridor for 3 hours,Wi-Fi,Medium
-Router offline in the second floor this morning,Wi-Fi,Medium
-No vegetables served in mess since Monday,Mess,Medium
-Mess is closed earlier than scheduled for a week,Mess,High
-Staircase light not working in block A this morning,Other,Medium
-Power cut in block A for 3 hours,Electricity,High
-Cockroaches found in mess food this morning,Mess,High
-Water logging in block C for two days,Water,High
-Request for extra blanket in the ground floor washroom,Other,Low
-The flush in my room is not working since last night,Water,Medium
-MCB tripping repeatedly in my room since last night,Electricity,High
-Insufficient quantity of food in mess since Monday,Mess,Medium
-Sweeping not done in the second floor for 3 hours,Cleanliness,Low
-Network drops every few minutes in block A,Wi-Fi,Medium
-WiFi disconnects at night in the common room,Wi-Fi,Medium
-Common room lock broken in my room,Other,Medium
-Fan is not working in block A this morning,Electricity,Medium
-Wi-Fi login page not loading in the common room,Wi-Fi,Medium
-Lift not working in block B for two days,Other,High
-Lift not working in the common room since last night,Other,High
-MCB tripping repeatedly in block A for 3 hours,Electricity,High
-Noise disturbance in room 204 since last night,Other,Medium
-Fan is not working in the corridor this morning,Electricity,Medium
-No internet connectivity in the ground floor washroom for 3 hours,Wi-Fi,Medium
-No water in room 204 for two days,Water,High
-Network cable unplugged in room 101,Wi-Fi,Low
-Corridor in room 204 is very dirty since last night,Cleanliness,Medium
-Fan is not working in the ground floor washroom since last night,Electricity,Medium
-Cleaning staff not coming to room 101 for 3 hours,Cleanliness,Medium
-Staircase light not working in the common room for two days,Other,Medium
-Long queue at mess counter for a week,Mess,Low
-Wi-Fi login page not loading in the second floor,Wi-Fi,Medium
-Suggestion: add water cooler near block C,Other,Low
-Door lock not working in the corridor,Furniture,High
-Broken stool in the common room,Furniture,Low
-The flush in block B is not working this morning,Water,Medium
-MCB tripping repeatedly in room 204 for two days,Electricity,High
-No electricity in the corridor since last night,Electricity,High
-Unhygienic conditions in mess since yesterday evening,Mess,High
-No electricity in the second floor this morning,Electricity,High
-Water supply has been cut off in the ground floor washroom since last night,Water,High
-Washroom tap dripping constantly in the common room,Water,Medium
-Mess is closed earlier than scheduled since last night,Mess,High
-No drinking water available near block B since last night,Water,High
-Router offline in room 204 for 3 hours,Wi-Fi,Medium
-Garbage not collected in the second floor for 3 hours,Cleanliness,Medium
-No wifi coverage in the second floor,Wi-Fi,Medium
-Power cut in block C for 3 hours,Electricity,High
-Pests in the ground floor washroom for 3 hours,Cleanliness,High
-The flush in room 204 is not working this morning,Water,Medium
-Drawer stuck in my room,Furniture,Low
-Tube light in block B needs replacing,Electricity,Low
-Gym equipment broken near room 101,Other,Medium
-Mess utensils are dirty this morning,Mess,Medium
-Water logging in the ground floor washroom since last night,Water,High
-Water cooler near block C is not working,Water,Low
-No internet connectivity in the second floor for 3 hours,Wi-Fi,Medium
-Toilet seat broken in block B,Cleanliness,Medium
-Tap is leaking in block C,Water,High
-No water in block C for two days,Water,High
-Water logging in the corridor this morning,Water,High
-MCB tripping repeatedly in the ground floor washroom since last night,Electricity,High
-Washroom tap dripping constantly in block A,Water,Medium
-Fan is not working in block B since last night,Electricity,Medium
-Internet down completely in the common room since last night,Wi-Fi,High
-Internet down completely in room 101 this morning,Wi-Fi,High
-Mess workers behaving rudely this morning,Mess,Medium
-No electricity in the common room this morning,Electricity,High
-Wi-Fi is not working in block C since last night,Wi-Fi,Medium
-The overhead tank in block A is overflowing,Water,High
-Tube light in my room needs replacing,Electricity,Low
-Water supply has been cut off in room 101 since last night,Water,High
-Noise disturbance in the second floor since last night,Other,Medium
-Slow upload speed in the second floor for 3 hours,Wi-Fi,Low
-Water logging in the second floor this morning,Water,High
-Need iron stand in room 101,Other,Low
-Long queue at mess counter this morning,Mess,Low
-Pests in room 101 for two days,Cleanliness,High
-Water supply has been cut off in room 204 this morning,Water,High
-No electricity in the ground floor washroom this morning,Electricity,High
-No water in the common room since last night,Water,High
-Mess workers behaving rudely since last night,Mess,Medium
-Pests in block B for two days,Cleanliness,High
-Garbage dumped outside the ground floor washroom,Cleanliness,Medium
-Wi-Fi is not working in the corridor for 3 hours,Wi-Fi,Medium
-Wi-Fi password not working in room 101,Wi-Fi,Low
-Heater not working in the ground floor washroom,Electricity,Medium
-No electricity in block C for 3 hours,Electricity,High
-Slow upload speed in the ground floor washroom for two days,Wi-Fi,Low
-Pests in room 204 for two days,Cleanliness,High
-Noise disturbance in room 204 for two days,Other,Medium
-Cannot connect to hostel wifi in my room for 3 hours,Wi-Fi,Medium
-MCB tripping repeatedly in block A since last night,Electricity,High
-Slow upload speed in the second floor this morning,Wi-Fi,Low
-No water in washroom of block B this morning,Water,High
-Cannot connect to hostel wifi in the second floor since last night,Wi-Fi,Medium
-Wardrobe door not closing in the common room,Furniture,Low
-No breakfast served in mess since last night,Mess,High
-Lift not working in block A for 3 hours,Other,High
-MCB tripping repeatedly in my room for 3 hours,Electricity,High
-Drawer stuck in room 101,Furniture,Low
-No water in washroom of my room since last night,Water,High
-Wardrobe door not closing in the ground floor washroom,Furniture,Low
-No internet connectivity in block A since last night,Wi-Fi,Medium
-Sweeping not done in my room this morning,Cleanliness,Low
-Water supply has been cut off in my room since last night,Water,High
-Sweeping not done in the ground floor washroom since last night,Cleanliness,Low
-Stagnant water on floor of my room,Cleanliness,High
-Garbage not collected in block B this morning,Cleanliness,Medium
-Suggestion: add water cooler near the second floor,Other,Low
-No hot water in the common room for two days,Water,Medium
-Food has bad smell in mess this morning,Mess,High
-No water in the second floor for 3 hours,Water,High
-Fan is not working in my room for two days,Electricity,Medium
-Rats seen in the ground floor washroom for 3 hours,Cleanliness,High
-Lights not working in the common room this morning,Electricity,High
-Router offline in block A since last night,Wi-Fi,Medium
-Fan is not working in block A since last night,Electricity,Medium
-Cannot connect to hostel wifi in block B for two days,Wi-Fi,Medium
-Gym equipment broken near block C,Other,Medium
-Security guard not present at gate since the last two days,Other,High
-Router offline in block C for 3 hours,Wi-Fi,Medium
-Wifi has been down this morning in room 101,Wi-Fi,High
-Bulb fused in my room,Electricity,Low
-Lift not working in the ground floor washroom this morning,Other,High
-No hot water in my room for 3 hours,Water,Medium
-No water in the common room for two days,Water,High
-Noise disturbance in block B this morning,Other,Medium
-Garbage not collected in block C for 3 hours,Cleanliness,Medium
-Extension board damaged in block C,Electricity,Medium
-Wi-Fi speed is very slow in block A,Wi-Fi,Low
-No internet connectivity in room 204 for 3 hours,Wi-Fi,Medium
-Ceiling fan wobbling dangerously in the common room,Electricity,High
-Bathroom drain blocked in room 204,Cleanliness,Medium
-Slow upload speed in block A for two days,Wi-Fi,Low
-No internet connectivity in block C this morning,Wi-Fi,Medium
-Slow upload speed in block B since last night,Wi-Fi,Low
-MCB tripping repeatedly in room 101 since last night,Electricity,High
-Drawer stuck in room 204,Furniture,Low
-Wi-Fi is not working in the second floor since last night,Wi-Fi,Medium
-Sweeping not done in room 101 for two days,Cleanliness,Low
-Tap is leaking in my room,Water,High
-Power cut in block C this morning,Electricity,High
-wifi nt working again in my room,Wi-Fi,Medium
-Cannot connect to hostel wifi in my room since last night,Wi-Fi,Medium
-Water cooler is leaking in the common room,Water,Medium
-Door lock not working in block B,Furniture,High
-Litter everywhere in the corridor,Cleanliness,Low
-Pests in the ground floor washroom since last night,Cleanliness,High
-Staircase light not working in the common room since last night,Other,Medium
-Please add a notice board near block B,Other,Low
-First aid kit not available near block C,Other,High
-Network cable unplugged in the ground floor washroom,Wi-Fi,Low
-Internet down completely in the corridor for two days,Wi-Fi,High
-Bathroom drain blocked in the corridor,Cleanliness,Medium
-Sewage smell coming from drain in the corridor,Water,Medium
-Sweeping not done in my room for two days,Cleanliness,Low
-CCTV camera not working in room 204,Other,High
-No wifi coverage in room 101,Wi-Fi,Medium
-Window glass cracked in block B,Furniture,Medium
-No water in washroom of the ground floor washroom for 3 hours,Water,High
-Electric shock from socket in the ground floor washroom,Electricity,High
-Lost and found box needed near room 204,Other,Low
-Fan is not working in block B for 3 hours,Electricity,Medium
-Water pressure is very low in room 204,Water,Medium
-Cannot connect to hostel wifi in the corridor this morning,Wi-Fi,Medium
-Noise disturbance in the ground floor washroom since last night,Other,Medium
-Common room lock broken in the corridor,Other,Medium
-Power fluctuation in room 101 for two days,Electricity,Medium
-First aid kit not available near room 101,Other,High
-Wi-Fi router needs restart in block C,Wi-Fi,Low
-No soap or sanitizer in the corridor for 3 hours,Cleanliness,Medium
-Lift not working in my room since last night,Other,High
-Staircase light not working in the common room for 3 hours,Other,Medium
-Food served in the mess since the last two days was stale,Mess,Medium
-Switchboard burnt in block C,Electricity,High
-Request for extra blanket in block A,Other,Low
-Rats seen in my room this morning,Cleanliness,High
-Toilet seat broken in my room,Cleanliness,Medium
-Study table wobbly in room 101,Furniture,Low
-The flush in the common room is not working for 3 hours,Water,Medium
-Power cut in block A since last night,Electricity,High
-Wi-Fi is not working in room 101 for 3 hours,Wi-Fi,Medium
-Water logging in my room since last night,Water,High
-Internet down completely in block B for two days,Wi-Fi,High
-Washroom in block A is very dirty,Cleanliness,Medium
-Internet down completely in the common room for two days,Wi-Fi,High
-Router offline in my room this morning,Wi-Fi,Medium
-Wi-Fi router needs restart in block A,Wi-Fi,Low
-AC unit not cooling in the common room,Electricity,Medium
-Power fluctuation in the common room for two days,Electricity,Medium
-Slow upload speed in room 101 for two days,Wi-Fi,Low
-Water logging in room 101 for 3 hours,Water,High
-The flush in block A is not working since last night,Water,Medium
-Dustbin overflowing in the ground floor washroom,Cleanliness,Medium
-Water cooler is leaking in room 204,Water,Medium
-Mess food quality is very poor this morning,Mess,Medium
-Mess food has insects for two days,Mess,High
-No internet connectivity in room 101 for 3 hours,Wi-Fi,Medium
-Noise disturbance in block A for two days,Other,Medium
-Staircase light not working in room 101 for two days,Other,Medium
-Tap handle broken in my room,Water,Low
-Lift not working in room 204 for 3 hours,Other,High
-Corridor in the second floor is very dirty for 3 hours,Cleanliness,Medium
-Stagnant water on floor of room 101,Cleanliness,High
-Sweeping not done in the corridor for two days,Cleanliness,Low
-Bed frame broken in room 101,Furniture,Medium
-Power fluctuation in block C for two days,Electricity,Medium
-Bookshelf collapsed in the second floor,Furniture,Medium
-Litter everywhere in the common room,Cleanliness,Low
-Garbage dumped outside the common room,Cleanliness,Medium
-Garbage not collected in the common room this morning,Cleanliness,Medium
-Rats seen in the ground floor washroom for two days,Cleanliness,High
-No wifi coverage in block A,Wi-Fi,Medium
-UPS battery dead in block A,Electricity,Medium
-Slow upload speed in block C for 3 hours,Wi-Fi,Low
-Sewage smell coming from drain in my room,Water,Medium
-No drinking water in mess for 3 hours,Mess,High
-Wi-Fi speed is very slow in the corridor,Wi-Fi,Low
-Internet down completely in my room since last night,Wi-Fi,High
-No water in block A this morning,Water,High
-Slow upload speed in the ground floor washroom for 3 hours,Wi-Fi,Low
-No internet connectivity in the corridor for 3 hours,Wi-Fi,Medium
-Water cooler is leaking in block C,Water,Medium
-Extension board damaged in room 204,Electricity,Medium
-Cleaning staff not coming to block B this morning,Cleanliness,Medium
-No electricity in room 101 this morning,Electricity,High
-No drinking water available near block A since last night,Water,High
-Mould on walls of room 204,Cleanliness,Medium
-Water supply has been cut off in the second floor for 3 hours,Water,High
-Pests in room 204 this morning,Cleanliness,High
-Food served in the mess since last night was stale,Mess,Medium
-WiFi disconnects at night in my room,Wi-Fi,Medium
-Noise disturbance in room 204 this morning,Other,Medium
-Ceiling fan wobbling dangerously in the ground floor washroom,Electricity,High
-Tap handle broken in the common room,Water,Low
-No drinking water available near room 101 this morning,Water,High
-Generator not starting in block C,Electricity,High
-Street light outside room 204 not working,Electricity,Low
-Toilet seat broken in block C,Cleanliness,Medium
-MCB tripping repeatedly in the ground floor washroom this morning,Electricity,High
-Stagnant water on floor of room 204,Cleanliness,High
-No drinking water available near block B this morning,Water,High
-Garbage not collected in room 101 for 3 hours,Cleanliness,Medium
-Bike parking area messy near block A,Other,Low
-Water filter needs replacement in block B,Water,Low
-Study chair missing in block C,Furniture,Low
-No soap or sanitizer in block C for two days,Cleanliness,Medium
-Slow upload speed in room 101 since last night,Wi-Fi,Low
-Staircase light not working in block C for 3 hours,Other,Medium
-No water in washroom of block C since last night,Water,High
-Foul smell in the ground floor washroom for two days,Cleanliness,Medium
-AC unit not cooling in block B,Electricity,Medium
-Tap is leaking in room 204,Water,High
-No parking space available near the common room,Other,Low
-Staircase light not working in the second floor this morning,Other,Medium
-Garbage not collected in the common room for two days,Cleanliness,Medium
-Lights not working in the second floor since last night,Electricity,High
-Washroom in the ground floor washroom is very dirty,Cleanliness,Medium
-Cannot connect to hostel wifi in the corridor since last night,Wi-Fi,Medium
-Lift not working in the corridor since last night,Other,High
-Fire extinguisher missing from block B,Other,High
-Cannot connect to hostel wifi in the common room since last night,Wi-Fi,Medium
-WiFi disconnects at night in block B,Wi-Fi,Medium
-Need iron stand in the second floor,Other,Low
-No wifi coverage in my room,Wi-Fi,Medium
-Chair in the ground floor washroom has a broken leg,Furniture,Low
-Noise disturbance in the ground floor washroom for two days,Other,Medium
-Mess is closed earlier than scheduled for two days,Mess,High
-Internet down completely in block C for two days,Wi-Fi,High
-The flush in the second floor is not working this morning,Water,Medium
-Need iron stand in room 204,Other,Low
-Power fluctuation in block C for 3 hours,Electricity,Medium
-Lift not working in the second floor since last night,Other,High
-No water in washroom of room 204 for two days,Water,High
-Gym equipment broken near the common room,Other,Medium
-No hot water in the common room since last night,Water,Medium
-Water logging in room 204 for 3 hours,Water,High
-Switchboard burnt in my room,Electricity,High
-No soap or sanitizer in the second floor for 3 hours,Cleanliness,Medium
-Rats seen in room 101 since last night,Cleanliness,High
-Wifi has been down for two days in the corridor,Wi-Fi,High
-Water cooler is leaking in the ground floor washroom,Water,Medium
-Mould on walls of the corridor,Cleanliness,Medium
-Power cut in the second floor for 3 hours,Electricity,High
-Foul smell in room 204 this morning,Cleanliness,Medium
-Fan is not working in block C since last night,Electricity,Medium
-No parking space available near the second floor,Other,Low
-Request for extra blanket in block B,Other,Low
-Garbage not collected in block C this morning,Cleanliness,Medium
-Power fluctuation in block C this morning,Electricity,Medium
-Fan is not working in the corridor since last night,Electricity,Medium
-Water supply has been cut off in block B this morning,Water,High
-Power fluctuation in the common room since last night,Electricity,Medium
-Internet down completely in room 101 since last night,Wi-Fi,High
-No vegetables served in mess since last night,Mess,Medium
-Mould on walls of block B,Cleanliness,Medium
-No water in block B for two days,Water,High
-Tap handle broken in block A,Water,Low
-Water pressure is very low in the second floor,Water,Medium
-Cannot attend online classes due to no wifi in block A,Wi-Fi,High
-No water in washroom of the corridor for two days,Water,High
-Electric shock from socket in block B,Electricity,High
-Tap handle broken in block B,Water,Low
-Drain pipe is blocked in the corridor,Water,Medium
-Table in block B is damaged,Furniture,Low
-Sparks coming from the switch board in room 204,Electricity,High
-Power cut in room 101 for 3 hours,Electricity,High
-No drinking water available near the ground floor washroom for 3 hours,Water,High
-No hot water in the second floor for two days,Water,Medium
-Bathroom drain blocked in block C,Cleanliness,Medium
-Cannot connect to hostel wifi in my room this morning,Wi-Fi,Medium
+Cannot attend online exam due to wifi failure in room 305,Wi-Fi,High
+Rats and pests infesting room 204 for 3 hours,Cleanliness,High
+Dead pest found in corridor near room 101,Cleanliness,High
 Bulb fused in room 101,Electricity,Low
-Sweeping not done in the common room for 3 hours,Cleanliness,Low
-Wi-Fi signal too weak in room 204,Wi-Fi,Low
-Rats seen in room 204 this morning,Cleanliness,High
-No parking space available near the ground floor washroom,Other,Low
-Fan is not working in the second floor since last night,Electricity,Medium
-Wi-Fi router needs restart in room 204,Wi-Fi,Low
-Food served in the mess this morning was stale,Mess,Medium
-The flush in block A is not working this morning,Water,Medium
-Washroom mirror broken in block A,Cleanliness,Low
-Washroom tap dripping constantly in my room,Water,Medium
-Cleaning staff not coming to the ground floor washroom for two days,Cleanliness,Medium
-Mess food quality is very poor since yesterday evening,Mess,Medium
-No soap or sanitizer in my room for 3 hours,Cleanliness,Medium
-Water logging in block C this morning,Water,High
-The overhead tank in the common room is overflowing,Water,High
-Water pressure is very low in block B,Water,Medium
-Router offline in the common room for two days,Wi-Fi,Medium
-No internet connectivity in the ground floor washroom since last night,Wi-Fi,Medium
-No hot water in the ground floor washroom for 3 hours,Water,Medium
-Water cooler is leaking in the second floor,Water,Medium
-Router offline in room 204 since last night,Wi-Fi,Medium
-Lights not working in my room for two days,Electricity,High
-The overhead tank in the ground floor washroom is overflowing,Water,High
-Water filter needs replacement in block C,Water,Low
-Insufficient quantity of food in mess for 3 hours,Mess,Medium
-Gym equipment broken near block B,Other,Medium
-Router offline in room 204 this morning,Wi-Fi,Medium
-Internet down completely in block C for 3 hours,Wi-Fi,High
-Power fluctuation in the ground floor washroom this morning,Electricity,Medium
-Mess is closed earlier than scheduled for 3 hours,Mess,High
-Garbage not collected in the second floor this morning,Cleanliness,Medium
-No soap or sanitizer in block A since last night,Cleanliness,Medium
-Mess food has insects since yesterday evening,Mess,High
-Cleaning staff not coming to the second floor for 3 hours,Cleanliness,Medium
-Power fluctuation in the common room this morning,Electricity,Medium
-Mess closed without notice since last night,Mess,High
-No hot water in block A for two days,Water,Medium
-Water supply has been cut off in room 101 for two days,Water,High
-Power fluctuation in block A for two days,Electricity,Medium
-The flush in my room is not working for 3 hours,Water,Medium
-Cleaning staff not coming to room 204 this morning,Cleanliness,Medium
-No water in block C since last night,Water,High
-Bed frame broken in my room,Furniture,Medium
-Washroom mirror broken in block C,Cleanliness,Low
-Heater not working in the common room,Electricity,Medium
-Fan is not working in the second floor for 3 hours,Electricity,Medium
-Bulb fused in the corridor,Electricity,Low
-Power cut in block B for 3 hours,Electricity,High
-No drinking water available near the corridor for two days,Water,High
-Power fluctuation in my room for 3 hours,Electricity,Medium
-Wi-Fi login page not loading in my room,Wi-Fi,Medium
-Mess utensils are dirty for 3 hours,Mess,Medium
-No soap or sanitizer in the common room this morning,Cleanliness,Medium
-Router offline in the ground floor washroom for two days,Wi-Fi,Medium
-Tube light in the second floor needs replacing,Electricity,Low
-Cleaning staff not coming to room 101 this morning,Cleanliness,Medium
-Staircase light not working in block C for two days,Other,Medium
-Wifi has been down for 3 hours in block B,Wi-Fi,High
-The flush in block B is not working since last night,Water,Medium
-No electricity in the common room since last night,Electricity,High
-Power cut in block B since last night,Electricity,High
-Garbage not collected in the corridor since last night,Cleanliness,Medium
-Fan is not working in the ground floor washroom this morning,Electricity,Medium
-Garbage dumped outside the second floor,Cleanliness,Medium
-Bathroom drain blocked in the second floor,Cleanliness,Medium
-AC unit not cooling in my room,Electricity,Medium
-First aid kit not available near the ground floor washroom,Other,High
-Corridor in block C is very dirty since last night,Cleanliness,Medium
-Sweeping not done in block A this morning,Cleanliness,Low
-Gym equipment broken near block A,Other,Medium
-Cannot connect to hostel wifi in room 204 for 3 hours,Wi-Fi,Medium
-MCB tripping repeatedly in the second floor this morning,Electricity,High
-No hot water in common bathroom this morning,Other,Medium
-Chair in block C has a broken leg,Furniture,Low
-Gym equipment broken near room 204,Other,Medium
-Foul smell in block B this morning,Cleanliness,Medium
-Mess menu is not being followed for 3 hours,Mess,Low
-No electricity in my room for two days,Electricity,High
-Electric shock from socket in room 101,Electricity,High
-Corridor in room 204 is very dirty for 3 hours,Cleanliness,Medium
-Fan is not working in block A for 3 hours,Electricity,Medium
-Bulb fused in room 204,Electricity,Low
-No drinking water available near room 204 this morning,Water,High
-No water in room 101 for 3 hours,Water,High
-Network drops every few minutes in block C,Wi-Fi,Medium
-Router offline in room 101 for 3 hours,Wi-Fi,Medium
-Router offline in block B for two days,Wi-Fi,Medium
-Electric shock from socket in room 204,Electricity,High
-Cannot attend online classes due to no wifi in block C,Wi-Fi,High
-Garbage dumped outside my room,Cleanliness,Medium
-Lost and found box needed near the corridor,Other,Low
-Electric shock from socket in my room,Electricity,High
-Lift not working in block B since last night,Other,High
-Power cut in block A for two days,Electricity,High
-Slow upload speed in block C since last night,Wi-Fi,Low
-No water in the ground floor washroom since last night,Water,High
-Security guard not present at gate for two days,Other,High
-Power fluctuation in block B for two days,Electricity,Medium
-CCTV camera not working in block B,Other,High
-Power fluctuation in the second floor since last night,Electricity,Medium
-MCB tripping repeatedly in block B for 3 hours,Electricity,High
-Lights not working in block C for two days,Electricity,High
-MCB tripping repeatedly in the common room since last night,Electricity,High
-Sparks coming from the switch board in my room,Electricity,High
-Router offline in block C since last night,Wi-Fi,Medium
-Washroom mirror broken in room 204,Cleanliness,Low
-Extension board damaged in the ground floor washroom,Electricity,Medium
-Common room lock broken in block A,Other,Medium
-Water cooler near room 101 is not working,Water,Low
-Corridor in the second floor is very dirty for two days,Cleanliness,Medium
-Foul smell in room 101 for 3 hours,Cleanliness,Medium
-Mess food has insects for a week,Mess,High
-No vegetables served in mess for 3 hours,Mess,Medium
-Stagnant water on floor of the ground floor washroom,Cleanliness,High
-Rats seen in the second floor for two days,Cleanliness,High
-Wi-Fi signal too weak in the second floor,Wi-Fi,Low
-Pests in the common room since last night,Cleanliness,High
-Staircase light not working in the ground floor washroom for 3 hours,Other,Medium
-Lights not working in block A this morning,Electricity,High
-Extension board damaged in block A,Electricity,Medium
-Switchboard burnt in the common room,Electricity,High
-Food has bad smell in mess for two days,Mess,High
-Corridor in my room is very dirty for two days,Cleanliness,Medium
-Window glass cracked in the common room,Furniture,Medium
-Router offline in the ground floor washroom since last night,Wi-Fi,Medium
-Corridor in the corridor is very dirty since last night,Cleanliness,Medium
-Insufficient quantity of food in mess for two days,Mess,Medium
-AC unit not cooling in the second floor,Electricity,Medium
-Slow upload speed in the common room this morning,Wi-Fi,Low
-Rats seen in block B for two days,Cleanliness,High
-Cannot connect to hostel wifi in block C for 3 hours,Wi-Fi,Medium
-Lift not working in room 101 for two days,Other,High
-Internet down completely in room 204 for 3 hours,Wi-Fi,High
-UPS battery dead in block B,Electricity,Medium
-Cannot connect to hostel wifi in the corridor for 3 hours,Wi-Fi,Medium
-No drinking water available near the common room since last night,Water,High
-Suggestion: add water cooler near the corridor,Other,Low
-Corridor in the common room is very dirty since last night,Cleanliness,Medium
-No water in the corridor for two days,Water,High
-MCB tripping repeatedly in room 204 since last night,Electricity,High
-Wardrobe door not closing in block C,Furniture,Low
-First aid kit not available near the second floor,Other,High
-Wi-Fi is not working in room 204 since last night,Wi-Fi,Medium
-Dustbin overflowing in block C,Cleanliness,Medium
-Wifi has been down for two days in block A,Wi-Fi,High
-MCB tripping repeatedly in the ground floor washroom for two days,Electricity,High
-Water supply has been cut off in the corridor since last night,Water,High
-Cockroaches found in mess food for 3 hours,Mess,High
-Noise disturbance in block B for 3 hours,Other,Medium
-Mess workers behaving rudely for two days,Mess,Medium
-No electricity in block B for 3 hours,Electricity,High
-No drinking water available near block C since last night,Water,High
-Please add a notice board near block C,Other,Low
-Washroom in block C is very dirty,Cleanliness,Medium
-Corridor in block A is very dirty for 3 hours,Cleanliness,Medium
-Water pressure is very low in the ground floor washroom,Water,Medium
-Power cut in my room since last night,Electricity,High
-No internet connectivity in the second floor since last night,Wi-Fi,Medium
-Wi-Fi is not working in my room this morning,Wi-Fi,Medium
-Corridor in room 101 is very dirty since last night,Cleanliness,Medium
-Noise disturbance in my room since last night,Other,Medium
-Water cooler near room 204 is not working,Water,Low
-Room door not closing properly in the second floor,Furniture,Medium
-CCTV camera not working in room 101,Other,High
-No electricity in the corridor for 3 hours,Electricity,High
-No water in washroom of block B for two days,Water,High
-Drawer stuck in the common room,Furniture,Low
-Mess closed without notice since the last two days,Mess,High
-Mess closed without notice since yesterday evening,Mess,High
-No water in washroom of the second floor for two days,Water,High
-Wi-Fi is not working in block B for two days,Wi-Fi,Medium
-Lights not working in the corridor since last night,Electricity,High
-Chair in room 101 has a broken leg,Furniture,Low
-Tube light in the corridor needs replacing,Electricity,Low
-Room door not closing properly in block A,Furniture,Medium
-Bike parking area messy near block C,Other,Low
-Cleaning staff not coming to block B for 3 hours,Cleanliness,Medium
-The flush in my room is not working this morning,Water,Medium
-Curtain rod fallen in the second floor,Furniture,Low
-Sweeping not done in block B for 3 hours,Cleanliness,Low
-Study chair missing in the second floor,Furniture,Low
-Tap is leaking in block B,Water,High
-Litter everywhere in block A,Cleanliness,Low
-Sweeping not done in block C for two days,Cleanliness,Low
-Water supply has been cut off in block A for 3 hours,Water,High
-Water supply has been cut off in the ground floor washroom this morning,Water,High
-Foul smell in block B for 3 hours,Cleanliness,Medium
-Wardrobe door not closing in the second floor,Furniture,Low
-Foul smell in block B since last night,Cleanliness,Medium
-Fan is not working in room 204 for two days,Electricity,Medium
-Bathroom drain blocked in room 101,Cleanliness,Medium
-The overhead tank in the corridor is overflowing,Water,High
-Security guard not present at gate since yesterday evening,Other,High
-Lift not working in my room for 3 hours,Other,High
-Litter everywhere in room 204,Cleanliness,Low
-Window latch broken in room 101,Furniture,Medium
-Lights not working in my room since last night,Electricity,High
-Cannot connect to hostel wifi in block A for 3 hours,Wi-Fi,Medium
-Power fluctuation in room 204 for two days,Electricity,Medium
-Dustbin overflowing in block B,Cleanliness,Medium
-MCB tripping repeatedly in block A for two days,Electricity,High
-Need iron stand in the corridor,Other,Low
-Study table wobbly in the corridor,Furniture,Low
-Noise disturbance in the corridor since last night,Other,Medium
-Ceiling fan wobbling dangerously in block A,Electricity,High
-Cleaning staff not coming to block C for 3 hours,Cleanliness,Medium
-Lights not working in room 101 since last night,Electricity,High
-Rats seen in block A for two days,Cleanliness,High
-Bike parking area messy near the corridor,Other,Low
-Internet down completely in the second floor for 3 hours,Wi-Fi,High
-The flush in the common room is not working for two days,Water,Medium
-Cannot connect to hostel wifi in my room for two days,Wi-Fi,Medium
-Garbage not collected in block C for two days,Cleanliness,Medium
-Washroom tap dripping constantly in block B,Water,Medium
-Window latch broken in the common room,Furniture,Medium
-Foul smell in block C this morning,Cleanliness,Medium
-Mess food quality is very poor since the last two days,Mess,Medium
-Food has bad smell in mess since last night,Mess,High
-No internet connectivity in block B this morning,Wi-Fi,Medium
-Water cooler near the ground floor washroom is not working,Water,Low
-Staircase light not working in block A since last night,Other,Medium
-No breakfast served in mess for a week,Mess,High
-No soap or sanitizer in room 204 for 3 hours,Cleanliness,Medium
-Internet down completely in the corridor for 3 hours,Wi-Fi,High
-Noise disturbance in block C this morning,Other,Medium
-No internet connectivity in block C since last night,Wi-Fi,Medium
-Dustbin overflowing in room 204,Cleanliness,Medium
-Street light outside room 101 not working,Electricity,Low
-wifi nt working again in the corridor,Wi-Fi,Medium
-Water cooler near the common room is not working,Water,Low
-Almirah key missing for room in the common room,Furniture,Medium
-Cannot connect to hostel wifi in room 101 since last night,Wi-Fi,Medium
-AC unit not cooling in room 101,Electricity,Medium
-Tube light in the common room needs replacing,Electricity,Low
-Router offline in block C for two days,Wi-Fi,Medium
-Common room TV not working for a week,Other,Low
-Mess workers behaving rudely since the last two days,Mess,Medium
-Wifi has been down since last night in block C,Wi-Fi,High
-Pests in block A this morning,Cleanliness,High
-Curtain rod fallen in my room,Furniture,Low
-wifi nt working again in room 101,Wi-Fi,Medium
-Lift not working in the common room for 3 hours,Other,High
-MCB tripping repeatedly in block C this morning,Electricity,High
-No water in the second floor since last night,Water,High
-Cupboard hinge broken in room 204,Furniture,Low
-Wi-Fi is not working in block C for two days,Wi-Fi,Medium
-Mess is closed earlier than scheduled since the last two days,Mess,High
-Tap is leaking in block A,Water,High
-Curtain rod fallen in room 101,Furniture,Low
-wifi nt working again in block C,Wi-Fi,Medium
-Cannot connect to hostel wifi in block A since last night,Wi-Fi,Medium
-Power cut in room 101 for two days,Electricity,High
-No hot water in my room for two days,Water,Medium
-Wi-Fi router needs restart in block B,Wi-Fi,Low
-Internet down completely in the corridor since last night,Wi-Fi,High
-Wifi has been down for two days in the ground floor washroom,Wi-Fi,High
-Ceiling fan wobbling dangerously in block C,Electricity,High
-No internet connectivity in room 101 this morning,Wi-Fi,Medium
-Wi-Fi speed is very slow in the common room,Wi-Fi,Low
-Noise disturbance in block B since last night,Other,Medium
-Security guard not present at gate for a week,Other,High
-Water logging in room 101 since last night,Water,High
-Sweeping not done in block B since last night,Cleanliness,Low
-Wi-Fi is not working in room 101 this morning,Wi-Fi,Medium
-Fan is not working in the ground floor washroom for 3 hours,Electricity,Medium
-Water logging in block C since last night,Water,High
-Water logging in block A for 3 hours,Water,High
-Drain pipe is blocked in the ground floor washroom,Water,Medium
-Wifi has been down since last night in my room,Wi-Fi,High
-Generator not starting in my room,Electricity,High
-Street light outside block C not working,Electricity,Low
-AC unit not cooling in the corridor,Electricity,Medium
-Fan is not working in block C this morning,Electricity,Medium
-Common room lock broken in block C,Other,Medium
-Water pressure is very low in room 101,Water,Medium
-Wi-Fi password not working in block A,Wi-Fi,Low
-Power fluctuation in block A this morning,Electricity,Medium
-Fan is not working in the common room for 3 hours,Electricity,Medium
-Washroom in the corridor is very dirty,Cleanliness,Medium
-Router offline in the ground floor washroom this morning,Wi-Fi,Medium
-Slow upload speed in the common room for two days,Wi-Fi,Low
-Power fluctuation in block B for 3 hours,Electricity,Medium
-Garbage not collected in my room this morning,Cleanliness,Medium
-Lights not working in block B this morning,Electricity,High
-Lights not working in block C this morning,Electricity,High
-Wi-Fi signal too weak in block B,Wi-Fi,Low
-Router offline in block A this morning,Wi-Fi,Medium
-Tap handle broken in the ground floor washroom,Water,Low
-Network drops every few minutes in the second floor,Wi-Fi,Medium
-Cleaning staff not coming to the ground floor washroom for 3 hours,Cleanliness,Medium
-Cannot connect to hostel wifi in the second floor for two days,Wi-Fi,Medium
-Slow upload speed in block A for 3 hours,Wi-Fi,Low
-Unhygienic conditions in mess this morning,Mess,High
-Wi-Fi password not working in the corridor,Wi-Fi,Low
-No electricity in the common room for 3 hours,Electricity,High
-Food has bad smell in mess since the last two days,Mess,High
-Food served in the mess since yesterday evening was stale,Mess,Medium
-Noise disturbance in the corridor for 3 hours,Other,Medium
-Table in room 101 is damaged,Furniture,Low
-Chair in block B has a broken leg,Furniture,Low
-The flush in room 101 is not working for two days,Water,Medium
-Internet down completely in block B since last night,Wi-Fi,High
-The flush in room 204 is not working since last night,Water,Medium
-Lights not working in room 204 this morning,Electricity,High
-Food served in the mess for two days was stale,Mess,Medium
-Cupboard hinge broken in my room,Furniture,Low
-Internet down completely in the ground floor washroom for two days,Wi-Fi,High
-Slow upload speed in block C this morning,Wi-Fi,Low
-Sweeping not done in room 204 since last night,Cleanliness,Low
-No water in washroom of block C this morning,Water,High
-Tube light in room 101 needs replacing,Electricity,Low
-Lost and found box needed near block B,Other,Low
-No drinking water available near the common room this morning,Water,High
-No water in room 204 for 3 hours,Water,High
-Staircase light not working in the corridor for two days,Other,Medium
-Foul smell in my room since last night,Cleanliness,Medium
-Water logging in the ground floor washroom this morning,Water,High
-Electric shock from socket in the common room,Electricity,High
-Pests in room 101 since last night,Cleanliness,High
-WiFi disconnects at night in room 204,Wi-Fi,Medium
-Wi-Fi is not working in the common room since last night,Wi-Fi,Medium
-Study table wobbly in the second floor,Furniture,Low
-Bed mattress has bugs in room 101,Furniture,High
-Power cut in room 204 since last night,Electricity,High
-Mess is closed earlier than scheduled since Monday,Mess,High
-Garbage not collected in block A this morning,Cleanliness,Medium
-Wi-Fi speed is very slow in room 101,Wi-Fi,Low
-Internet down completely in block A this morning,Wi-Fi,High
-No hot water in the common room for 3 hours,Water,Medium
-Mess food has insects since the last two days,Mess,High
-Noise disturbance in room 101 for two days,Other,Medium
-Lights not working in block A for two days,Electricity,High
-Water supply has been cut off in room 101 this morning,Water,High
-Common room lock broken in block B,Other,Medium
-Water logging in the ground floor washroom for two days,Water,High
-Lift not working in room 101 this morning,Other,High
-Noise disturbance in block B for two days,Other,Medium
-No electricity in the corridor for two days,Electricity,High
-Corridor in block A is very dirty since last night,Cleanliness,Medium
-Window latch broken in block C,Furniture,Medium
-Window glass cracked in the ground floor washroom,Furniture,Medium
-Street light outside the corridor not working,Electricity,Low
-Mattress is torn in the common room,Furniture,Low
-Garbage not collected in room 204 for two days,Cleanliness,Medium
-Foul smell in room 101 since last night,Cleanliness,Medium
-Slow upload speed in the corridor for two days,Wi-Fi,Low
-Power fluctuation in the ground floor washroom for two days,Electricity,Medium
-Washroom tap dripping constantly in the second floor,Water,Medium
-Room door not closing properly in the common room,Furniture,Medium
-No water in washroom of my room for two days,Water,High
-Cleaning staff not coming to block A since last night,Cleanliness,Medium
-Internet down completely in the common room for 3 hours,Wi-Fi,High
-Slow upload speed in my room since last night,Wi-Fi,Low
-Almirah key missing for room in block C,Furniture,Medium
-Corridor in block B is very dirty this morning,Cleanliness,Medium
-Wi-Fi password not working in the ground floor washroom,Wi-Fi,Low
-No soap or sanitizer in block C since last night,Cleanliness,Medium
-Gym equipment broken near the corridor,Other,Medium
-Generator not starting in the common room,Electricity,High
-Foul smell in the second floor for two days,Cleanliness,Medium
-Noise disturbance in room 101 since last night,Other,Medium
-Food is undercooked in the mess since the last two days,Mess,Medium
-No soap or sanitizer in the second floor since last night,Cleanliness,Medium
-No soap or sanitizer in block B since last night,Cleanliness,Medium
-Power fluctuation in the corridor for 3 hours,Electricity,Medium
-No electricity in the second floor since last night,Electricity,High
-No water in block A since last night,Water,High
-Wifi has been down since last night in room 101,Wi-Fi,High
-No internet connectivity in block C for 3 hours,Wi-Fi,Medium
-No electricity in block B this morning,Electricity,High
-No vegetables served in mess for two days,Mess,Medium
-Insufficient quantity of food in mess since last night,Mess,Medium
-Suggestion: add water cooler near room 204,Other,Low
-Cleaning staff not coming to the corridor for two days,Cleanliness,Medium
-Corridor in room 204 is very dirty this morning,Cleanliness,Medium
-Almirah key missing for room in room 204,Furniture,Medium
-Foul smell in room 101 this morning,Cleanliness,Medium
-Cannot connect to hostel wifi in block A for two days,Wi-Fi,Medium
-Broken stool in room 101,Furniture,Low
-The flush in the ground floor washroom is not working since last night,Water,Medium
-Table in the corridor is damaged,Furniture,Low
-Bulb fused in the ground floor washroom,Electricity,Low
-Sweeping not done in room 204 this morning,Cleanliness,Low
-Drawer stuck in the ground floor washroom,Furniture,Low
-Extension board damaged in room 101,Electricity,Medium
-No internet connectivity in the common room since last night,Wi-Fi,Medium
-No soap or sanitizer in block A for two days,Cleanliness,Medium
-No electricity in the ground floor washroom for 3 hours,Electricity,High
-Slow upload speed in room 204 since last night,Wi-Fi,Low
-No electricity in block B for two days,Electricity,High
-Rats seen in block B for 3 hours,Cleanliness,High
-The flush in the second floor is not working for 3 hours,Water,Medium
-Table in my room is damaged,Furniture,Low
-Study table wobbly in block B,Furniture,Low
-No breakfast served in mess since the last two days,Mess,High
-No parking space available near my room,Other,Low
-Foul smell in room 101 for two days,Cleanliness,Medium
-No hot water in room 101 for two days,Water,Medium
-Cannot connect to hostel wifi in the ground floor washroom for 3 hours,Wi-Fi,Medium
-UPS battery dead in the ground floor washroom,Electricity,Medium
-Power cut in the second floor for two days,Electricity,High
-Dustbin overflowing in the corridor,Cleanliness,Medium
-Cleaning staff not coming to block A this morning,Cleanliness,Medium
-Cleaning staff not coming to the second floor since last night,Cleanliness,Medium
-First aid kit not available near block A,Other,High
-Corridor in block C is very dirty for two days,Cleanliness,Medium
-Wifi has been down since last night in the second floor,Wi-Fi,High
-Slow upload speed in room 101 this morning,Wi-Fi,Low
-No water in block A for 3 hours,Water,High
-Pests in the second floor for 3 hours,Cleanliness,High
-Sweeping not done in room 101 this morning,Cleanliness,Low
-No soap or sanitizer in the common room for two days,Cleanliness,Medium
-Lights not working in the ground floor washroom for two days,Electricity,High
-Noise disturbance in the ground floor washroom for 3 hours,Other,Medium
-Please add a notice board near the common room,Other,Low
-CCTV camera not working in the second floor,Other,High
-Lift not working in the corridor for 3 hours,Other,High
-Slow upload speed in my room for two days,Wi-Fi,Low
-Mess closed without notice for a week,Mess,High
-Cannot connect to hostel wifi in room 101 for two days,Wi-Fi,Medium
-First aid kit not available near block B,Other,High
-Rats seen in the corridor for two days,Cleanliness,High
-MCB tripping repeatedly in my room for two days,Electricity,High
-Cannot connect to hostel wifi in block C for two days,Wi-Fi,Medium
-CCTV camera not working in the ground floor washroom,Other,High
-Water pipe burst in room 204,Water,High
-Water supply has been cut off in my room this morning,Water,High
-Wardrobe door not closing in the corridor,Furniture,Low
-Mess menu is not being followed for two days,Mess,Low
-Fire extinguisher missing from the ground floor washroom,Other,High
-Mattress is torn in block B,Furniture,Low
-Bed frame broken in block C,Furniture,Medium
-Water cooler near the corridor is not working,Water,Low
-Ceiling fan wobbling dangerously in room 101,Electricity,High
-Broken stool in the corridor,Furniture,Low
-Corridor in the second floor is very dirty this morning,Cleanliness,Medium
-No internet connectivity in my room this morning,Wi-Fi,Medium
-Slow upload speed in the second floor for two days,Wi-Fi,Low
-Garbage not collected in the corridor this morning,Cleanliness,Medium
-MCB tripping repeatedly in block C for two days,Electricity,High
-Common room lock broken in the ground floor washroom,Other,Medium
-Pests in my room since last night,Cleanliness,High
-No hot water in room 101 since last night,Water,Medium
-Broken stool in block B,Furniture,Low
-Ceiling fan wobbling dangerously in room 204,Electricity,High
-No internet connectivity in my room since last night,Wi-Fi,Medium
-Power cut in block B for two days,Electricity,High
-Noise disturbance in room 101 this morning,Other,Medium
-Tap is leaking in room 101,Water,High
-Suggestion: add water cooler near the common room,Other,Low
-Fan is not working in my room since last night,Electricity,Medium
-No electricity in the second floor for 3 hours,Electricity,High
-MCB tripping repeatedly in the corridor this morning,Electricity,High
-Internet down completely in the second floor since last night,Wi-Fi,High
-Power cut in my room this morning,Electricity,High
-Fan is not working in block B for two days,Electricity,Medium
-Internet down completely in room 101 for two days,Wi-Fi,High
-Water supply has been cut off in my room for 3 hours,Water,High
-Wi-Fi is not working in room 101 for two days,Wi-Fi,Medium
-Water pipe burst in block B,Water,High
-Sweeping not done in my room for 3 hours,Cleanliness,Low
-Bathroom drain blocked in the ground floor washroom,Cleanliness,Medium
-Staircase light not working in room 204 for 3 hours,Other,Medium
-Request for extra blanket in the second floor,Other,Low
-Lights not working in room 204 since last night,Electricity,High
-Rats seen in the common room this morning,Cleanliness,High
-Bookshelf collapsed in the common room,Furniture,Medium
-Wi-Fi speed is very slow in the second floor,Wi-Fi,Low
-Pests in room 101 for 3 hours,Cleanliness,High
-Street light outside block A not working,Electricity,Low
-Cleaning staff not coming to block A for two days,Cleanliness,Medium
-No water in washroom of the common room for two days,Water,High
-Water cooler near block A is not working,Water,Low
-Wi-Fi speed is very slow in my room,Wi-Fi,Low
-No water in washroom of room 101 since last night,Water,High
-No water in washroom of block A this morning,Water,High
-Window glass cracked in room 204,Furniture,Medium
-Water logging in the common room since last night,Water,High
-Cleaning staff not coming to the corridor for 3 hours,Cleanliness,Medium
-No breakfast served in mess this morning,Mess,High
-Window glass cracked in block A,Furniture,Medium
-Food served in the mess since Monday was stale,Mess,Medium
-Pests in block C this morning,Cleanliness,High
-MCB tripping repeatedly in room 101 this morning,Electricity,High
-No drinking water available near block C this morning,Water,High
-Foul smell in the common room this morning,Cleanliness,Medium
-Curtain rod fallen in the common room,Furniture,Low
-Request for extra blanket in block C,Other,Low
-Sparks coming from the switch board in block A,Electricity,High
-Heater not working in room 204,Electricity,Medium
-Window latch broken in block A,Furniture,Medium
-Washroom mirror broken in the second floor,Cleanliness,Low
-UPS battery dead in the corridor,Electricity,Medium
-No electricity in the ground floor washroom for two days,Electricity,High
-Water supply has been cut off in the corridor for two days,Water,High
-The flush in the ground floor washroom is not working for two days,Water,Medium
-Cannot connect to hostel wifi in the ground floor washroom since last night,Wi-Fi,Medium
-Water logging in the ground floor washroom for 3 hours,Water,High
-Cannot attend online classes due to no wifi in block B,Wi-Fi,High
-Mess menu is not being followed since yesterday evening,Mess,Low
-Suggestion: add water cooler near block B,Other,Low
-Water supply has been cut off in the second floor for two days,Water,High
-Wifi has been down for 3 hours in the corridor,Wi-Fi,High
-Water logging in the corridor for two days,Water,High
-Corridor in the common room is very dirty this morning,Cleanliness,Medium
-Curtain rod fallen in block C,Furniture,Low
-Lift not working in my room this morning,Other,High
-Study chair missing in the ground floor washroom,Furniture,Low
-Mess food quality is very poor since last night,Mess,Medium
-Cannot connect to hostel wifi in the second floor for 3 hours,Wi-Fi,Medium
-Sweeping not done in block C since last night,Cleanliness,Low
-Wifi has been down for 3 hours in the common room,Wi-Fi,High
-Wi-Fi password not working in my room,Wi-Fi,Low
-Cleaning staff not coming to room 204 for 3 hours,Cleanliness,Medium
-Lift not working in block C this morning,Other,High
-Lights not working in the common room since last night,Electricity,High
-Garbage not collected in my room for two days,Cleanliness,Medium
-The flush in the corridor is not working for 3 hours,Water,Medium
-Pests in the second floor since last night,Cleanliness,High
-Street light outside the second floor not working,Electricity,Low
-No water in block B for 3 hours,Water,High
-Water supply has been cut off in block C this morning,Water,High
-Bike parking area messy near room 101,Other,Low
-Room door not closing properly in the corridor,Furniture,Medium
-Garbage not collected in the second floor since last night,Cleanliness,Medium
-No drinking water available near room 204 for two days,Water,High
-The overhead tank in my room is overflowing,Water,High
-No hot water in common bathroom since Monday,Other,Medium
-Lift not working in the ground floor washroom since last night,Other,High
-Slow upload speed in block B for two days,Wi-Fi,Low
-Switchboard burnt in block A,Electricity,High
-Garbage not collected in room 204 for 3 hours,Cleanliness,Medium
-Corridor in block C is very dirty this morning,Cleanliness,Medium
-Power cut in the corridor this morning,Electricity,High
-MCB tripping repeatedly in the second floor since last night,Electricity,High
-Rats seen in block A this morning,Cleanliness,High
-Sparks coming from the switch board in block B,Electricity,High
-Mess closed without notice this morning,Mess,High
-Power fluctuation in my room for two days,Electricity,Medium
-AC unit not cooling in block C,Electricity,Medium
-Water logging in the common room this morning,Water,High
-No hot water in common bathroom since yesterday evening,Other,Medium
-Cleaning staff not coming to the second floor for two days,Cleanliness,Medium
-No drinking water available near the common room for 3 hours,Water,High
-Water cooler is leaking in the corridor,Water,Medium
-Switchboard burnt in block B,Electricity,High
-The flush in room 101 is not working for 3 hours,Water,Medium
-No drinking water available near room 101 since last night,Water,High
-Foul smell in block C for 3 hours,Cleanliness,Medium
-No electricity in block A for 3 hours,Electricity,High
-Cannot attend online classes due to no wifi in the ground floor washroom,Wi-Fi,High
-No soap or sanitizer in the corridor this morning,Cleanliness,Medium
-Dustbin overflowing in block A,Cleanliness,Medium
-No water in my room since last night,Water,High
-No hot water in common bathroom since the last two days,Other,Medium
-Foul smell in the second floor since last night,Cleanliness,Medium
-Lift not working in the second floor for two days,Other,High
-Unhygienic conditions in mess since last night,Mess,High
-No electricity in room 204 for two days,Electricity,High
-Sweeping not done in the ground floor washroom for 3 hours,Cleanliness,Low
-Wifi has been down this morning in the ground floor washroom,Wi-Fi,High
-Table in block A is damaged,Furniture,Low
-Noise disturbance in room 204 for 3 hours,Other,Medium
-First aid kit not available near the corridor,Other,High
-Power fluctuation in the ground floor washroom for 3 hours,Electricity,Medium
-Wi-Fi is not working in block B this morning,Wi-Fi,Medium
-Lights not working in block A since last night,Electricity,High
-Door lock not working in room 204,Furniture,High
-MCB tripping repeatedly in the corridor since last night,Electricity,High
-Lost and found box needed near my room,Other,Low
-Bookshelf collapsed in the ground floor washroom,Furniture,Medium
-Slow upload speed in block B this morning,Wi-Fi,Low
-Sparks coming from the switch board in the corridor,Electricity,High
-Wifi has been down for 3 hours in room 204,Wi-Fi,High
-Water pressure is very low in block A,Water,Medium
-No drinking water available near the corridor since last night,Water,High
-Mess food quality is very poor for a week,Mess,Medium
-No breakfast served in mess for 3 hours,Mess,High
-Lost and found box needed near the common room,Other,Low
-No water in my room for 3 hours,Water,High
-No hot water in the common room this morning,Water,Medium
-Cleaning staff not coming to room 101 since last night,Cleanliness,Medium
-Mattress is torn in room 204,Furniture,Low
-Internet down completely in block B this morning,Wi-Fi,High
-No electricity in block B since last night,Electricity,High
-Garbage not collected in room 101 this morning,Cleanliness,Medium
-Noise disturbance in the second floor this morning,Other,Medium
-The flush in block C is not working since last night,Water,Medium
-No internet connectivity in room 204 this morning,Wi-Fi,Medium
-Study table wobbly in the common room,Furniture,Low
-Fan is not working in the common room this morning,Electricity,Medium
-No electricity in room 101 for two days,Electricity,High
-Stagnant water on floor of the common room,Cleanliness,High
-Dustbin overflowing in my room,Cleanliness,Medium
-Staircase light not working in block C this morning,Other,Medium
-Lights not working in room 101 this morning,Electricity,High
-No electricity in the common room for two days,Electricity,High
-Wi-Fi login page not loading in block A,Wi-Fi,Medium
-Cockroaches found in mess food for two days,Mess,High
-Mess menu is not being followed since the last two days,Mess,Low
-Foul smell in my room for 3 hours,Cleanliness,Medium
-Staircase light not working in block A for two days,Other,Medium
-Drain pipe is blocked in block C,Water,Medium
-Mess menu board is outdated,Mess,Low
-Water supply has been cut off in the ground floor washroom for two days,Water,High
-Food has bad smell in mess for a week,Mess,High
-Staircase light not working in the second floor since last night,Other,Medium
-Lights not working in block B since last night,Electricity,High
-No vegetables served in mess this morning,Mess,Medium
-The flush in block B is not working for two days,Water,Medium
-No internet connectivity in the corridor this morning,Wi-Fi,Medium
-Fan is not working in block C for 3 hours,Electricity,Medium
-Mattress is torn in room 101,Furniture,Low
-Corridor in block B is very dirty for two days,Cleanliness,Medium
-No hot water in block C for two days,Water,Medium
-Food has bad smell in mess since Monday,Mess,High
-No hot water in block C this morning,Water,Medium
-Sewage smell coming from drain in block A,Water,Medium
-Study chair missing in the corridor,Furniture,Low
-Drain pipe is blocked in my room,Water,Medium
-Slow upload speed in room 204 this morning,Wi-Fi,Low
-No hot water in block B this morning,Water,Medium
-Staircase light not working in my room for 3 hours,Other,Medium
-Network cable unplugged in block C,Wi-Fi,Low
-Study chair missing in the common room,Furniture,Low
-No wifi coverage in the common room,Wi-Fi,Medium
-Router offline in block B this morning,Wi-Fi,Medium
-No drinking water in mess since last night,Mess,High
-Suggestion: add water cooler near room 101,Other,Low
-No hot water in block B for 3 hours,Water,Medium
-No electricity in room 101 since last night,Electricity,High
-Cleaning staff not coming to the corridor since last night,Cleanliness,Medium
-Drawer stuck in the corridor,Furniture,Low
-Wifi has been down since last night in the ground floor washroom,Wi-Fi,High
-Rats seen in the common room for 3 hours,Cleanliness,High
-Food is undercooked in the mess since Monday,Mess,Medium
-No hot water in room 204 for two days,Water,Medium
-Tube light in the ground floor washroom needs replacing,Electricity,Low
-Bulb fused in block C,Electricity,Low
-Sewage smell coming from drain in room 101,Water,Medium
-Water logging in the common room for two days,Water,High
-Router offline in the corridor this morning,Wi-Fi,Medium
-Rats seen in block B since last night,Cleanliness,High
-Foul smell in block C since last night,Cleanliness,Medium
-Staircase light not working in block B for 3 hours,Other,Medium
-Pests in the common room for two days,Cleanliness,High
-Rats seen in block C for two days,Cleanliness,High
-Sweeping not done in room 204 for two days,Cleanliness,Low
-Noise disturbance in the corridor for two days,Other,Medium
-Power fluctuation in the corridor since last night,Electricity,Medium
-Internet down completely in block A for two days,Wi-Fi,High
-Bathroom drain blocked in block A,Cleanliness,Medium
-Pests in the common room this morning,Cleanliness,High
-Switchboard burnt in the second floor,Electricity,High
-wifi nt working again in the common room,Wi-Fi,Medium
-No water in block B since last night,Water,High
-Wi-Fi is not working in the corridor this morning,Wi-Fi,Medium
-No water in washroom of block B for 3 hours,Water,High
-Common room TV not working since last night,Other,Low
-No internet connectivity in the ground floor washroom for two days,Wi-Fi,Medium
-Window latch broken in the second floor,Furniture,Medium
-Sparks coming from the switch board in block C,Electricity,High
-Router offline in the second floor for 3 hours,Wi-Fi,Medium
-Need iron stand in the ground floor washroom,Other,Low
-No internet connectivity in room 101 since last night,Wi-Fi,Medium
-No water in washroom of room 204 this morning,Water,High
-Fan is not working in room 101 this morning,Electricity,Medium
-Study chair missing in block B,Furniture,Low
-Cleaning staff not coming to the common room since last night,Cleanliness,Medium
-No drinking water available near room 204 for 3 hours,Water,High
-No water in block C this morning,Water,High
-Table in the ground floor washroom is damaged,Furniture,Low
-Wifi has been down for two days in my room,Wi-Fi,High
-Foul smell in room 204 since last night,Cleanliness,Medium
-The overhead tank in the second floor is overflowing,Water,High
-No drinking water available near the ground floor washroom since last night,Water,High
-Wifi has been down for two days in the common room,Wi-Fi,High
-Bookshelf collapsed in the corridor,Furniture,Medium
-Drawer stuck in block B,Furniture,Low
-No soap or sanitizer in block B for 3 hours,Cleanliness,Medium
-Wi-Fi password not working in block C,Wi-Fi,Low
-Water pressure is very low in my room,Water,Medium
-Cupboard hinge broken in the second floor,Furniture,Low
-Staircase light not working in the ground floor washroom for two days,Other,Medium
-Internet down completely in my room for two days,Wi-Fi,High
-No parking space available near block A,Other,Low
-Water filter needs replacement in the ground floor washroom,Water,Low
-CCTV camera not working in the corridor,Other,High
-Water logging in block B for 3 hours,Water,High
-Network drops every few minutes in room 101,Wi-Fi,Medium
-Wifi has been down since last night in room 204,Wi-Fi,High
-Common room lock broken in room 101,Other,Medium
-Power cut in block A this morning,Electricity,High
-Lights not working in room 204 for two days,Electricity,High
-Water pipe burst in the second floor,Water,High
-Mattress is torn in block C,Furniture,Low
-Toilet seat broken in room 204,Cleanliness,Medium
-MCB tripping repeatedly in block B since last night,Electricity,High
-Rats seen in the corridor since last night,Cleanliness,High
-No internet connectivity in the corridor since last night,Wi-Fi,Medium
-No hot water in the second floor this morning,Water,Medium
-No drinking water available near the ground floor washroom for two days,Water,High
-Garbage not collected in the common room since last night,Cleanliness,Medium
-Foul smell in room 204 for 3 hours,Cleanliness,Medium
-Corridor in block A is very dirty this morning,Cleanliness,Medium
-No hot water in block A since last night,Water,Medium
-Rats seen in the corridor this morning,Cleanliness,High
-Window latch broken in room 204,Furniture,Medium
-Internet down completely in the corridor this morning,Wi-Fi,High
-Wi-Fi speed is very slow in block B,Wi-Fi,Low
-Cannot connect to hostel wifi in block B for 3 hours,Wi-Fi,Medium
-MCB tripping repeatedly in room 101 for 3 hours,Electricity,High
-Cannot connect to hostel wifi in the ground floor washroom this morning,Wi-Fi,Medium
-Foul smell in the ground floor washroom this morning,Cleanliness,Medium
-No drinking water available near my room this morning,Water,High
-No drinking water available near the second floor for two days,Water,High
-Sewage smell coming from drain in the common room,Water,Medium
-No internet connectivity in room 101 for two days,Wi-Fi,Medium
-No soap or sanitizer in block B this morning,Cleanliness,Medium
-Please add a notice board near room 101,Other,Low
-Pests in the common room for 3 hours,Cleanliness,High
-Electric shock from socket in block C,Electricity,High
-Internet down completely in the common room this morning,Wi-Fi,High
-Food is undercooked in the mess since last night,Mess,Medium
-No vegetables served in mess for a week,Mess,Medium
-Study table wobbly in block A,Furniture,Low
-Staircase light not working in my room for two days,Other,Medium
-The flush in block C is not working this morning,Water,Medium
-Noise disturbance in the ground floor washroom this morning,Other,Medium
-Sparks coming from the switch board in room 101,Electricity,High
-Router offline in the corridor since last night,Wi-Fi,Medium
-Dustbin overflowing in the second floor,Cleanliness,Medium
-Power fluctuation in room 204 this morning,Electricity,Medium
-Fan is not working in the common room for two days,Electricity,Medium
-Slow upload speed in the ground floor washroom this morning,Wi-Fi,Low
-Common room TV not working for 3 hours,Other,Low
-Ceiling fan wobbling dangerously in the corridor,Electricity,High
-Mattress is torn in the second floor,Furniture,Low
-Water supply has been cut off in block B since last night,Water,High
-Broken stool in block C,Furniture,Low
-No hot water in block C since last night,Water,Medium
-Fan is not working in my room this morning,Electricity,Medium
-No hot water in room 204 this morning,Water,Medium
-Lost and found box needed near block C,Other,Low
-Sweeping not done in room 101 since last night,Cleanliness,Low
-No hot water in room 101 for 3 hours,Water,Medium
-No water in the second floor this morning,Water,High
-Fan is not working in block A for two days,Electricity,Medium
-Mess utensils are dirty for two days,Mess,Medium
-Fan is not working in the ground floor washroom for two days,Electricity,Medium
-Cannot attend online classes due to no wifi in my room,Wi-Fi,High
-Mess utensils are dirty since last night,Mess,Medium
-Tap is leaking in the second floor,Water,High
-MCB tripping repeatedly in block A this morning,Electricity,High
-Gym equipment broken near the ground floor washroom,Other,Medium
-Fan is not working in room 204 this morning,Electricity,Medium
-Lights not working in block B for 3 hours,Electricity,High
-The flush in block B is not working for 3 hours,Water,Medium
-Wi-Fi signal too weak in my room,Wi-Fi,Low
-Slow upload speed in block C for two days,Wi-Fi,Low
-Curtain rod fallen in the ground floor washroom,Furniture,Low
-Cannot connect to hostel wifi in the common room for two days,Wi-Fi,Medium
-Wi-Fi is not working in the second floor this morning,Wi-Fi,Medium
-Foul smell in block A for 3 hours,Cleanliness,Medium
-Dustbin overflowing in room 101,Cleanliness,Medium
-No internet connectivity in my room for two days,Wi-Fi,Medium
-No electricity in block C since last night,Electricity,High
-Stagnant water on floor of the second floor,Cleanliness,High
-Power cut in the ground floor washroom for two days,Electricity,High
-Corridor in room 101 is very dirty for 3 hours,Cleanliness,Medium
-Staircase light not working in block B for two days,Other,Medium
-Cleaning staff not coming to the common room for 3 hours,Cleanliness,Medium
-Lift not working in block C for two days,Other,High
-Lift not working in my room for two days,Other,High
-Sparks coming from the switch board in the second floor,Electricity,High
-Cannot connect to hostel wifi in block B this morning,Wi-Fi,Medium
-Mess closed without notice since Monday,Mess,High
-Door lock not working in the common room,Furniture,High
-Network cable unplugged in block A,Wi-Fi,Low
-Switchboard burnt in room 204,Electricity,High
-No water in washroom of room 204 since last night,Water,High
-Wifi has been down for 3 hours in room 101,Wi-Fi,High
-Lift not working in block B this morning,Other,High
-Router offline in block A for 3 hours,Wi-Fi,Medium
-Foul smell in the corridor since last night,Cleanliness,Medium
-The flush in the ground floor washroom is not working this morning,Water,Medium
-The flush in my room is not working for two days,Water,Medium
-Pests in block A for two days,Cleanliness,High
-Wifi has been down since last night in block A,Wi-Fi,High
-Washroom tiles very slippery in block A,Cleanliness,High
-No hot water in block C for 3 hours,Water,Medium
-No soap or sanitizer in the corridor since last night,Cleanliness,Medium
-Router offline in the corridor for two days,Wi-Fi,Medium
-Rats seen in block C for 3 hours,Cleanliness,High
-Washroom tap dripping constantly in the ground floor washroom,Water,Medium
-Drain pipe is blocked in block B,Water,Medium
-Noise disturbance in the corridor this morning,Other,Medium
-Cockroaches found in mess food for a week,Mess,High
-Bed mattress has bugs in block B,Furniture,High
 Electric shock from socket in the second floor,Electricity,High
-No hot water in room 204 since last night,Water,Medium
-Electric shock from socket in block A,Electricity,High
-No electricity in my room for 3 hours,Electricity,High
-No soap or sanitizer in block B for two days,Cleanliness,Medium
-Chair in the corridor has a broken leg,Furniture,Low
-Bed mattress has bugs in room 204,Furniture,High
-UPS battery dead in the second floor,Electricity,Medium
-No parking space available near block C,Other,Low
-Need iron stand in block A,Other,Low
-No water in the common room for 3 hours,Water,High
-Router offline in block C this morning,Wi-Fi,Medium
-Extension board damaged in the second floor,Electricity,Medium
-Long queue at mess counter since Monday,Mess,Low
-No water in block A for two days,Water,High
-Staircase light not working in the ground floor washroom this morning,Other,Medium
-Network cable unplugged in the corridor,Wi-Fi,Low
-Security guard not present at gate this morning,Other,High
-Pests in the corridor for 3 hours,Cleanliness,High
-Noise disturbance in the common room for 3 hours,Other,Medium
-Wifi has been down this morning in the second floor,Wi-Fi,High
-No water in washroom of block A since last night,Water,High
-Washroom tiles very slippery in my room,Cleanliness,High
-Wi-Fi is not working in the second floor for 3 hours,Wi-Fi,Medium
-Bike parking area messy near block B,Other,Low
-Power cut in my room for two days,Electricity,High
-Mess food has insects for 3 hours,Mess,High
-Fire extinguisher missing from my room,Other,High
-Garbage not collected in the ground floor washroom for two days,Cleanliness,Medium
-Bed frame broken in the corridor,Furniture,Medium
-No electricity in block A for two days,Electricity,High
-Washroom in the second floor is very dirty,Cleanliness,Medium
-Door lock not working in the ground floor washroom,Furniture,High
-No drinking water available near the common room for two days,Water,High
-Room door not closing properly in room 204,Furniture,Medium
-Slow upload speed in room 204 for two days,Wi-Fi,Low
-No water in washroom of room 101 for 3 hours,Water,High
-Washroom tiles very slippery in the second floor,Cleanliness,High
-No wifi coverage in the ground floor washroom,Wi-Fi,Medium
-Lift not working in the common room for two days,Other,High
-Lights not working in the common room for 3 hours,Electricity,High
-Rats seen in block B this morning,Cleanliness,High
-Cupboard hinge broken in the corridor,Furniture,Low
-Rats seen in room 204 for 3 hours,Cleanliness,High
-Lift not working in block A since last night,Other,High
-No water in block B this morning,Water,High
-Wi-Fi signal too weak in the common room,Wi-Fi,Low
-Tap handle broken in the second floor,Water,Low
-Cannot connect to hostel wifi in block C this morning,Wi-Fi,Medium
-Bulb fused in block B,Electricity,Low
-Water pipe burst in room 101,Water,High
-MCB tripping repeatedly in block B this morning,Electricity,High
-Garbage not collected in the corridor for two days,Cleanliness,Medium
-Pests in block B for 3 hours,Cleanliness,High
-Switchboard burnt in the corridor,Electricity,High
-Cleaning staff not coming to block C this morning,Cleanliness,Medium
-Wifi has been down for two days in room 204,Wi-Fi,High
-Study table wobbly in the ground floor washroom,Furniture,Low
-Corridor in my room is very dirty for 3 hours,Cleanliness,Medium
-Water cooler is leaking in my room,Water,Medium
-Rats seen in room 204 for two days,Cleanliness,High
-CCTV camera not working in block C,Other,High
-No water in the ground floor washroom for 3 hours,Water,High
-Noise disturbance in my room for two days,Other,Medium
-Mattress is torn in the ground floor washroom,Furniture,Low
-Cannot attend online classes due to no wifi in the second floor,Wi-Fi,High
-Lift not working in room 101 for 3 hours,Other,High
-Lights not working in the second floor this morning,Electricity,High
-Staircase light not working in the corridor since last night,Other,Medium
-Internet down completely in block C since last night,Wi-Fi,High
-Long queue at mess counter since last night,Mess,Low
-Wi-Fi is not working in block C for 3 hours,Wi-Fi,Medium
-Wi-Fi is not working in the common room this morning,Wi-Fi,Medium
-Suggestion: add water cooler near block A,Other,Low
-Long queue at mess counter for two days,Mess,Low
-Lost and found box needed near the second floor,Other,Low
-Staircase light not working in room 101 for 3 hours,Other,Medium
-Litter everywhere in the ground floor washroom,Cleanliness,Low
-Tap handle broken in block C,Water,Low
-Washroom in room 101 is very dirty,Cleanliness,Medium
-Water logging in room 101 for two days,Water,High
-Water pipe burst in my room,Water,High
-Mattress is torn in the corridor,Furniture,Low
-Water supply has been cut off in the common room since last night,Water,High
-Mould on walls of block A,Cleanliness,Medium
-Water filter needs replacement in room 204,Water,Low
-Request for extra blanket in room 101,Other,Low
-Power fluctuation in block B this morning,Electricity,Medium
-Cannot connect to hostel wifi in the common room this morning,Wi-Fi,Medium
-Rats seen in the second floor for 3 hours,Cleanliness,High
-Washroom mirror broken in room 101,Cleanliness,Low
-Bookshelf collapsed in block C,Furniture,Medium
-Wi-Fi login page not loading in the corridor,Wi-Fi,Medium
-WiFi disconnects at night in block A,Wi-Fi,Medium
-Suggestion: add water cooler near my room,Other,Low
-Network cable unplugged in my room,Wi-Fi,Low
-Power fluctuation in the corridor for two days,Electricity,Medium
-Please add a notice board near room 204,Other,Low
-Litter everywhere in the second floor,Cleanliness,Low
-Bike parking area messy near the second floor,Other,Low
-Cannot connect to hostel wifi in room 204 this morning,Wi-Fi,Medium
-Garbage not collected in block A for two days,Cleanliness,Medium
-Cannot connect to hostel wifi in block B since last night,Wi-Fi,Medium
-The flush in block C is not working for 3 hours,Water,Medium
-Wifi has been down this morning in block B,Wi-Fi,High
-Toilet seat broken in the corridor,Cleanliness,Medium
-Garbage not collected in block B for two days,Cleanliness,Medium
-No hot water in the ground floor washroom for two days,Water,Medium
-Internet down completely in room 204 since last night,Wi-Fi,High
-Water pipe burst in the common room,Water,High
-Foul smell in block A for two days,Cleanliness,Medium
-Cannot connect to hostel wifi in the common room for 3 hours,Wi-Fi,Medium
-Wifi has been down for 3 hours in the second floor,Wi-Fi,High
-Mould on walls of block C,Cleanliness,Medium
-Security guard not present at gate since Monday,Other,High
-Extension board damaged in the common room,Electricity,Medium
-Router offline in room 101 since last night,Wi-Fi,Medium
-MCB tripping repeatedly in room 204 this morning,Electricity,High
-Water logging in the second floor since last night,Water,High
-Wifi has been down for 3 hours in block A,Wi-Fi,High
-Wi-Fi router needs restart in room 101,Wi-Fi,Low
-Sweeping not done in the common room this morning,Cleanliness,Low
-Cleaning staff not coming to room 204 for two days,Cleanliness,Medium
-Extension board damaged in the corridor,Electricity,Medium
-Rats seen in the corridor for 3 hours,Cleanliness,High
-Drawer stuck in block A,Furniture,Low
-Staircase light not working in room 101 this morning,Other,Medium
-Staircase light not working in block C since last night,Other,Medium
-Power cut in the ground floor washroom for 3 hours,Electricity,High
-Internet down completely in the ground floor washroom for 3 hours,Wi-Fi,High
-Tap handle broken in the corridor,Water,Low
-Food is undercooked in the mess for a week,Mess,Medium
-Internet down completely in block A for 3 hours,Wi-Fi,High
-No drinking water available near block B for 3 hours,Water,High
-Water logging in block B since last night,Water,High
-Wi-Fi is not working in the common room for two days,Wi-Fi,Medium
-Rats seen in the second floor this morning,Cleanliness,High
-No drinking water in mess since yesterday evening,Mess,High
-Tap handle broken in room 204,Water,Low
-Mould on walls of the second floor,Cleanliness,Medium
-Lights not working in room 204 for 3 hours,Electricity,High
-Please add a notice board near my room,Other,Low
-Washroom tap dripping constantly in block C,Water,Medium
-Network cable unplugged in the second floor,Wi-Fi,Low
-Corridor in block C is very dirty for 3 hours,Cleanliness,Medium
-Rats seen in block A for 3 hours,Cleanliness,High
-Power cut in block B this morning,Electricity,High
-Mould on walls of the common room,Cleanliness,Medium
-Water filter needs replacement in the common room,Water,Low
-Power cut in block C since last night,Electricity,High
-Corridor in block A is very dirty for two days,Cleanliness,Medium
-Cannot connect to hostel wifi in the ground floor washroom for two days,Wi-Fi,Medium
-No electricity in the corridor this morning,Electricity,High
-Cannot attend online classes due to no wifi in room 101,Wi-Fi,High
-Corridor in my room is very dirty since last night,Cleanliness,Medium
-Wardrobe door not closing in my room,Furniture,Low
-Generator not starting in the second floor,Electricity,High
-No water in the corridor this morning,Water,High
-Cannot attend online classes due to no wifi in the common room,Wi-Fi,High
-Curtain rod fallen in room 204,Furniture,Low
-Wi-Fi password not working in room 204,Wi-Fi,Low
-Bed frame broken in block B,Furniture,Medium
-No internet connectivity in the second floor this morning,Wi-Fi,Medium
-The overhead tank in room 101 is overflowing,Water,High
+Mattress cover torn in room 101,Furniture,Low
+Lost and found box needed near wing 2,Other,Low
+Dust on windows of block B,Cleanliness,Low
+Mattress cover torn in the common room,Furniture,Low
+Food served in mess for two days was completely spoiled and sour,Mess,High
+Food undercooked in the mess since last night,Mess,Medium
+Mess menu board outdated,Mess,Low
+Loud music disturbance in my room since Monday,Other,Medium
+No drinking water available in mess hall for a week,Mess,Medium
+Request for newspaper in common room block C,Other,Low
+Switchboard burnt and smoking in block C,Electricity,High
+Lights not working at all in room 101 for 3 hours,Electricity,High
+Water pressure is very low in block B,Water,Medium
+Litter scattered around stairs near the second floor,Cleanliness,Low
+No hot water in the common room since yesterday,Water,Medium
+No electricity in room 305 since yesterday evening,Electricity,High
+Foul smell spreading from washroom in the corridor,Cleanliness,Medium
+Switchboard burnt and smoking in block B,Electricity,High
+No parking space for cycles near block A,Other,Low
+Mess utensils are greasy and not washed for two days,Mess,Medium
+Street light outside room 204 not working,Electricity,Low
+Common room TV remote missing for 3 hours,Other,Low
+Tap is leaking in room 204,Water,High
+Soap dispenser empty in room 305,Cleanliness,Low
+Mess drinking water contaminated with dirt for a week,Mess,High
+Lift stuck between floors near the corridor for a week,Other,High
+Stagnant sewage water overflowing in block B,Cleanliness,High
+Water supply cut off in the second floor since Monday,Water,High
+Washroom tap dripping constantly in the common room,Water,Medium
+Curtain rod fallen down in block B,Furniture,Low
+Main door latch broken in block C security risk,Furniture,High
+MCB tripping repeatedly in the corridor for a week,Electricity,High
+Mattress cover torn in wing 2,Furniture,Low
+Small stool cracked in room 204,Furniture,Low
+Mess drinking water contaminated with dirt since yesterday,Mess,High
+Food served in mess for 3 hours was completely spoiled and sour,Mess,High
+Toilet seat stained and unhygienic in block C,Cleanliness,Medium
+Water filter cartridge needs cleaning in block B,Water,Low
+Tap is leaking in room 305,Water,High
+Emergency exit door locked in the common room,Other,High
+Ceiling fan wobbling dangerously in block C,Electricity,High
+Lights not working at all in wing 2 since last night,Electricity,High
+Washroom tiles extremely slippery and hazardous in block B,Cleanliness,High
+Bed frame collapsed completely in block B,Furniture,High
+Corridor light switch broken in the corridor,Other,Medium
+Food served in the mess since Monday was stale,Mess,Medium
+Bathroom drain choked with hair in wing 2,Cleanliness,Medium
+Study lamp switch loose in room 204,Electricity,Low
+Extension board socket sparking in block B,Electricity,Medium
+Flush is not working in wing 2 since last night,Water,Medium
+First aid box empty in block C,Other,High
+Fan not running in room 204 for 3 hours,Electricity,Medium
+LAN port loose in the common room,Wi-Fi,Low
+Gym equipment cable broken near block B,Other,Medium
+Cleaning staff skipped sweeping in the second floor since Monday,Cleanliness,Medium
+Unhygienic food causing stomach pain in mess this morning,Mess,High
 Lost and found box needed near room 101,Other,Low
-Internet down completely in the ground floor washroom this morning,Wi-Fi,High
-Cannot connect to hostel wifi in room 101 for 3 hours,Wi-Fi,Medium
-Sewage smell coming from drain in the second floor,Water,Medium
-No hot water in the second floor since last night,Water,Medium
-No hot water in the ground floor washroom since last night,Water,Medium
-Wardrobe door not closing in block B,Furniture,Low
-No water in washroom of the corridor this morning,Water,High
-Power cut in block C for two days,Electricity,High
-Power fluctuation in room 204 for 3 hours,Electricity,Medium
-Network drops every few minutes in my room,Wi-Fi,Medium
-Router offline in room 101 for two days,Wi-Fi,Medium
-Wifi has been down since last night in the common room,Wi-Fi,High
-The overhead tank in room 204 is overflowing,Water,High
-Fan is not working in block B this morning,Electricity,Medium
+Mess staff handling food without gloves since yesterday,Mess,Medium
+Corridor light switch broken in the common room,Other,Medium
+Fire extinguisher missing from block A,Other,High
+Sewage smell coming from bathroom drain in room 305,Water,Medium
+wifi nt working again in block B,Wi-Fi,Medium
+Garbage not collected from the corridor for a week,Cleanliness,Medium
+Washroom in room 204 is very dirty,Cleanliness,Medium
+First aid box empty in room 204,Other,High
+Worms seen in rice at the mess since yesterday,Mess,High
+Extension board socket sparking in block A,Electricity,Medium
+Cannot connect to hostel wifi in my room since Monday,Wi-Fi,Medium
+Cockroaches found in mess food for two days,Mess,High
+LAN port loose in wing 2,Wi-Fi,Low
+Flush is not working in wing 2 for 3 hours,Water,Medium
+Unhygienic food causing stomach pain in mess since yesterday evening,Mess,High
+Washroom floor covered in filthy water in the second floor,Cleanliness,High
+Internet down completely across room 101 for 3 hours,Wi-Fi,High
+Tube light in the second floor needs replacing,Electricity,Low
+Electric shock from socket in the corridor,Electricity,High
+Network drops every few minutes in wing 2,Wi-Fi,Medium
+Drain pipe blocked in the ground floor washroom,Water,Medium
+AC unit not cooling in the second floor,Electricity,Medium
+No internet connectivity in room 305 for a week,Wi-Fi,Medium
+Washroom tiles extremely slippery and hazardous in block C,Cleanliness,High
+Rats and pests infesting room 305 since yesterday evening,Cleanliness,High
+Curtain rod fallen down in room 204,Furniture,Low
+Wifi down during test submission in the second floor,Wi-Fi,High
+Wi-Fi password reset needed for room 305,Wi-Fi,Low
+Cleaning staff skipped sweeping in the common room this morning,Cleanliness,Medium
+Cockroaches found in mess food for 3 hours,Mess,High
+Wi-Fi password reset needed for block B,Wi-Fi,Low
+Wifi down during test submission in the corridor,Wi-Fi,High
+No parking space for cycles near block B,Other,Low
+Water pressure is very low in block C,Water,Medium
+wifi nt working again in room 204,Wi-Fi,Medium
+Mess menu not followed today for 3 hours,Mess,Low
+No hot water in the corridor since yesterday,Water,Medium
+Washroom tiles extremely slippery and hazardous in room 204,Cleanliness,High
+Vegetables served in mess for two days were rotten,Mess,Medium
+Wardrobe door detached from hinges in the common room,Furniture,Medium
+Please add a notice board near the common room,Other,Low
+Severe water leakage flooding my room,Water,High
+Exposed live wires hanging in wing 2,Electricity,High
+Fan not running in the ground floor washroom for two days,Electricity,Medium
+Common room air cooler leaking in room 305,Other,Medium
+Wi-Fi speed is very slow in the common room,Wi-Fi,Low
+Corridor in the ground floor washroom dirty and unwashed for two days,Cleanliness,Medium
+No electricity in room 305 for a week,Electricity,High
+Wardrobe door detached from hinges in wing 2,Furniture,Medium
+Cannot connect to hostel wifi in the corridor for a week,Wi-Fi,Medium
+CCTV camera facing room 305 is dead,Other,High
+Severe water leakage flooding the corridor,Water,High
+Common room TV remote missing for a week,Other,Low
+Wi-Fi is not working in room 101 for 3 hours,Wi-Fi,Medium
+Network drops every few minutes in the common room,Wi-Fi,Medium
+Internet down completely across block A since last night,Wi-Fi,High
+Sewage smell coming from bathroom drain in room 204,Water,Medium
+Dead pest found in corridor near wing 2,Cleanliness,High
+Vegetables served in mess since yesterday evening were rotten,Mess,Medium
+Bookshelf fell off wall in my room,Furniture,Medium
+Corridor in room 305 dirty and unwashed since yesterday evening,Cleanliness,Medium
+Dead pest found in corridor near the common room,Cleanliness,High
+Food undercooked in the mess for two days,Mess,Medium
+Door lock jammed shut cannot enter room in block B,Furniture,High
+Sparks coming from the switch board in room 204,Electricity,High
+Mess food quality very poor since yesterday,Mess,Medium
+Water jug missing from mess table for two days,Mess,Low
+Gym equipment cable broken near block C,Other,Medium
+AC unit not cooling in the common room,Electricity,Medium
+Toilet seat stained and unhygienic in block A,Cleanliness,Medium
+Street light outside block B not working,Electricity,Low
+Water pressure is very low in the second floor,Water,Medium
+Main door latch broken in the corridor security risk,Furniture,High
+Chair in wing 2 has a wobbly leg,Furniture,Low
+Fire extinguisher missing from block C,Other,High
+No water in block B for two days,Water,High
+Tap is leaking in block B,Water,High
+Garbage not collected from the second floor since Monday,Cleanliness,Medium
+Ceiling fan wobbling dangerously in the second floor,Electricity,High
+Water pipe burst in room 305,Water,High
+Power cut in block C this morning,Electricity,High
+Foul smell spreading from washroom in the common room,Cleanliness,Medium
+Request for newspaper in common room the second floor,Other,Low
+Bunk bed ladder broken in room 101,Furniture,High
+Water cooler leaking in block B,Water,Medium
+LAN port loose in room 101,Wi-Fi,Low
+Internet down completely across block C this morning,Wi-Fi,High
+Bunk bed ladder broken in the common room,Furniture,High
+Cupboard handle loose in the second floor,Furniture,Low
+Dustbin overflowing with trash in block C,Cleanliness,Medium
+Ironing board missing in laundry room near room 204,Other,Low
+Bunk bed ladder broken in wing 2,Furniture,High
+Common room air cooler leaking in the ground floor washroom,Other,Medium
+Switchboard burnt and smoking in room 204,Electricity,High
+Corridor in room 204 dirty and unwashed for 3 hours,Cleanliness,Medium
+Mess closed abruptly without prior notice since yesterday evening,Mess,High
+Water jug missing from mess table for 3 hours,Mess,Low
+Food served in mess for a week was completely spoiled and sour,Mess,High
+No hot water in wing 2 since last night,Water,Medium
+No parking space for cycles near block C,Other,Low
+No internet connectivity in room 204 for 3 hours,Wi-Fi,Medium
+Dustbin overflowing with trash in the second floor,Cleanliness,Medium
+Water cooler near the corridor is not working,Water,Low
+Study table surface scratched in block B,Furniture,Low
+Drinking water dispenser knob broken in room 305,Water,Low
+Hostel router offline in block B for two days,Wi-Fi,Medium
+Overhead tank overflowing in the common room,Water,High
+Water supply cut off in the corridor for a week,Water,High
+Slow upload speed in the second floor since Monday,Wi-Fi,Low
+Mess closed abruptly without prior notice for 3 hours,Mess,High
+Water cooler near block C is not working,Water,Low
+Voltage fluctuation damaging appliances in wing 2,Electricity,Medium
+AC unit not cooling in the corridor,Electricity,Medium
+Foul smell spreading from washroom in wing 2,Cleanliness,Medium
+Garbage not collected from my room since Monday,Cleanliness,Medium
+No drinking water available in room 204,Water,High
+Window pane cracked and shaking in block B,Furniture,Medium
+Tube light in the corridor needs replacing,Electricity,Low
+Worms seen in rice at the mess for 3 hours,Mess,High
+Rats and pests infesting block B for two days,Cleanliness,High
+Wardrobe door detached from hinges in the corridor,Furniture,Medium
+Bed frame wooden plank cracked in block B,Furniture,Medium
+Severe water leakage flooding the second floor,Water,High
+Fan not running in room 305 since yesterday evening,Electricity,Medium
+Bed frame collapsed completely in block C,Furniture,High
+Power cut in block A since last night,Electricity,High
+Mess closed abruptly without prior notice for a week,Mess,High
+Almirah lock jammed in room 204,Furniture,Medium
+Mess menu not followed today for a week,Mess,Low
+Ceiling fan wobbling dangerously in block B,Electricity,High
+Dust on windows of room 204,Cleanliness,Low
+Drain pipe blocked in room 204,Water,Medium
+Wi-Fi password reset needed for room 204,Wi-Fi,Low
+Washroom tap dripping constantly in the second floor,Water,Medium
+Mess menu not followed today since yesterday evening,Mess,Low
+Wi-Fi signal weak in corner of block B,Wi-Fi,Low
+Mirror in washroom dirty near wing 2,Cleanliness,Low
+Stagnant sewage water overflowing in block A,Cleanliness,High
+Mirror in washroom dirty near room 101,Cleanliness,Low
+No water in block A since last night,Water,High
+Window pane cracked and shaking in block C,Furniture,Medium
+Toilet seat stained and unhygienic in block B,Cleanliness,Medium
+Ironing board missing in laundry room near block B,Other,Low
+Exposed live wires hanging in the common room,Electricity,High
+Mirror in washroom dirty near the common room,Cleanliness,Low
+Desk drawer stuck unable to open in the corridor,Furniture,Medium
+Long queue at mess breakfast counter since Monday,Mess,Low
+Water jug missing from mess table since yesterday evening,Mess,Low
+Power cut in block B for two days,Electricity,High
+No drinking water available in mess hall since Monday,Mess,Medium
+Bed frame collapsed completely in block A,Furniture,High
+Security guard absent from gate near room 204 for 3 hours,Other,High
+Flush is not working in the common room since yesterday,Water,Medium
+Food served in mess since yesterday evening was completely spoiled and sour,Mess,High
+Cleaning staff skipped sweeping in the corridor for a week,Cleanliness,Medium
+Water supply cut off in block C this morning,Water,High
+Wi-Fi login portal not opening in room 305,Wi-Fi,Medium
+Tube light in block C needs replacing,Electricity,Low
+Almirah lock jammed in the ground floor washroom,Furniture,Medium
+Bed frame wooden plank cracked in block C,Furniture,Medium
+Dustbin overflowing with trash in block B,Cleanliness,Medium
+Extension board socket sparking in block C,Electricity,Medium
+Study table surface scratched in block C,Furniture,Low
+Small stool cracked in room 305,Furniture,Low
+Mess drinking water contaminated with dirt this morning,Mess,High
+Desk drawer stuck unable to open in the common room,Furniture,Medium
+Fire extinguisher missing from block B,Other,High
+Request for newspaper in common room the corridor,Other,Low
+Bookshelf fell off wall in the second floor,Furniture,Medium
+No drinking water available in mess hall this morning,Mess,Medium
+Overhead tank overflowing in wing 2,Water,High
+Door lock jammed shut cannot enter room in room 204,Furniture,High
+Washroom floor covered in filthy water in the corridor,Cleanliness,High
+Common room TV remote missing since yesterday evening,Other,Low
+Emergency exit door locked in wing 2,Other,High
+Almirah lock jammed in room 305,Furniture,Medium
+Frequent wifi disconnection in the corridor,Wi-Fi,Medium
+Slow upload speed in the corridor for a week,Wi-Fi,Low
+Bed frame wooden plank cracked in room 204,Furniture,Medium
+MCB tripping repeatedly in my room since Monday,Electricity,High
+MCB tripping repeatedly in the second floor since Monday,Electricity,High
+Wifi down during test submission in block C,Wi-Fi,High
+Dust on windows of room 305,Cleanliness,Low
+Loud music disturbance in the corridor for a week,Other,Medium
+Wi-Fi login portal not opening in the ground floor washroom,Wi-Fi,Medium
+Wifi down during test submission in the ground floor washroom,Wi-Fi,High
+Mess utensils are greasy and not washed since yesterday evening,Mess,Medium
+Study lamp switch loose in room 305,Electricity,Low
+Cupboard handle loose in block C,Furniture,Low
+Wi-Fi signal weak in corner of block C,Wi-Fi,Low
+Food undercooked in the mess this morning,Mess,Medium
+Emergency exit door locked in room 101,Other,High
+Curtain rod fallen down in room 305,Furniture,Low
+Stray dogs entered hostel near the corridor,Other,Medium
+No electricity in room 204 for 3 hours,Electricity,High
+Spider webs in corner of block B,Cleanliness,Low
+Washroom floor covered in filthy water in block C,Cleanliness,High
+Study chair broken and unusable in room 305,Furniture,Medium
+Study table surface scratched in block A,Furniture,Low
+Shoe rack missing in room 204,Furniture,Low
+Hostel router offline in the second floor since last night,Wi-Fi,Medium
+Tap handle loose in the common room,Water,Low
+No internet connectivity in room 305 since yesterday evening,Wi-Fi,Medium
+Washroom in room 305 is very dirty,Cleanliness,Medium
+Mess staff handling food without gloves for 3 hours,Mess,Medium
+Security guard absent from gate near room 305 since yesterday evening,Other,High
+Cannot attend online exam due to wifi failure in room 204,Wi-Fi,High
+Washroom tap dripping constantly in the corridor,Water,Medium
+Chairs in mess dining area sticky,Mess,Low
+Stray dogs entered hostel near the common room,Other,Medium
+Cannot connect to hostel wifi in the second floor since Monday,Wi-Fi,Medium
+Main door latch broken in the second floor security risk,Furniture,High
+Stagnant sewage water overflowing in block C,Cleanliness,High
+Shoe rack missing in block B,Furniture,Low
+Corridor light switch broken in the second floor,Other,Medium
+Study chair broken and unusable in room 204,Furniture,Medium
+Sparks coming from the switch board in room 305,Electricity,High
+No water in block C this morning,Water,High
+wifi nt working again in block C,Wi-Fi,Medium
+Network drops every few minutes in the corridor,Wi-Fi,Medium
+Long queue at mess breakfast counter for a week,Mess,Low
+Mess food quality very poor since last night,Mess,Medium
+Bulb fused in the common room,Electricity,Low
+Worms seen in rice at the mess since last night,Mess,High
+Litter scattered around stairs near the corridor,Cleanliness,Low
+Clock stopped working in common room room 305,Other,Low
+Please add a notice board near wing 2,Other,Low
+Sparks coming from the switch board in block B,Electricity,High
+Lost and found box needed near the common room,Other,Low
+CCTV camera facing room 204 is dead,Other,High
+Cannot attend online exam due to wifi failure in my room,Wi-Fi,High
+Internet down completely across block B for two days,Wi-Fi,High
+Water pipe burst in room 204,Water,High
+Drinking water dispenser knob broken in room 204,Water,Low
+Room heater not functioning in room 305,Electricity,Medium
+Desk drawer stuck unable to open in the second floor,Furniture,Medium
+Mess drinking water contaminated with dirt since Monday,Mess,High
+Cockroaches found in mess food since last night,Mess,High
+Cupboard handle loose in the corridor,Furniture,Low
+No drinking water available in block C,Water,High
+Mess staff handling food without gloves since last night,Mess,Medium
+Room heater not functioning in block B,Electricity,Medium
+Bookshelf fell off wall in the corridor,Furniture,Medium
+Soap dispenser empty in room 204,Cleanliness,Low
+No drinking water available in block B,Water,High
+Wi-Fi is not working in wing 2 since last night,Wi-Fi,Medium
+Mess utensils are greasy and not washed for 3 hours,Mess,Medium
+Cockroaches found in mess food this morning,Mess,High
+Water cooler near the second floor is not working,Water,Low
+Vegetables served in mess this morning were rotten,Mess,Medium
+Clock stopped working in common room room 204,Other,Low
+Stray dogs entered hostel near wing 2,Other,Medium
+Unhygienic food causing stomach pain in mess for two days,Mess,High
+Frequent wifi disconnection in the common room,Wi-Fi,Medium
+Voltage fluctuation damaging appliances in the common room,Electricity,Medium
+First aid box empty in block B,Other,High
+Food served in the mess for a week was stale,Mess,Medium
+Lift stuck between floors near the second floor since Monday,Other,High
+Room heater not functioning in room 204,Electricity,Medium
+Overhead tank overflowing in room 101,Water,High
+Frequent wifi disconnection in the second floor,Wi-Fi,Medium
+Security guard absent from gate near block B for two days,Other,High
+Bathroom drain choked with hair in the common room,Cleanliness,Medium
+Wi-Fi signal weak in corner of block A,Wi-Fi,Low
+Litter scattered around stairs near block C,Cleanliness,Low
+Loud music disturbance in the second floor since Monday,Other,Medium
+Cannot attend online exam due to wifi failure in block B,Wi-Fi,High
+Door lock jammed shut cannot enter room in room 305,Furniture,High
+Sewage smell coming from bathroom drain in block B,Water,Medium
+Gym equipment cable broken near the second floor,Other,Medium
+Window pane cracked and shaking in the second floor,Furniture,Medium
+Wi-Fi is not working in the common room since yesterday,Wi-Fi,Medium
+Wi-Fi speed is very slow in wing 2,Wi-Fi,Low
+Water cooler leaking in block C,Water,Medium
+Tap handle loose in room 101,Water,Low
+Water filter cartridge needs cleaning in room 204,Water,Low
+Spider webs in corner of room 204,Cleanliness,Low
+Lift stuck between floors near block C this morning,Other,High
+Drain pipe blocked in room 305,Water,Medium
+Chair in the common room has a wobbly leg,Furniture,Low
+Electric shock from socket in block C,Electricity,High
+Lights not working at all in the common room since yesterday,Electricity,High
+Slow upload speed in block C since Monday,Wi-Fi,Low
+Wi-Fi login portal not opening in room 204,Wi-Fi,Medium
+Hostel router offline in block C this morning,Wi-Fi,Medium
+Water cooler leaking in block A,Water,Medium
+Exposed live wires hanging in the corridor,Electricity,High
+Common room air cooler leaking in room 204,Other,Medium
