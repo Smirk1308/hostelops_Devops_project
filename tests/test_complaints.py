@@ -51,6 +51,17 @@ def test_student_list_is_private_and_shows_counts(
     assert own.created_by == student.id
 
 
+def test_student_empty_state_ignores_filter_parameters(client, make_user, login_as):
+    student = make_user(name='Student without complaints')
+    login_as(client, student)
+
+    response = client.get('/complaints?status=Resolved')
+
+    assert response.status_code == 200
+    assert b'No complaints yet' in response.data
+    assert b'No complaints found' not in response.data
+
+
 @pytest.mark.parametrize('role', ['staff', 'admin'])
 def test_manager_list_filters_and_invalid_filters(
     client, make_user, make_complaint, login_as, role
