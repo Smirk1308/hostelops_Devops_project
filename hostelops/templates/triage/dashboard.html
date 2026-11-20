@@ -11,30 +11,45 @@
       <p class="page-description">Monitor hostel complaints, track resolution progress and identify issues that need immediate attention.</p>
     </div>
     <div class="page-actions" aria-label="Dashboard summary">
-      <span class="muted">Live operational overview</span>
+      <span class="muted" style="font-size: 0.9rem; font-weight: 550;">Live operational overview</span>
     </div>
   </header>
 
-  <section class="stats-grid" aria-label="Complaint summary">
+  <section class="stats-grid stats-grid-5" aria-label="Complaint summary">
     <article class="stat-card">
-      <p class="stat-label">Total Complaints</p>
-      <p class="stat-value">{{ total_count }}</p>
+      <div class="stat-icon stat-icon-blue">📊</div>
+      <div class="stat-body">
+        <p class="stat-label">Total Complaints</p>
+        <p class="stat-value">{{ total_count }}</p>
+      </div>
     </article>
     <article class="stat-card">
-      <p class="stat-label">Pending</p>
-      <p class="stat-value">{{ by_status['Pending'] }}</p>
+      <div class="stat-icon stat-icon-amber">⏳</div>
+      <div class="stat-body">
+        <p class="stat-label">Pending</p>
+        <p class="stat-value">{{ by_status['Pending'] }}</p>
+      </div>
     </article>
     <article class="stat-card">
-      <p class="stat-label">In Progress</p>
-      <p class="stat-value">{{ by_status['In Progress'] }}</p>
+      <div class="stat-icon stat-icon-cyan">🔄</div>
+      <div class="stat-body">
+        <p class="stat-label">In Progress</p>
+        <p class="stat-value">{{ by_status['In Progress'] }}</p>
+      </div>
     </article>
     <article class="stat-card">
-      <p class="stat-label">Resolved</p>
-      <p class="stat-value">{{ by_status['Resolved'] }}</p>
+      <div class="stat-icon stat-icon-green">✅</div>
+      <div class="stat-body">
+        <p class="stat-label">Resolved</p>
+        <p class="stat-value">{{ by_status['Resolved'] }}</p>
+      </div>
     </article>
-    <article class="stat-card badge-overdue">
-      <p class="stat-label">Overdue</p>
-      <p class="stat-value">{{ overdue_count }}</p>
+    <article class="stat-card" style="border-color: #FECACA;">
+      <div class="stat-icon stat-icon-red">⚠️</div>
+      <div class="stat-body">
+        <p class="stat-label" style="color: var(--color-danger);">Overdue</p>
+        <p class="stat-value" style="color: var(--color-danger);">{{ overdue_count }}</p>
+      </div>
     </article>
   </section>
 
@@ -43,7 +58,7 @@
       <div class="panel-header">
         <div>
           <h2>Complaints by Category</h2>
-          <p class="muted">Volume across hostel service areas</p>
+          <p class="muted" style="margin: 3px 0 0; font-size: 0.85rem;">Volume across hostel service areas</p>
         </div>
       </div>
       <div class="panel-body">
@@ -56,7 +71,7 @@
       <div class="panel-header">
         <div>
           <h2>Complaint Status Distribution</h2>
-          <p class="muted">Current progress across all complaints</p>
+          <p class="muted" style="margin: 3px 0 0; font-size: 0.85rem;">Current progress across all complaints</p>
         </div>
       </div>
       <div class="panel-body">
@@ -71,43 +86,54 @@
       <div>
         <p class="page-eyebrow">PRIORITY QUEUE</p>
         <h2 id="attention-heading">Attention Required</h2>
-        <p class="muted">Complaints open beyond the configured response window</p>
+        <p class="muted" style="margin: 3px 0 0; font-size: 0.85rem;">Complaints open beyond the configured response window</p>
       </div>
       <span class="badge badge-overdue">{{ overdue_count }} overdue</span>
     </div>
     <div class="panel-body">
       {% if overdue_list %}
-      <div class="table-container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Complaint ID</th>
-              <th scope="col">Complaint Title</th>
-              <th scope="col">Category</th>
-              <th scope="col">Status</th>
-              <th scope="col">Hours Open</th>
-              <th scope="col">View</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in overdue_list %}
-            <tr>
-              <td>#{{ item.id }}</td>
-              <td><a href="/complaints/{{ item.id }}">{{ item.title }}</a></td>
-              <td>{{ item.category }}</td>
-              <td><span class="badge {% if item.status == 'Pending' %}badge-pending{% else %}badge-progress{% endif %}">{{ item.status }}</span></td>
-              <td>{{ item.hours_open }}</td>
-              <td><a href="/complaints/{{ item.id }}" aria-label="View complaint {{ item.id }}">View</a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Complaint ID</th>
+                <th scope="col">Complaint Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Status</th>
+                <th scope="col">Hours Open</th>
+                <th scope="col" style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in overdue_list %}
+                <tr>
+                  <td>#{{ item.id }}</td>
+                  <td>
+                    <a href="/complaints/{{ item.id }}" style="font-weight: 650; color: var(--color-navy);">{{ item.title }}</a>
+                  </td>
+                  <td>
+                    <span class="muted" style="font-weight: 550;">{{ item.category }}</span>
+                  </td>
+                  <td>
+                    <span class="badge {% if item.status == 'Pending' %}badge-pending{% else %}badge-progress{% endif %}">{{ item.status }}</span>
+                  </td>
+                  <td>
+                    <span style="font-weight: 700; color: var(--color-danger);">{{ item.hours_open }} hrs</span>
+                  </td>
+                  <td style="text-align: right;">
+                    <a href="/complaints/{{ item.id }}" class="btn btn-secondary" style="min-height: 30px; padding: 3px 12px; font-size: 0.82rem;" aria-label="View complaint {{ item.id }}">View</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       {% else %}
-      <div class="muted" role="status">
-        <h3>All caught up!</h3>
-        <p>No overdue complaints require attention right now.</p>
-      </div>
+        <div class="muted" role="status" style="text-align: center; padding: var(--space-8) var(--space-4);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">🎉</div>
+          <h3 style="color: var(--color-navy); margin: 0 0 6px;">All caught up!</h3>
+          <p style="margin: 0; font-size: 0.95rem;">No overdue complaints require attention right now.</p>
+        </div>
       {% endif %}
     </div>
   </section>
@@ -123,6 +149,7 @@
 
   function showError(id, message) {
     var el = document.getElementById(id);
+    if (!el) return;
     el.textContent = message;
     el.hidden = false;
   }
@@ -173,9 +200,17 @@
           datasets: [{
             label: 'Complaints',
             data: categoryValues,
-            backgroundColor: ['#4f46e5', '#6366f1', '#818cf8', '#4338ca', '#a5b4fc', '#3730a3', '#c7d2fe'],
-            borderRadius: 6,
-            maxBarThickness: 42,
+            backgroundColor: [
+              '#19C6B4', // Primary Teal
+              '#42D9E8', // Cyan
+              '#101B32', // Deep Navy
+              '#F59E0B', // Amber
+              '#3B82F6', // Blue
+              '#8B5CF6', // Purple
+              '#94A3B8'  // Slate
+            ],
+            borderRadius: 8,
+            maxBarThickness: 38,
           }],
         },
         options: {
@@ -185,7 +220,7 @@
           animation: false,
           plugins: { legend: { display: false } },
           scales: {
-            x: { grid: { display: false }, ticks: { color: '#64748b' } },
+            x: { grid: { display: false }, ticks: { color: '#64748b', font: { family: 'Inter', weight: 550 } } },
             y: { beginAtZero: true, ticks: { precision: 0, color: '#64748b' }, grid: { color: '#e2e8f0' } },
           },
         },
@@ -198,7 +233,11 @@
           datasets: [{
             label: 'Complaints',
             data: statusValues,
-            backgroundColor: ['#f59e0b', '#4f46e5', '#10b981'],
+            backgroundColor: [
+              '#F59E0B', // Pending - Amber
+              '#42D9E8', // In Progress - Cyan
+              '#19C6B4'  // Resolved - Teal
+            ],
             borderColor: '#ffffff',
             borderWidth: 3,
             hoverOffset: 4,
@@ -209,9 +248,9 @@
           maintainAspectRatio: true,
           aspectRatio: 1.8,
           animation: false,
-          cutout: '66%',
+          cutout: '68%',
           plugins: {
-            legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, color: '#475569' } },
+            legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, color: '#475569', font: { family: 'Inter', weight: 600 } } },
           },
         },
       });

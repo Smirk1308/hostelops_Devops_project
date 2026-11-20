@@ -4,35 +4,102 @@
 
 {% block content %}
 <section class="auth-layout">
-  <div class="card auth-card">
-    <p class="eyebrow">HOSTELOPS ACCOUNT</p>
-    <h1>Create your account</h1>
-    <p class="muted">Register to report and track hostel issues.</p>
-    <form method="POST" action="/register" class="auth-form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-      <div class="form-group">
-        <label for="name">Full name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required value="{{ request.form.get('name', '') }}">
+  <div class="auth-split-wrapper">
+    <div class="auth-brand-side">
+      <div class="auth-brand-top">
+        <img src="{{ url_for('static', filename='img/hostelops-logo.svg') }}" alt="HostelOps" height="36">
+        <h2 class="auth-brand-heading">Join HostelOps today</h2>
+        <p class="auth-brand-desc">Create your resident profile to report maintenance issues, track repairs in real-time, and experience automated operations.</p>
+        <ul class="auth-feature-list">
+          <li class="auth-feature-item">
+            <span class="auth-feature-check">✓</span>
+            <span>Instant complaint submission with smart AI categorization</span>
+          </li>
+          <li class="auth-feature-item">
+            <span class="auth-feature-check">✓</span>
+            <span>Real-time status updates and resolution timestamps</span>
+          </li>
+          <li class="auth-feature-item">
+            <span class="auth-feature-check">✓</span>
+            <span>Direct assignment to hostel maintenance teams</span>
+          </li>
+        </ul>
       </div>
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input id="email" name="email" type="email" autocomplete="email" required value="{{ request.form.get('email', '') }}">
+      <div class="auth-brand-footer">
+        HostelOps Enterprise Platform · Designed for Modern Campuses
       </div>
-      <div class="form-group">
-        <label for="room_no">Room number <span class="muted">(optional)</span></label>
-        <input id="room_no" name="room_no" type="text" autocomplete="off" value="{{ request.form.get('room_no', '') }}">
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <p class="eyebrow">HOSTELOPS ACCOUNT</p>
+        <h1>Create your account</h1>
+        <p class="muted">Register to report and track hostel issues.</p>
+
+        <form method="POST" action="/register" class="auth-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required value="{{ request.form.get('name', '') }}" placeholder="Shubh Sharma">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" required value="{{ request.form.get('email', '') }}" placeholder="student@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="room_no">Room number <span class="muted">(optional)</span></label>
+            <input id="room_no" name="room_no" type="text" autocomplete="off" value="{{ request.form.get('room_no', '') }}" placeholder="e.g. B-204">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input-group">
+              <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required placeholder="Minimum 8 characters">
+              <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility" onclick="togglePasswordVisibility('password', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm_password">Confirm password</label>
+            <div class="password-input-group">
+              <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" required placeholder="Re-enter your password">
+              <button type="button" class="password-toggle-btn" aria-label="Toggle confirm password visibility" onclick="togglePasswordVisibility('confirm_password', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Create account</button>
+        </form>
+
+        <p class="auth-switch">Already registered? <a href="/login">Log in</a></p>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required>
-      </div>
-      <div class="form-group">
-        <label for="confirm_password">Confirm password</label>
-        <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" required>
-      </div>
-      <button class="btn btn-primary btn-block" type="submit">Create account</button>
-    </form>
-    <p class="auth-switch">Already registered? <a href="/login">Log in</a></p>
+    </div>
   </div>
 </section>
+
+<script>
+function togglePasswordVisibility(fieldId, btn) {
+  var input = document.getElementById(fieldId);
+  if (!input) return;
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+  } else {
+    input.type = 'password';
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+  }
+}
+</script>
 {% endblock %}

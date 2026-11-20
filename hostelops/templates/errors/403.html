@@ -4,9 +4,14 @@
 
 {% block content %}
 <section class="card error-card">
-  <p class="eyebrow">403 · ACCESS DENIED</p>
+  <div class="empty-state-icon" style="background: #FEE2E2; color: #DC2626;">
+    🔒
+  </div>
+  <p class="eyebrow" style="color: #DC2626;">403 · ACCESS DENIED</p>
   <h1>You don’t have access to this page.</h1>
-  <p class="muted">If you think this is a mistake, contact your hostel administrator.</p>
-  <a class="btn btn-primary" href="/complaints">Back to complaints</a>
+  <p class="muted">If you think this is a mistake, please contact your hostel administration team.</p>
+  <div style="display: flex; justify-content: center; gap: 12px; margin-top: var(--space-4);">
+    <a class="btn btn-primary" href="/complaints">Back to complaints</a>
+  </div>
 </section>
 {% endblock %}
