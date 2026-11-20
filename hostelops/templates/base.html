@@ -5,24 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{% block title %}HostelOps{% endblock %}</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/hostelops-icon.svg') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <header class="navbar">
     <nav class="nav-container" aria-label="Main navigation">
-      <a href="/" class="brand">HostelOps</a>
+      <a href="/" class="brand">
+        <img src="{{ url_for('static', filename='img/hostelops-logo.svg') }}" alt="HostelOps" class="brand-logo" height="32">
+      </a>
       <div class="nav-links">
         {% if current_user.is_authenticated %}
+          {% if current_user.role in ['staff', 'admin'] %}
+            <a href="/dashboard">Dashboard</a>
+          {% endif %}
           <a href="/complaints">Complaints</a>
           {% if current_user.role == 'student' %}
             <a href="/complaints/new">New complaint</a>
-          {% elif current_user.role in ['staff', 'admin'] %}
-            <a href="/dashboard">Dashboard</a>
           {% endif %}
-          <span class="user-badge">{{ current_user.name }} · {{ current_user.role|title }}</span>
+          <span class="user-badge">
+            <span class="user-avatar-circle">{{ (current_user.name[:2] if current_user.name else 'US')|upper }}</span>
+            {{ current_user.name }} · {{ current_user.role|title }}
+          </span>
           <form method="POST" action="/logout" class="nav-logout">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button class="btn btn-secondary" type="submit">Log out</button>
+            <button class="btn-nav-logout" type="submit">Log out</button>
           </form>
         {% else %}
           <a href="/login">Login</a>
@@ -37,7 +44,7 @@
       {% if messages %}
         <div class="flash-messages" role="status" aria-live="polite">
           {% for category, message in messages %}
-            {% set flash_category = category if category in ['success', 'danger', 'info'] else 'info' %}
+            {% set flash_category = category if category in ['success', 'danger', 'info', 'warning'] else 'info' %}
             <div class="flash flash-{{ flash_category }}">{{ message }}</div>
           {% endfor %}
         </div>

@@ -33,6 +33,8 @@ def _validate_complaint_form():
         errors['title'] = 'Title must be 150 characters or fewer.'
     if not values['description']:
         errors['description'] = 'Describe the issue.'
+    elif len(values['description']) > 500:
+        errors['description'] = 'Description must be 500 characters or fewer.'
     if values['category'] not in CATEGORIES:
         errors['category'] = 'Choose a valid category.'
     if values['priority'] not in PRIORITIES:

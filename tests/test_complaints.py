@@ -121,6 +121,8 @@ def test_only_students_can_open_or_create_complaints(
       'priority': 'Low'}, 'title'),
     ({'title': 'Issue', 'description': ' ', 'category': 'Water',
       'priority': 'Low'}, 'description'),
+    ({'title': 'Issue', 'description': 'x' * 501, 'category': 'Water',
+      'priority': 'Low'}, 'description'),
     ({'title': 'Issue', 'description': 'Issue', 'category': 'Fake',
       'priority': 'Low'}, 'category'),
     ({'title': 'Issue', 'description': 'Issue', 'category': 'Water',
@@ -166,6 +168,75 @@ def test_owner_can_edit_pending_and_fields_update(
     db.session.refresh(complaint)
     assert (complaint.title, complaint.description, complaint.category,
             complaint.priority) == ('Updated', 'New details', 'Wi-Fi', 'High')
+
+
+def test_create_description_length_limit(client, make_user, login_as):
+    user = make_user()
+    login_as(client, user)
+
+    # Exactly 500 characters is accepted
+    valid_desc = 'd' * 500
+    resp_valid = client.post('/complaints/new', data={
+        'title': 'Valid Title',
+        'description': valid_desc,
+        'category': 'Water',
+        'priority': 'Medium',
+    })
+    assert resp_valid.status_code == 302
+    created = db.session.scalar(
+        db.select(Complaint).where(Complaint.title == 'Valid Title')
+    )
+    assert created is not None
+    assert created.description == valid_desc
+    assert len(created.description) == 500
+
+    # Exceeding 500 characters (501) is rejected
+    too_long = 'e' * 501
+    resp_invalid = client.post('/complaints/new', data={
+        'title': 'Too Long Title',
+        'description': too_long,
+        'category': 'Water',
+        'priority': 'Medium',
+    })
+    assert resp_invalid.status_code == 200
+    assert b'Description must be 500 characters or fewer.' in resp_invalid.data
+    assert db.session.scalar(
+        db.select(Complaint).where(Complaint.title == 'Too Long Title')
+    ) is None
+
+
+def test_edit_description_length_limit(
+    client, make_user, make_complaint, login_as
+):
+    owner = make_user()
+    complaint = make_complaint(owner)
+    login_as(client, owner)
+
+    # Exactly 500 characters is accepted on edit
+    valid_desc = 'u' * 500
+    resp_valid = client.post(f'/complaints/{complaint.id}/edit', data={
+        'title': complaint.title,
+        'description': valid_desc,
+        'category': complaint.category,
+        'priority': complaint.priority,
+    })
+    assert resp_valid.status_code == 302
+    db.session.refresh(complaint)
+    assert complaint.description == valid_desc
+    assert len(complaint.description) == 500
+
+    # Exceeding 500 characters (501) is rejected on edit
+    too_long = 'v' * 501
+    resp_invalid = client.post(f'/complaints/{complaint.id}/edit', data={
+        'title': complaint.title,
+        'description': too_long,
+        'category': complaint.category,
+        'priority': complaint.priority,
+    })
+    assert resp_invalid.status_code == 200
+    assert b'Description must be 500 characters or fewer.' in resp_invalid.data
+    db.session.refresh(complaint)
+    assert complaint.description == valid_desc
 
 
 @pytest.mark.parametrize('status', ['In Progress', 'Resolved'])

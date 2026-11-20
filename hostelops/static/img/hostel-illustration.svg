@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" fill="none" role="img" aria-label="Hostel illustration">
+  <!-- Sky / Background subtle clouds -->
+  <path d="M40 85 C55 85 65 72 80 72 C95 72 105 85 120 85 Z" fill="#E6F4FA" opacity="0.6"/>
+  <path d="M260 65 C275 65 285 52 300 52 C315 52 325 65 340 65 Z" fill="#E6F4FA" opacity="0.6"/>
+  
+  <!-- Ground / lawn -->
+  <ellipse cx="180" cy="205" rx="170" ry="25" fill="#E8F8F5"/>
+  <path d="M20 200 Q180 185 340 200 L340 220 L20 220 Z" fill="#D7F3ED"/>
+
+  <!-- Left trees -->
+  <circle cx="55" cy="165" r="22" fill="#52D1BE" opacity="0.85"/>
+  <circle cx="75" cy="170" r="18" fill="#19C6B4" opacity="0.9"/>
+  <rect x="52" y="180" width="6" height="25" rx="3" fill="#8AA2B6"/>
+  <rect x="73" y="182" width="5" height="23" rx="2.5" fill="#8AA2B6"/>
+
+  <!-- Right trees -->
+  <circle cx="310" cy="160" r="24" fill="#52D1BE" opacity="0.85"/>
+  <circle cx="330" cy="168" r="17" fill="#19C6B4" opacity="0.9"/>
+  <rect x="307" y="178" width="6" height="27" rx="3" fill="#8AA2B6"/>
+  <rect x="328" y="180" width="5" height="25" rx="2.5" fill="#8AA2B6"/>
+
+  <!-- Main Hostel Building (Perspective angle) -->
+  <!-- Left Side Wing (perspective) -->
+  <path d="M95 110 L160 85 L160 195 L95 195 Z" fill="#8BB2DC"/>
+  <!-- Left Wing Roof -->
+  <path d="M85 112 L160 82 L165 85 L95 113 Z" fill="#6C97C6"/>
+
+  <!-- Main Front Facade -->
+  <path d="M160 85 L275 105 L275 195 L160 195 Z" fill="#B9D5F2"/>
+  <!-- Front Roof Cornice -->
+  <path d="M158 83 L280 104 L276 108 L158 87 Z" fill="#7FA8D6"/>
+  <!-- Roof top block -->
+  <path d="M190 75 L245 84 L245 100 L190 92 Z" fill="#9DBFE3"/>
+
+  <!-- Left Side Windows -->
+  <g fill="#4A75A5">
+    <rect x="108" y="120" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+    <rect x="125" y="125" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+    <rect x="142" y="130" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+
+    <rect x="108" y="145" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+    <rect x="125" y="150" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+    <rect x="142" y="155" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+
+    <rect x="108" y="170" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+    <rect x="125" y="175" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+    <rect x="142" y="180" width="10" height="15" rx="1.5" transform="skewY(-15)"/>
+  </g>
+
+  <!-- Front Facade Windows -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- Row 1 -->
+    <rect x="175" y="105" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="198" y="108" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="221" y="111" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="244" y="114" width="12" height="15" rx="2" transform="skewY(7)"/>
+
+    <!-- Row 2 -->
+    <rect x="175" y="130" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="198" y="133" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="221" y="136" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="244" y="139" width="12" height="15" rx="2" transform="skewY(7)"/>
+
+    <!-- Row 3 -->
+    <rect x="175" y="155" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="198" y="158" width="12" height="15" rx="2" transform="skewY(7)"/>
+    <rect x="244" y="164" width="12" height="15" rx="2" transform="skewY(7)"/>
+  </g>
+
+  <!-- Front Entrance Door -->
+  <path d="M217 165 L235 168 L235 195 L217 195 Z" fill="#101B32"/>
+  <rect x="220" y="170" width="6" height="23" fill="#19C6B4" opacity="0.9"/>
+  <rect x="227" y="171" width="6" height="23" fill="#42D9E8" opacity="0.8"/>
+  <path d="M213 164 L239 167 L237 169 L213 166 Z" fill="#6C97C6"/>
+
+  <!-- Walkway -->
+  <path d="M216 195 L236 195 L245 215 L205 215 Z" fill="#E2EDF8"/>
+</svg>

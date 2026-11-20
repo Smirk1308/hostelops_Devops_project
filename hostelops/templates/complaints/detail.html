@@ -1,21 +1,150 @@
 {% extends 'base.html' %}
+
 {% block title %}Complaint #{{ complaint.id }} · HostelOps{% endblock %}
+
 {% block content %}
 <section class="page-shell">
-  <header class="page-header"><div><p class="page-eyebrow">COMPLAINT #{{ complaint.id }} · {{ complaint.category }}</p><h1 class="page-title">{{ complaint.title }}</h1><p class="page-description"><span class="badge badge-{{ 'progress' if complaint.status == 'In Progress' else complaint.status|lower }}">{{ complaint.status }}</span> <span class="badge badge-{{ complaint.priority|lower }}">{{ complaint.priority }} priority</span> {% if overdue %}<span class="badge badge-overdue">Overdue</span>{% endif %}</p></div><div class="page-actions"><a class="btn btn-secondary" href="{{ url_for('complaints.list_complaints') }}">Back to complaints</a></div></header>
-  <div class="detail-layout"><main class="detail-main">
-    <section class="panel detail-section"><div class="panel-header"><h2>Issue description</h2></div><div class="panel-body"><p>{{ complaint.description }}</p></div></section>
-    <section class="panel detail-section"><div class="panel-header"><h2>Activity</h2></div><div class="panel-body"><ol class="activity-timeline"><li class="activity-item"><strong>Complaint submitted</strong><span>{{ complaint.created_at.strftime('%d %b %Y %H:%M') }}</span></li>{% if complaint.resolved_at %}<li class="activity-item"><strong>Complaint resolved</strong><span>{{ complaint.resolved_at.strftime('%d %b %Y %H:%M') }}</span></li>{% endif %}</ol></div></section>
-  </main><aside class="detail-sidebar">
-    <section class="panel"><div class="panel-header"><h2>Request details</h2></div><div class="panel-body"><dl><dt>Created by</dt><dd>{{ complaint.creator.name }}{% if complaint.creator.room_no %} · Room {{ complaint.creator.room_no }}{% endif %}</dd><dt>Assigned to</dt><dd>{{ complaint.assignee.name if complaint.assignee else 'Unassigned' }}</dd><dt>Category</dt><dd>{{ complaint.category }}</dd><dt>Priority</dt><dd>{{ complaint.priority }}</dd><dt>Status</dt><dd>{{ complaint.status }}</dd><dt>Created</dt><dd>{{ complaint.created_at.strftime('%d %b %Y %H:%M') }}</dd><dt>Last updated</dt><dd>{{ complaint.updated_at.strftime('%d %b %Y %H:%M') }}</dd></dl></div></section>
-    {% if current_user.role in ('staff', 'admin') %}<section class="panel"><div class="panel-header"><h2>Manage complaint</h2></div><div class="panel-body">
-      <form method="post" action="{{ url_for('complaints.assign_complaint', complaint_id=complaint.id) }}" class="form-section"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><div class="form-group"><label for="assigned_to">Assign to</label><select id="assigned_to" name="assigned_to"><option value="">Unassigned</option>{% for person in staff_users %}<option value="{{ person.id }}" {% if complaint.assigned_to == person.id %}selected{% endif %}>{{ person.name }} ({{ person.role }})</option>{% endfor %}</select></div><button class="btn btn-primary" type="submit">Save assignment</button></form>
-      <form method="post" action="{{ url_for('complaints.update_status', complaint_id=complaint.id) }}" class="form-section"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><div class="form-group"><label for="status">Update status</label><select id="status" name="status">{% for value in ['Pending', 'In Progress', 'Resolved'] %}<option value="{{ value }}" {% if complaint.status == value %}selected{% endif %}>{{ value }}</option>{% endfor %}</select></div><button class="btn btn-primary" type="submit">Update status</button></form>
-    </div></section>{% endif %}
-    {% if (current_user.role == 'student' and complaint.created_by == current_user.id and complaint.status == 'Pending') or current_user.role == 'admin' %}<section class="panel"><div class="panel-header"><h2>Actions</h2></div><div class="panel-body complaint-actions">
-      {% if current_user.role == 'student' and complaint.created_by == current_user.id and complaint.status == 'Pending' %}<a class="btn btn-secondary" href="{{ url_for('complaints.edit_complaint', complaint_id=complaint.id) }}">Edit complaint</a>{% endif %}
-      <form method="post" action="{{ url_for('complaints.delete_complaint', complaint_id=complaint.id) }}" onsubmit="return confirm('Delete this complaint? This action cannot be undone.');"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn-danger" type="submit">Delete complaint</button></form>
-    </div></section>{% endif %}
-  </aside></div>
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">COMPLAINT #{{ complaint.id }} · {{ complaint.category }}</p>
+      <h1 class="page-title">{{ complaint.title }}</h1>
+      <div class="page-description" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+        <span class="badge badge-{{ 'progress' if complaint.status == 'In Progress' else complaint.status|lower }}">{{ complaint.status }}</span>
+        <span class="badge badge-{{ complaint.priority|lower }}">{{ complaint.priority }} priority</span>
+        {% if overdue %}
+          <span class="badge badge-overdue">Overdue</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="page-actions">
+      <a class="btn btn-secondary" href="{{ url_for('complaints.list_complaints') }}">← Back to complaints</a>
+    </div>
+  </header>
+
+  <div class="detail-layout">
+    <main class="detail-main">
+      <section class="panel detail-section">
+        <div class="panel-header">
+          <h2>Issue description</h2>
+        </div>
+        <div class="panel-body">
+          <p style="white-space: pre-wrap; line-height: 1.6; color: var(--color-navy); font-size: 0.98rem;">{{ complaint.description }}</p>
+        </div>
+      </section>
+
+      <section class="panel detail-section">
+        <div class="panel-header">
+          <h2>Activity</h2>
+        </div>
+        <div class="panel-body">
+          <ol class="activity-timeline">
+            <li class="activity-item">
+              <strong>Complaint submitted</strong>
+              <span>{{ complaint.created_at.strftime('%d %b %Y %H:%M') }}</span>
+            </li>
+            {% if complaint.resolved_at %}
+              <li class="activity-item">
+                <strong>Complaint resolved</strong>
+                <span>{{ complaint.resolved_at.strftime('%d %b %Y %H:%M') }}</span>
+              </li>
+            {% endif %}
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <aside class="detail-sidebar">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Request details</h2>
+        </div>
+        <div class="panel-body">
+          <dl class="detail-meta-list">
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Created by</dt>
+              <dd class="detail-meta-value">{{ complaint.creator.name }}{% if complaint.creator.room_no %} · Room {{ complaint.creator.room_no }}{% endif %}</dd>
+            </div>
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Assigned to</dt>
+              <dd class="detail-meta-value">{{ complaint.assignee.name if complaint.assignee else 'Unassigned' }}</dd>
+            </div>
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Category</dt>
+              <dd class="detail-meta-value">{{ complaint.category }}</dd>
+            </div>
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Priority</dt>
+              <dd class="detail-meta-value">{{ complaint.priority }}</dd>
+            </div>
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Status</dt>
+              <dd class="detail-meta-value">{{ complaint.status }}</dd>
+            </div>
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Created</dt>
+              <dd class="detail-meta-value">{{ complaint.created_at.strftime('%d %b %Y %H:%M') }}</dd>
+            </div>
+            <div class="detail-meta-item">
+              <dt class="detail-meta-label">Last updated</dt>
+              <dd class="detail-meta-value">{{ complaint.updated_at.strftime('%d %b %Y %H:%M') }}</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      {% if current_user.role in ('staff', 'admin') %}
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Manage complaint</h2>
+          </div>
+          <div class="panel-body">
+            <form method="post" action="{{ url_for('complaints.assign_complaint', complaint_id=complaint.id) }}" class="form-section" style="margin-top: 0; padding-top: 0; border-top: none;">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <div class="form-group">
+                <label for="assigned_to">Assign to</label>
+                <select id="assigned_to" name="assigned_to">
+                  <option value="">Unassigned</option>
+                  {% for person in staff_users %}
+                    <option value="{{ person.id }}" {% if complaint.assigned_to == person.id %}selected{% endif %}>{{ person.name }} ({{ person.role }})</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Save assignment</button>
+            </form>
+
+            <form method="post" action="{{ url_for('complaints.update_status', complaint_id=complaint.id) }}" class="form-section" style="margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--color-border);">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <div class="form-group">
+                <label for="status">Update status</label>
+                <select id="status" name="status">
+                  {% for value in ['Pending', 'In Progress', 'Resolved'] %}
+                    <option value="{{ value }}" {% if complaint.status == value %}selected{% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Update status</button>
+            </form>
+          </div>
+        </section>
+      {% endif %}
+
+      {% if (current_user.role == 'student' and complaint.created_by == current_user.id and complaint.status == 'Pending') or current_user.role == 'admin' %}
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Actions</h2>
+          </div>
+          <div class="panel-body complaint-actions">
+            {% if current_user.role == 'student' and complaint.created_by == current_user.id and complaint.status == 'Pending' %}
+              <a class="btn btn-secondary btn-block" href="{{ url_for('complaints.edit_complaint', complaint_id=complaint.id) }}">Edit complaint</a>
+            {% endif %}
+            <form method="post" action="{{ url_for('complaints.delete_complaint', complaint_id=complaint.id) }}" style="width: 100%;" onsubmit="return confirm('Delete this complaint? This action cannot be undone.');">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <button class="btn btn-danger btn-block" type="submit">Delete complaint</button>
+            </form>
+          </div>
+        </section>
+      {% endif %}
+    </aside>
+  </div>
 </section>
 {% endblock %}
